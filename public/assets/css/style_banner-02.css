@@ -1,0 +1,41 @@
+.carousel {
+    position: relative;
+    max-width: 90%; /* Ajuste conforme necessário */
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    flex: 0 0 100%;
+    max-width: 100%; /* Ajuste conforme necessário */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 420px; /* Altura do carrossel */
+    background-color: #ccc; /* Cor de fundo de exemplo */
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    padding: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}

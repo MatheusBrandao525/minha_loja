@@ -1,0 +1,189 @@
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-centro {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-dados-perfil{
+    width: 100%;
+    height: 300px;
+    padding-top: 1rem;
+    padding-left: 10px;
+}
+
+.card-dados-perfil p{
+    font-size: 1.2rem;
+}
+
+.menu-lateral {
+    width: 200px;
+    background-color: #f4f4f4;
+    height: 100%;
+}
+
+.menu-lateral ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-lateral ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.conteudo {
+    margin-left: 20px;
+    width: 100%;
+    display: flex;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.dados-usuario {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    width: 100%;
+    height: auto;
+}
+
+.dados-usuario h2 {
+    padding-left: 10px;
+    margin-top: 0;
+}
+
+
+#meusPedidos {
+    height: 100vh;
+    margin-top: 20px;
+}
+
+.titulo-aba-pedidos,.titulo-aba-favoritos{
+    font-size: 1.2rem;
+    padding: 10px;
+    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.exibicao-produtos-pedidos,.exibicao-produtos-favoritos{
+    padding: 10px;
+}
+
+.exibicao-produtos-pedidos,.exibicao-produtos-favoritos {
+    margin-top: 20px;
+}
+
+.pedido-cabecalho {
+    display: flex;
+    padding: 10px 0;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}
+
+.pedido-cabecalho span {
+    margin-right: 50px;
+    flex-grow: 1;
+}
+
+.pedido-cabecalho span:first-child, .pedido-cabecalho span:last-child {
+    flex-grow: 0;
+}
+
+
+.pedido-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.pedido-imagem {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.pedido-nome, .pedido-data {
+    margin-right: 20px;
+    flex-grow: 1;
+}
+
+.pedido-detalhes {
+    padding: 5px 25px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Saira Extra Condensed", sans-serif;
+    border: none;
+    border-radius:3px;
+    cursor: pointer;
+}
+
+.pedido-detalhes:hover {
+    background-color: #0056b3;
+}
+
+
+#meusFavoritos{
+    height: 100vh;
+    margin-top: 20px;
+}
+
+.exibicao-produtos-favoritos {
+    margin-top: 20px;
+}
+
+.favoritos-cabecalho {
+    display: flex;
+    padding: 10px 0;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}
+
+.favoritos-cabecalho span {
+    margin-right: 50px;
+    flex-grow: 1;
+}
+
+.favoritos-cabecalho span:first-child, .favoritos-cabecalho span:last-child {
+    flex-grow: 0;
+}
+
+.favorito-item {
+    display: flex;
+    align-items: center;
+}
+
+.favorito-imagem {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.favorito-nome, .favorito-data {
+    margin-right: 20px;
+    flex-grow: 1;
+}
+
+.favorito-detalhes {
+    padding: 5px 25px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Saira Extra Condensed", sans-serif;
+    border: none;
+    border-radius:3px;
+    cursor: pointer;
+}

@@ -3,6 +3,7 @@
 $routes = [
     '/minha_loja/' => 'LoginController@redirecionaParaTelaDeLogin',
     '/minha_loja/login' => 'LoginController@redirecionaParaTelaDeLogin',
+    '/minha_loja/validarLogin' => 'LoginController@autenticarUsuario',
     '/minha_loja/home' => 'HomeController@apresentarTelaDeHome',
     '/minha_loja/cadastro' => 'CadastroController@redirecionaParaTelaDeCadastro',
     '/minha_loja/categoria' => 'CategoriaController@redirecionarParaTelaCategoria',
@@ -18,23 +19,12 @@ $routes = [
     '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado'
 ];
 
-// Obtém a URL da solicitação
-if(isset($_GET['url'])){
-$urlSolicitada = '/minha_loja/' . $_GET['url'];
-/* echo $urlSolicitada;
-
-die();
- */
-// Verifica se a rota existe
-if (array_key_exists($urlSolicitada, $routes)) {
-    // Lógica para chamar o controlador e o método adequados
-    list($controller, $method) = explode('@', $routes[$urlSolicitada]);
-
-
-    // Aqui você instanciaria seu controlador e chamaria o método
-} else {
-    // Rota não encontrada, redirecionar para a página de erro 404
-    header("Location: /minha_loja/erro_404");
-    exit;
-}
+if (isset($_GET['url'])) {
+    $urlSolicitada = '/minha_loja/' . $_GET['url'];
+    if (array_key_exists($urlSolicitada, $routes)) {
+        list($controller, $method) = explode('@', $routes[$urlSolicitada]);
+    } else {
+        header("Location: /minha_loja/erro_404");
+        exit;
+    }
 }

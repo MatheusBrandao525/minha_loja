@@ -95,14 +95,14 @@ include 'components/header.php';
                 <div class="aviso-form-login">
                     <span>Se você tiver uma conta, acesse com seu endereço de e-mail e senha.</span>
                 </div>
-                <form action="" class="formulario-login" id="formulario-login">
+                <form class="formulario-login" id="formulario-login">
                     <div class="form-group">
                         <label for="email">E-mail<strong>*</strong></label>
-                        <input type="email">
+                        <input type="email" name="txtemail">
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha<strong>*</strong></label>
-                        <input type="password">
+                        <input type="password" name="txtsenha">
                     </div>
                     <div class="form-group enviar-formulario-login">
                         <button type="submit">Entrar</button>
@@ -146,39 +146,49 @@ include 'components/header.php';
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById("modal");
-    var closeButton = document.querySelector(".close-button");
-    var okButton = document.querySelector(".ok-button");
+$(document).ready(function() {
+    var modal = $("#modal");
+    var modalContent = $("#modal .modal-content p"); // Ajuste o seletor conforme sua estrutura HTML
+    $(".close-button, .ok-button").click(function() {
+        modal.hide();
+    });
 
-    function toggleModal() {
-        modal.style.display = "block";
-    }
-
-    function closeModal() {
-        modal.style.display = "none";
-    }
-
-    function windowOnClick(event) {
-        if (event.target === modal) {
-            closeModal();
+    $(window).click(function(event) {
+        if (event.target.id === "modal") {
+            modal.hide();
         }
-    }
+    });
 
-    closeButton.addEventListener("click", closeModal);
-    okButton.addEventListener("click", closeModal);
-    
-    window.addEventListener("click", windowOnClick);
+    $("#formulario-login").submit(function(event) {
+        event.preventDefault();
 
-    document.getElementById("formulario-login").addEventListener("submit", function(event) {
-        event.preventDefault(); // Impede o envio do formulário
-        toggleModal(); // Exibe a modal
+        $.ajax({
+            type: "POST",
+            url: "validarLogin",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.status === "sucesso") {
+                    window.location.href = "home";
+                } else {
+                    modalContent.text(response.mensagem);
+                    modal.show();
+                }
+            },
+            error: function(xhr, status, error) {
+
+                modalContent.text(error);
+                modal.show();
+            }
+        });
     });
 });
-
 </script>
+
 
 <?php
 include 'components/footer.php';

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'components/header.php';
 include 'components/banner.php';
 // include 'components/banner-02.php';

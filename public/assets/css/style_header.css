@@ -265,6 +265,13 @@ li a i {
     margin: 0 5px;
 }
 
+.sair{
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    color: #fff;
+}
+
 .header_account_link {
     text-decoration: none;
     /* Opcional: remove o sublinhado dos links */

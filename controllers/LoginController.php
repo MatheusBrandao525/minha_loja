@@ -22,4 +22,23 @@ class LoginController {
         echo json_encode($autenticacao);
         exit; 
     }
+
+    function deslogarUsuario()
+    {
+        $sessaoUsuarioLogado = $_POST['idsessaousuario'];
+
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        if (isset($_SESSION['ID']) && $_SESSION['ID'] == $sessaoUsuarioLogado) {
+            $_SESSION = array();
+
+            session_destroy();
+
+            header('Location:home');
+            exit();
+        }
+    }
+    
 }

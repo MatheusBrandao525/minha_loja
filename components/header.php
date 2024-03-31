@@ -1,4 +1,12 @@
 <?php
+session_start();
+require_once 'core/Conexao.php';
+require 'models/UsuarioModel.php';
+
+if(isset($_SESSION['ID'])){
+$usuarioModel = new UsuarioModel() ;
+$dadosUsuario = $usuarioModel->buscarDadosUsuarioLogado($_SESSION['ID']);
+}
 $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
@@ -106,24 +114,46 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             <ul class="linksCustomer">
                 <li class="header_account_link_list">
                     <i class="fas fa-sign-in-alt"></i> <!-- Ícone de entrar -->
-                    <div>
-                        <span>Faça <a class="header_account_link login" href="login" class="login"><strong>Login</strong></a> ou </span>
-                        <a class="header_account_link cadastro strong" href="cadastro"><strong>Cadastre-se</strong></a>
-                    </div>
+                    <?php if (!isset($_SESSION['ID'])) {  ?>
+                        <div>
+                            <span>Faça <a class="header_account_link login" href="login" class="login"><strong>Login</strong></a> ou </span>
+                            <a class="header_account_link cadastro strong" href="cadastro"><strong>Cadastre-se</strong></a>
+                        </div>
+                    <?php } else { ?>
+                        <div>
+                            <a class="header_account_link login" href="conta" class="login"  style="margin-left: 0 !important;"><strong>Minha Conta</strong></a>
+                            <form action="sair" method="post">
+                                <input type="hidden" name="idsessaousuario" value="<?php echo $_SESSION['ID'];?>">
+                                <button type="submit" class="header_account_link sair strong"><strong>Sair</strong></button>
+                            </form>
+                        </div>
+                    <?php } ?>
                 </li>
             </ul>
 
             <div id="custom-sliding-cart">
                 <div data-block="minicart" class="minicart-wrapper">
-                    <a class="action showcart" href="#" onclick="toggleCartVisibility()">
-                        <span class="text">
-                            <i class="fas fa-shopping-cart"></i> Carrinho
-                        </span>
-                        <span class="counter qty empty">
-                            <span class="counter-label"></span>
-                            <span class="counter-number">Itens | 0</span>
-                        </span>
-                    </a>
+                    <?php if (isset($_SESSION['ID'])) { ?>
+                        <a class="action showcart" href="#" onclick="toggleCartVisibility()">
+                            <span class="text">
+                                <i class="fas fa-shopping-cart"></i> Carrinho
+                            </span>
+                            <span class="counter qty empty">
+                                <span class="counter-label"></span>
+                                <span class="counter-number">Itens | 0</span>
+                            </span>
+                        </a>
+                    <?php } else { ?>
+                        <a class="action showcart" href="login">
+                            <span class="text">
+                                <i class="fas fa-shopping-cart"></i> Carrinho
+                            </span>
+                            <span class="counter qty empty">
+                                <span class="counter-label"></span>
+                                <span class="counter-number">Itens | 0</span>
+                            </span>
+                        </a>
+                    <?php } ?>
                 </div>
             </div>
 

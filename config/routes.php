@@ -4,6 +4,7 @@ $routes = [
     '/minha_loja/' => 'LoginController@redirecionaParaTelaDeLogin',
     '/minha_loja/login' => 'LoginController@redirecionaParaTelaDeLogin',
     '/minha_loja/validarLogin' => 'LoginController@autenticarUsuario',
+    '/minha_loja/sair' => 'LoginController@deslogarUsuario',
     '/minha_loja/home' => 'HomeController@apresentarTelaDeHome',
     '/minha_loja/cadastro' => 'CadastroController@redirecionaParaTelaDeCadastro',
     '/minha_loja/categoria' => 'CategoriaController@redirecionarParaTelaCategoria',

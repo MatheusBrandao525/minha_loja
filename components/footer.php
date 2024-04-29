@@ -79,9 +79,9 @@
                 <div class="widget block block-static-block abertomobile redessociais">
                     <p class="blockfootertitlers">Siga nossas Redes Sociais</p>
                     <ul class="ulSocialNetworkLinks">
-                        <li> <a href="https://www.facebook.com/miraodistribuidora" target="_blank" rel="nofollow"><i class="fa-brands fa-facebook-f"></i></a> </li>
-                        <li> <a href="https://www.instagram.com/miraodistribuidora/" target="_blank" rel="nofollow"><i class="fa-brands fa-instagram"></i></a> </li>
-                        <li> <a href="https://twitter.com/miraocombr" target="_blank" rel="nofollow"><i class="fa-brands fa-twitter"></i></a> </li>
+                        <li> <a href="https://www.facebook.com/edinaldo.edinano/" target="_blank" rel="nofollow"><i class="fa-brands fa-facebook-f"></i></a> </li>
+                        <li> <a href="https://www.instagram.com/topmotos_tmplus_ltda/" target="_blank" rel="nofollow"><i class="fa-brands fa-instagram"></i></a> </li>
+                        <li> <a href="https://api.whatsapp.com/send?phone=5569999063016" target="_blank" rel="nofollow"><i class="fa-brands fa-whatsapp"></i></a> </li>
                         <li> <a href="https://www.youtube.com/miraodistribuidora" target="_blank" rel="nofollow"><i class="fa-brands fa-youtube"></i></a> </li>
                     </ul>
 

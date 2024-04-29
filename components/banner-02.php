@@ -1,6 +1,6 @@
 <div id="carouselBanner02" class="carousel">
     <div class="slides">
-        <div class="slide" id="slide1">Slide 1</div>
+        <div class="slide" id="slide1"></div>
         <div class="slide" id="slide2">Slide 2</div>
         <div class="slide" id="slide3">Slide 3</div>
         <!-- Adicione mais slides conforme necessário -->

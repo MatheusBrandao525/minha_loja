@@ -68,12 +68,12 @@
                     <ul class="footer links">
                         <li class="nav item mapa"> <a href="https://goo.gl/maps/QMGETdoipMskKXSi9" target="_blank" rel="nofollow"> Av. Olavo Egidio de Souza Aranha, 674 CEP: 03822-000. São Paulo - SP </a> </li>
                         <li class="nav item telefone"> <a href="tel:+55+551129432050" rel="nofollow"><span> <span>(11)</span>
-                                    <tel>2943-2050</tel>
+                                    <tel>0000-0000</tel>
                                 </span></a> </li>
                         <li class="nav item whatsapp"> <a href="https://web.whatsapp.com/send?phone=5511981466079&amp;text=Oi%21+Estou+entrando+em+contato+pelo+chat+Whatsapp+da+sua+loja+virtual.+Poderia+me+ajudar%3F" target="_blank" rel="nofollow"><span> <span>(11)</span>
-                                    <tel>98146-6079</tel>
+                                    <tel>0000-0000</tel>
                                 </span></a> </li>
-                        <li class="nav item email"> <a href="mailto:atendimento@mirao.com.br" target="_blank" rel="nofollow"><span>atendimento@mirao.com.br</span></a> </li>
+                        <li class="nav item email"> <a href="mailto:atendimento@mirao.com.br" target="_blank" rel="nofollow"><span>atendimento@tmplus.com.br</span></a> </li>
                     </ul>
                 </div>
                 <div class="widget block block-static-block abertomobile redessociais">
@@ -87,7 +87,7 @@
 
                     
                 </div>
-                <aside class="faceplugin">
+<!--                 <aside class="faceplugin">
                     <div id="fb-root" class=" fb_reset">
                         <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
                             <div></div>
@@ -95,7 +95,7 @@
                     </div>
                     <p class="blockfootertitle">Curta no Facebook</p>
                     <div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/miraodistribuidora" data-hide-cover="false" data-show-facepile="true" data-small-header="false" data-tabs="" data-width="" data-height="" data-adapt-container-width="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=&amp;container_width=320&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fmiraodistribuidora&amp;locale=pt_BR&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=&amp;width="><span style="vertical-align: bottom; width: 320px; height: 130px;"><iframe name="f5b718c79d82b0d98" width="1000px" height="1000px" data-testid="fb:page Facebook Social Plugin" title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://web.facebook.com/v5.0/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df6568607b5c43b8df%26domain%3Dwww.mirao.com.br%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.mirao.com.br%252Ff3087ee8a53dfb974%26relation%3Dparent.parent&amp;container_width=320&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fmiraodistribuidora&amp;locale=pt_BR&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=&amp;width=" style="border: none; visibility: visible; width: 320px; height: 130px;" class=""></iframe></span></div>
-                </aside>
+                </aside> -->
             </div>
         </div>
         <section class="customcopyright">
@@ -129,10 +129,10 @@
             <div class="copyright">
                 <div class="container-wrapper">
                     <div class="copyrightText"><span> </span>
-                        <p>Mirão Informática Distribuidora - CNPJ: 11.181.434/0001-51 | Av. Olavo Egidio de Souza Aranha, 674 - CEP: 03822-000 São Paulo - SP<br>Os preços anunciados não contém valor de Substituição Tributária (ST) e podem variar de acordo com o seu estado.</p>
+                        <p>TM Plus Distribuidora - CNPJ: 00.000.000/0000-00 | Av. Exemplo, 674 - CEP: 00000-000 Cidade - RO<br>Os preços anunciados não contém valor de Substituição Tributária (ST) e podem variar de acordo com o seu estado.</p>
                     </div>
                     <ul class="boxBis">
-                        <li> <a href="https://www.bis2bis.com.br" target="_blank" title="Bis2Bis E-commerce Magento" rel="nofollow"><img src="https://www.mirao.com.br/static/version1709758049/frontend/bistwobis/mirao/pt_BR/images/logo_bis2bis_horizontal.svg" alt="Bis2Bis E-commerce Magento" style="display: block;"></a></li>
+                        <li> <a href="brandaodev.com.br" target="_blank" title="" rel="nofollow"><img src="public/assets/img/site/desenvolvedor.png" alt="" style="display: block; width:300px;"></a></li>
                         <li> <span> <a href="https://www.bis2bis.com.br" target="_blank" title="Loja virtual Magento de alta performance é com a Bis2Bis Comércio Eletrônico" rel="nofollow">Crie sua loja virtual</a> com a melhor empresa de e-commerce do Brasil.</span></li>
                     </ul>
                 </div>

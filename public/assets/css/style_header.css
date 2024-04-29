@@ -8,8 +8,8 @@
 
 
 :root {
-    --bg-primaria: red;
-    --bg-segundaria: #af0c0c;
+    --bg-primaria: #707070;
+    --bg-segundaria: #545252;
     --bg-terciaria: #db0000;
     --bg-grey: #545252;
     --cor-icones: #fd6666;
@@ -137,10 +137,15 @@ li a i {
 }
 
 #headerStarter .logo {
-    width: 270px;
+    /* width: 270px; */
     padding-top: 20px;
     padding-bottom: 20px;
     margin-right: 72px;
+}
+
+.logo img {
+    width: 400px;
+    height: 110px;
 }
 
 .header.container-wrapper {
@@ -156,7 +161,7 @@ li a i {
 }
 
 .block.block-search {
-    flex: 0 1 52%;
+    flex: 0 1 35%;
     /* Ocupa 62% da largura */
 }
 
@@ -578,11 +583,14 @@ align-items: center;
     align-items: center;
 }
 
-.nav-links li {
+.nav-links li>form>button {
     font-size: 20px;
     height: 100%;
     padding: 0 10px;
     width: 100%;
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -101,7 +101,7 @@ p {
 }
 
 .page-footer {
-    background-color: #af0c0c;
+    background-color: #545252;
 }
 
 .footer.content {
@@ -206,7 +206,7 @@ p {
 }
 
 .ulSocialNetworkLinks>li a i {
-    color: var(--bg-primaria);
+    color: var(--cor-icones);
     padding: 0;
     margin: 0;
 }
@@ -315,7 +315,7 @@ user agent stylesheet aside {
 }
 
 .customcopyright {
-    background-color: #fff;
+    background-color: #222222;
     padding-top: 10px;
 }
 
@@ -377,7 +377,7 @@ dt {
     font-size: 12px;
     font-weight: 400;
     letter-spacing: .24px;
-    color: #7b7b7b;
+    color: #fff;
 }
 
 .rodapeItens .rodapeItem dd {
@@ -453,6 +453,7 @@ user agent stylesheet img {
 p {
     margin-top: 0;
     margin-bottom: 1rem;
+    color: #fff;
 }
 
 user agent stylesheet p {
@@ -461,6 +462,7 @@ user agent stylesheet p {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+    color: #fff;
 }
 
 .copyright .boxBis {
@@ -477,10 +479,11 @@ user agent stylesheet p {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+    color: #fff;
 }
 
 .copyright .boxBis li a {
-    color: #333;
+    color: #fff;
 }
 
 a,

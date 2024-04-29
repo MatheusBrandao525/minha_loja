@@ -7,17 +7,26 @@
 
 .slides {
     display: flex;
+    width: 100% !important;
     transition: transform 0.5s ease;
 }
 
 .slide {
-    flex: 0 0 100%;
-    max-width: 100%; /* Ajuste conforme necessário */
+    flex: 0 0 100% !important;
+    min-width: 100% !important; /* Ajuste conforme necessário */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 420px; /* Altura do carrossel */
-    background-color: #ccc; /* Cor de fundo de exemplo */
+    height: 520px; /* Altura do carrossel */
+    background-color: #ccc;
+}
+
+#slide1 {
+    background-image: url('../img/site/imagem_banner.png') !important;
+    background-size: cover;
+    background-position: center;
+    height: 100%; /* Defina a altura desejada, por exemplo, 500px ou 100vh se quiser que ocupe toda a altura da janela */
+    width: 100%; /* Se você deseja que cubra toda a largura disponível */
 }
 
 .prev, .next {

@@ -5,4 +5,9 @@ class ProdutoController {
     {
         include ROOT_PATH . '/views/detalhes.php';
     }
+
+    public function apresentarTodosOsProdutos()
+    {
+        include ROOT_PATH . '/views/produtos.php';
+    }
 }

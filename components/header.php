@@ -3,9 +3,9 @@ session_start();
 require_once 'core/Conexao.php';
 require 'models/UsuarioModel.php';
 
-if(isset($_SESSION['ID'])){
-$usuarioModel = new UsuarioModel() ;
-$dadosUsuario = $usuarioModel->buscarDadosUsuarioLogado($_SESSION['ID']);
+if (isset($_SESSION['ID'])) {
+    $usuarioModel = new UsuarioModel();
+    $dadosUsuario = $usuarioModel->buscarDadosUsuarioLogado($_SESSION['ID']);
 }
 $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 ?>
@@ -29,7 +29,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <link rel="stylesheet" href="public/assets/css/style_cadastro_usuario.css">
     <link rel="stylesheet" href="public/assets/css/style_perfil_usuario.css">
     <link rel="stylesheet" href="public/assets/css/style_carrinho.css">
-    <?php if ($urlAtual === 'http://localhost/minha_loja/categoria') { ?>
+    <?php if ($urlAtual === 'http://localhost/topMotos/categoria' || $urlAtual === 'http://localhost/topMotos/produtos' || $urlAtual === 'http://localhost/topMotos/pesquisa') { ?>
         <!-- Este estilo serve para a tela de Categorias, SubCategorias e Pesquisa -->
         <link rel="stylesheet" href="public/assets/css/style_categoria.css">
     <?php } ?>
@@ -93,13 +93,15 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
             </div>
         </section>
-        <div id="headerStarter" class="header container-wrapper"> <a class="logo" href="" title="" aria-label="store logo"><img src="public/assets/img/image.png" title="" alt="" width="170"></a>
+        <div id="headerStarter" class="header container-wrapper">
+            <a class="logo" href="" title="" aria-label="store logo">
+                <img src="public/assets/img/site/tm_plus.png" title="" alt="" width="170">
+            </a>
+
             <div class="block block-search">
-                <!-- <div class="block block-title"><strong>Pesquisa</strong></div> -->
                 <div class="block block-content">
                     <form class="form minisearch" id="search_mini_form" action="" method="get">
                         <div class="field search">
-                            <!-- <label class="label" for="search" data-role="minisearch-label"><span>Pesquisa</span></label> -->
                             <div class="control has-icon">
                                 <input id="search" type="text" name="q" value="" placeholder="Digite o que está buscando..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
                                 <button type="submit" class="search-btn"><i class="fas fa-search search-icon"></i></button>
@@ -107,13 +109,12 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                             </div>
                         </div>
                     </form>
-
-
                 </div>
             </div>
+
             <ul class="linksCustomer">
                 <li class="header_account_link_list">
-                    <i class="fas fa-sign-in-alt"></i> <!-- Ícone de entrar -->
+                    <i class="fas fa-sign-in-alt"></i>
                     <?php if (!isset($_SESSION['ID'])) {  ?>
                         <div>
                             <span>Faça <a class="header_account_link login" href="login" class="login"><strong>Login</strong></a> ou </span>
@@ -121,9 +122,9 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                         </div>
                     <?php } else { ?>
                         <div>
-                            <a class="header_account_link login" href="conta" class="login"  style="margin-left: 0 !important;"><strong>Minha Conta</strong></a>
+                            <a class="header_account_link login" href="conta" class="login" style="margin-left: 0 !important;"><strong>Minha Conta</strong></a>
                             <form action="sair" method="post">
-                                <input type="hidden" name="idsessaousuario" value="<?php echo $_SESSION['ID'];?>">
+                                <input type="hidden" name="idsessaousuario" value="<?php echo $_SESSION['ID']; ?>">
                                 <button type="submit" class="header_account_link sair strong"><strong>Sair</strong></button>
                             </form>
                         </div>
@@ -131,206 +132,62 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                 </li>
             </ul>
 
-            <div id="custom-sliding-cart">
-                <div data-block="minicart" class="minicart-wrapper">
-                    <?php if (isset($_SESSION['ID'])) { ?>
-                        <a class="action showcart" href="#" onclick="toggleCartVisibility()">
-                            <span class="text">
-                                <i class="fas fa-shopping-cart"></i> Carrinho
-                            </span>
-                            <span class="counter qty empty">
-                                <span class="counter-label"></span>
-                                <span class="counter-number">Itens | 0</span>
-                            </span>
-                        </a>
-                    <?php } else { ?>
-                        <a class="action showcart" href="login">
-                            <span class="text">
-                                <i class="fas fa-shopping-cart"></i> Carrinho
-                            </span>
-                            <span class="counter qty empty">
-                                <span class="counter-label"></span>
-                                <span class="counter-number">Itens | 0</span>
-                            </span>
-                        </a>
-                    <?php } ?>
-                </div>
-            </div>
-
-            <div id="cart-sidebar" class="cart-sidebar">
-                <div class="cart-header">
-                    <span class="cart-title">Seu Carrinho</span>
-                    <button class="close-cart" onclick="toggleCartVisibility()"><i class="fas fa-times"></i></button>
-                </div>
-                <div class="cart-items">
-                    <div class="carrinho-item">
-                        <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto">
-                        <div class="descricao">
-                            <div class="topo-carrinho-item">
-                                <strong>Nome do Produto</strong>
-                                <button class="excluir-btn"><i class="fas fa-times"></i></button>
-                            </div>
-                            <div class="centraliza-carrinho-item">
-                                <div class="quantidade-control">
-                                    <button>-</button>
-                                    <input type="text" class="quantidade" value="1">
-                                    <button>+</button>
-                                </div>
-                                <div class="precos-carrinho-item">
-                                    <span class="valor-unitario-item">
-                                        R$ 00,00
-                                    </span>
-                                    <span class="subtotal">
-                                        SUBTOTAL R$ 00,00
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carrinho-item">
-                        <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto">
-                        <div class="descricao">
-                            <div class="topo-carrinho-item">
-                                <strong>Nome do Produto</strong>
-                                <button class="excluir-btn"><i class="fas fa-times"></i></button>
-                            </div>
-                            <div class="centraliza-carrinho-item">
-                                <div class="quantidade-control">
-                                    <button>-</button>
-                                    <input type="text" class="quantidade" value="1">
-                                    <button>+</button>
-                                </div>
-                                <div class="precos-carrinho-item">
-                                    <span class="valor-unitario-item">
-                                        R$ 00,00
-                                    </span>
-                                    <span class="subtotal">
-                                        SUBTOTAL R$ 00,00
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carrinho-item">
-                        <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto">
-                        <div class="descricao">
-                            <div class="topo-carrinho-item">
-                                <strong>Nome do Produto</strong>
-                                <button class="excluir-btn"><i class="fas fa-times"></i></button>
-                            </div>
-                            <div class="centraliza-carrinho-item">
-                                <div class="quantidade-control">
-                                    <button>-</button>
-                                    <input type="text" class="quantidade" value="1">
-                                    <button>+</button>
-                                </div>
-                                <div class="precos-carrinho-item">
-                                    <span class="valor-unitario-item">
-                                        R$ 00,00
-                                    </span>
-                                    <span class="subtotal">
-                                        SUBTOTAL R$ 00,00
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carrinho-item">
-                        <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto">
-                        <div class="descricao">
-                            <div class="topo-carrinho-item">
-                                <strong>Nome do Produto</strong>
-                                <button class="excluir-btn"><i class="fas fa-times"></i></button>
-                            </div>
-                            <div class="centraliza-carrinho-item">
-                                <div class="quantidade-control">
-                                    <button>-</button>
-                                    <input type="text" class="quantidade" value="1">
-                                    <button>+</button>
-                                </div>
-                                <div class="precos-carrinho-item">
-                                    <span class="valor-unitario-item">
-                                        R$ 00,00
-                                    </span>
-                                    <span class="subtotal">
-                                        SUBTOTAL R$ 00,00
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carrinho-item">
-                        <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto">
-                        <div class="descricao">
-                            <div class="topo-carrinho-item">
-                                <strong>Nome do Produto</strong>
-                                <button class="excluir-btn"><i class="fas fa-times"></i></button>
-                            </div>
-                            <div class="centraliza-carrinho-item">
-                                <div class="quantidade-control">
-                                    <button>-</button>
-                                    <input type="text" class="quantidade" value="1">
-                                    <button>+</button>
-                                </div>
-                                <div class="precos-carrinho-item">
-                                    <span class="valor-unitario-item">
-                                        R$ 00,00
-                                    </span>
-                                    <span class="subtotal">
-                                        SUBTOTAL R$ 00,00
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="cart-form-cupom">
-                    <input type="text" placeholder="Insira um cupom de desconto...">
-                    <button>Usar</button>
-                </div>
-                <div class="cart-info">
-                    <table>
-                        <tr>
-                            <td>Total Items</td>
-                            <td class="cart-info-valor">R$ 590,00</td>
-                        </tr>
-                        <tr>
-                            <td>Frete</td>
-                            <td class="cart-info-valor">R$ 90,00</td>
-                        </tr>
-                        <tr>
-                            <td>Imposto</td>
-                            <td class="cart-info-valor">R$ 40,00</td>
-                        </tr>
-                        <tr>
-                            <td>Desconto</td>
-                            <td class="cart-info-valor">- R$ 52,90</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td class="cart-info-valor">R$ 900,00</td>
-                        </tr>
-                    </table>
-                    <button class="checkout-btn">Fechar Pedido</button>
-                </div>
-
-            </div>
+            <!-- Segundo logo substituindo a seção do carrinho -->
+            <a class="logo" href="" title="" aria-label="second store logo">
+                <img src="public/assets/img/site/top_motos.png" title="" alt="" width="170">
+            </a>
         </div>
+
         <nav class="navigation">
             <ul class="nav-links">
-                <li><i class="fas fa-microchip"></i> Hardware</li>
-                <li><i class="fas fa-keyboard"></i> Periféricos</li>
-                <li><i class="fas fa-mobile-alt"></i> Smartphones</li>
-                <li><i class="fas fa-briefcase"></i> Escritório</li>
-                <li><i class="fas fa-blender"></i> Casa & Cozinha</li>
-                <li><i class="fas fa-shoe-prints"></i> Calçados</li>
-                <li><i class="fas fa-toolbox"></i> Ferramentas</li>
-                <li><i class="fas fa-puzzle-piece"></i> Brinquedos</li>
+                <li>
+                    <form action="categorias" method="post">
+                        <input type="hidden" value="" name="">
+                        <button type="submit"><i class="fas fa-tools"></i> Categoria01</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="categorias" method="post">
+                        <input type="hidden" value="" name="">
+                        <button type="submit"><i class="fas fa-motorcycle"></i> Categoria02</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="categorias" method="post">
+                        <input type="hidden" value="" name="">
+                        <button type="submit"><i class="fas fa-cog"></i> Categoria03</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="categorias" method="post">
+                        <input type="hidden" value="" name="">
+                        <button type="submit"><i class="fas fa-toolbox"></i> Categoria04</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="categorias" method="post">
+                        <input type="hidden" value="" name="">
+                        <button type="submit"><i class="fas fa-car"></i> Categoria05</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="categorias" method="post">
+                        <input type="hidden" value="" name="">
+                        <button type="submit"><i class="fas fa-lightbulb"></i> Categoria06</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="categorias" method="post">
+                        <input type="hidden" value="" name="">
+                        <button type="submit"><i class="fas fa-plug"></i> Categoria07</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="categorias" method="post">
+                        <input type="hidden" value="" name="">
+                        <button type="submit"><i class="fas fa-shield-alt"></i> Categoria08</button>
+                    </form>
+                </li>
             </ul>
         </nav>
     </header>

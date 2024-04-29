@@ -1,1 +1,1 @@
-{"version":1,"defects":{"ProdutoModelTest::testBuscarProdutosEmDestaque":8},"times":{"ProdutoModelTest::testBuscarProdutosEmDestaque":0.004}}
+{"version":1,"defects":{"ProdutoModelTest::testBuscarProdutosEmDestaque":8},"times":{"ProdutoModelTest::testBuscarProdutosEmDestaque":0.014,"ProdutoModelTest::testBuscarProdutosPorCategoria":0.002}}

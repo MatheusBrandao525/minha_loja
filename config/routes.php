@@ -1,31 +1,32 @@
 <?php
 
 $routes = [
-    '/minha_loja/' => 'HomeController@apresentarTelaDeHome',
-    '/minha_loja/login' => 'LoginController@redirecionaParaTelaDeLogin',
-    '/minha_loja/validarLogin' => 'LoginController@autenticarUsuario',
-    '/minha_loja/sair' => 'LoginController@deslogarUsuario',
-    '/minha_loja/home' => 'HomeController@apresentarTelaDeHome',
-    '/minha_loja/cadastro' => 'CadastroController@redirecionaParaTelaDeCadastro',
-    '/minha_loja/categoria' => 'CategoriaController@redirecionarParaTelaCategoria',
-    '/minha_loja/detalhes' => 'ProdutoController@redirecionaParaTelaDetalhes',
-    '/minha_loja/conta' => 'PerfilController@apresentarTelaPerfil',
-    '/minha_loja/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
-    '/minha_loja/checkout' => 'CheckoutController@apresentarTelaCheckout',
-    '/minha_loja/subCategoria' => 'CategoriaController@redirecionarParaSubCategorias',
-    '/minha_loja/detalhesPedido' => 'PerfilController@redirecionaParaDetalhesPedido',
-    '/minha_loja/pesquisa' => 'PesquisaController@redirecionaParaTelaDePesquisa',
-    '/minha_loja/sucesso' => 'CheckoutController@redirecionaParaTelaDeSucesso',
-    '/minha_loja/erro_404' => 'ErroController@redirecionarParaTelaDeErro404',
-    '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado'
+    '/topMotos/' => 'HomeController@apresentarTelaDeHome',
+    '/topMotos/login' => 'LoginController@redirecionaParaTelaDeLogin',
+    '/topMotos/validarLogin' => 'LoginController@autenticarUsuario',
+    '/topMotos/sair' => 'LoginController@deslogarUsuario',
+    '/topMotos/home' => 'HomeController@apresentarTelaDeHome',
+    '/topMotos/cadastro' => 'CadastroController@redirecionaParaTelaDeCadastro',
+    '/topMotos/categoria' => 'CategoriaController@redirecionarParaTelaCategoria',
+    '/topMotos/detalhes' => 'ProdutoController@redirecionaParaTelaDetalhes',
+    '/topMotos/conta' => 'PerfilController@apresentarTelaPerfil',
+    '/topMotos/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
+    '/topMotos/checkout' => 'CheckoutController@apresentarTelaCheckout',
+    '/topMotos/subCategoria' => 'CategoriaController@redirecionarParaSubCategorias',
+    '/topMotos/detalhesPedido' => 'PerfilController@redirecionaParaDetalhesPedido',
+    '/topMotos/pesquisa' => 'PesquisaController@redirecionaParaTelaDePesquisa',
+    '/topMotos/sucesso' => 'CheckoutController@redirecionaParaTelaDeSucesso',
+    '/topMotos/erro_404' => 'ErroController@redirecionarParaTelaDeErro404',
+    '/topMotos/produtos' => 'ProdutoController@apresentarTodosOsProdutos',
+    '/topMotos/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado'
 ];
 
 if (isset($_GET['url'])) {
-    $urlSolicitada = '/minha_loja/' . $_GET['url'];
+    $urlSolicitada = '/topMotos/' . $_GET['url'];
     if (array_key_exists($urlSolicitada, $routes)) {
         list($controller, $method) = explode('@', $routes[$urlSolicitada]);
     } else {
-        header("Location: /minha_loja/erro_404");
+        header("Location: /topMotos/erro_404");
         exit;
     }
 }

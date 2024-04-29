@@ -5,7 +5,7 @@ class Conexao {
     private $servidor = "localhost";
     private $usuario = "root";
     private $senha = "1exagon1@";
-    private $dbname = "teste_loja";
+    private $dbname = "topmotos";
 
     private function __construct() {
         try {

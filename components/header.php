@@ -18,7 +18,8 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="public/assets/css/style_header.css">
     <link rel="stylesheet" href="public/assets/css/style_banner.css">
     <link rel="stylesheet" href="public/assets/css/style_banner-02.css">
@@ -30,8 +31,8 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <link rel="stylesheet" href="public/assets/css/style_perfil_usuario.css">
     <link rel="stylesheet" href="public/assets/css/style_carrinho.css">
     <?php if ($urlAtual === 'http://localhost/topMotos/categoria' || $urlAtual === 'http://localhost/topMotos/produtos' || $urlAtual === 'http://localhost/topMotos/pesquisa') { ?>
-        <!-- Este estilo serve para a tela de Categorias, SubCategorias e Pesquisa -->
-        <link rel="stylesheet" href="public/assets/css/style_categoria.css">
+    <!-- Este estilo serve para a tela de Categorias, SubCategorias e Pesquisa -->
+    <link rel="stylesheet" href="public/assets/css/style_categoria.css">
     <?php } ?>
     <link rel="stylesheet" href="public/assets/css/style_footer.css">
     <title>NomeLoja</title>
@@ -48,7 +49,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     <li class="borda-direita">
                         <a href="tel:+551129432050" rel="nofollow">
                             <span>
-                                <i class="fas fa-phone-alt"></i> <!-- Ícone de telefone adicionado aqui -->
+                                <i class="fas fa-phone-alt"></i>
                                 <small>11</small> 2943-2050
                             </span>
                         </a>
@@ -57,7 +58,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     <li class="borda-direita">
                         <a href="" target="_blank" rel="nofollow">
                             <span>
-                                <i class="fab fa-whatsapp"></i> <!-- Ícone do WhatsApp adicionado aqui -->
+                                <i class="fab fa-whatsapp"></i>
                                 <small>11</small> 98146-6079
                             </span>
                         </a>
@@ -66,19 +67,13 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     <li class="borda-direita">
                         <a href="" target="_blank" rel="nofollow">
                             <span>
-                                <i class="fas fa-envelope"></i> <!-- Ícone de e-mail adicionado aqui -->
+                                <i class="fas fa-envelope"></i>
                                 atendimento@mirao.com.br
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
-                            <i class="fas fa-rss"></i> Blog
-                        </a>
-                    </li>
-
                 </ul>
-                <ul class="topLinks">
+                <ul class="topLinks topLinks-responsivo">
                     <li class="borda-direita">
                         <a class="topHeader_link mconta" href="conta">
                             <i class="fa fa-user" aria-hidden="true"></i> Minha Conta
@@ -103,8 +98,12 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     <form class="form minisearch" id="search_mini_form" action="" method="get">
                         <div class="field search">
                             <div class="control has-icon">
-                                <input id="search" type="text" name="q" value="" placeholder="Digite o que está buscando..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
-                                <button type="submit" class="search-btn"><i class="fas fa-search search-icon"></i></button>
+                                <input id="search" type="text" name="q" value=""
+                                    placeholder="Digite o que está buscando..." class="input-text" maxlength="128"
+                                    role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off"
+                                    aria-expanded="false">
+                                <button type="submit" class="search-btn"><i
+                                        class="fas fa-search search-icon"></i></button>
                                 <div id="search_autocomplete" class="search-autocomplete"></div>
                             </div>
                         </div>
@@ -116,18 +115,20 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                 <li class="header_account_link_list">
                     <i class="fas fa-sign-in-alt"></i>
                     <?php if (!isset($_SESSION['ID'])) {  ?>
-                        <div>
-                            <span>Faça <a class="header_account_link login" href="login" class="login"><strong>Login</strong></a> ou </span>
-                            <a class="header_account_link cadastro strong" href="cadastro"><strong>Cadastre-se</strong></a>
-                        </div>
+                    <div>
+                        <span>Faça <a class="header_account_link login" href="login"
+                                class="login"><strong>Login</strong></a> ou </span>
+                        <a class="header_account_link cadastro strong" href="cadastro"><strong>Cadastre-se</strong></a>
+                    </div>
                     <?php } else { ?>
-                        <div>
-                            <a class="header_account_link login" href="conta" class="login" style="margin-left: 0 !important;"><strong>Minha Conta</strong></a>
-                            <form action="sair" method="post">
-                                <input type="hidden" name="idsessaousuario" value="<?php echo $_SESSION['ID']; ?>">
-                                <button type="submit" class="header_account_link sair strong"><strong>Sair</strong></button>
-                            </form>
-                        </div>
+                    <div>
+                        <a class="header_account_link login" href="conta" class="login"
+                            style="margin-left: 0 !important;"><strong>Minha Conta</strong></a>
+                        <form action="sair" method="post">
+                            <input type="hidden" name="idsessaousuario" value="<?php echo $_SESSION['ID']; ?>">
+                            <button type="submit" class="header_account_link sair strong"><strong>Sair</strong></button>
+                        </form>
+                    </div>
                     <?php } ?>
                 </li>
             </ul>
@@ -139,6 +140,9 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         </div>
 
         <nav class="navigation">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <ul class="nav-links">
                 <li>
                     <form action="categorias" method="post">

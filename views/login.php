@@ -1,89 +1,6 @@
 <?php
 include 'components/header.php';
 ?>
-<style>
-    .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        /* 15% from the top and centered */
-        padding: 0;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 450px;
-        /* Maximum width */
-        border-radius: 5px;
-        /* Rounded corners */
-    }
-
-    .modal-header {
-        background-color: red;
-        color: white;
-        padding: 10px 15px;
-        border-top-left-radius: 5px;
-        /* Rounded corners */
-        border-top-right-radius: 5px;
-        /* Rounded corners */
-    }
-
-    .modal-header .close-button {
-        color: white;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .modal-body {
-        padding: 20px;
-        text-align: center;
-        /* Center the text */
-    }
-
-    .modal-body h2 {
-        margin-top: 0;
-    }
-
-    .modal-footer {
-        padding: 10px 20px;
-        text-align: center;
-        /* Center the button */
-    }
-
-    .ok-button {
-        padding: 10px 20px;
-        background-color: red;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        /* Rounded corners */
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .ok-button:hover {
-        background-color: darkred;
-    }
-</style>
 <div class="container-login">
     <div class="sessao-formulario-login">
         <h3>Login do cliente</h3>
@@ -132,7 +49,7 @@ include 'components/header.php';
             </div>
             <div class="coluna-fomulario">
                 <div class="titulo-coluna-formulario">
-                    <strong>Clientes registrados</strong>
+                    <strong>Ainda não é registrado?</strong>
                 </div>
                 <div class="aviso-form-login">
                     <span>Criar uma nova conta tem muitos benefícios: fechar pedidos rapidamente, registrar mais endereços, acompanhar pedidos e muito mais.</span>

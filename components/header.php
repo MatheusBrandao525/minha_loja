@@ -141,6 +141,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
         <nav class="navigation">
             <div class="menu-toggle">
+                <span>Categorias</span>
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">

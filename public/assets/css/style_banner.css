@@ -142,6 +142,18 @@
         width: 100% !important;
     }
 
+    #image2{
+        height: 230px;
+    }
+
+    #image5{
+        height: 180px;
+    }
+/* 
+    #image5 img{
+        
+    } */
+
 }
 
 /* Smartphones */

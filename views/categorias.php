@@ -52,23 +52,29 @@ require 'components/header.php';
                 <div class="toolbar toolbar-products">
                     <div class="modes"> <strong class="modes-label" id="modes-label">Ver como</strong> <strong title="Grade" class="modes-mode active mode-grid" data-value="grid"><span>Grade</span></strong> <a class="modes-mode mode-list" title="Lista" href="#" data-role="mode-switcher" data-value="list" id="mode-list" aria-labelledby="modes-label mode-list"><span>Lista</span></a> </div>
                     <p class="toolbar-amount" id="toolbar-amount"> Itens encontrados <span class="toolbar-number">1</span>-<span class="toolbar-number">20</span> of <span class="toolbar-number">782</span> </p>
-                    <div class="toolbar-sorter sorter"><label class="sorter-label" for="sorter">Ordenar por:</label>
+                    <div class="toolbar-sorter sorter">
+                        <label class="sorter-label" for="sorter">Ordenar por:</label>
                         <div class="styleSelect"><select id="sorter" data-role="sorter" class="sorter-options">
                                 <option value="position" selected="">Posição</option>
                                 <option value="name">Nome do produto</option>
                                 <option value="price">Preço</option>
-                            </select></div> <a title="Definir Direção Decrescente" href="#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc"><span>Definir Direção Decrescente</span></a>
+                            </select>
+                        </div>
+                        <a title="Definir Direção Decrescente" href="#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc"><span>Definir Direção Decrescente</span></a>
                     </div>
-                    <div class="field limiter"><label class="label" for="limiter"><span>Exibir:</span></label>
+                    <div class="field limiter">
+                        <label class="label" for="limiter"><span>Exibir:</span></label>
                         <div class="control">
                             <div class="styleSelect"><select id="limiter" data-role="limiter" class="limiter-options">
                                     <option value="20" selected="">20</option>
                                     <option value="40">40</option>
                                     <option value="60">60</option>
-                                </select></div>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="pages"><strong class="label pages-label" id="paging-label">Página</strong>
+                    <div class="pages">
+                        <strong class="label pages-label" id="paging-label">Página</strong>
                         <ul class="items pages-items" aria-labelledby="paging-label">
                             <li class="item current"><strong class="page"><span class="label">Você esta lendo a pagina</span> <span>1</span></strong></li>
                             <li class="item"><a href="" class="page"><span class="label">Página</span> <span>2</span></a></li>
@@ -90,15 +96,10 @@ require 'components/header.php';
                             <div class="product-info">
                                 <h3 class="product-title">Título do Produto <?php echo $i; ?></h3>
                                 <p class="product-old-price">R$100,00</p>
-                                <p class="product-new-price">R$80,00 À Vista</p>
-                                <p class="product-description">Descrição curta do produto...</p>
+                                <p class="product-new-price">R$1.280,00 À Vista</p>
+                                <p class="product-description">Descrição curta do produto Descrição curta do produto...</p>
                                 <div class="product-action">
-                                    <div class="qtywrap">
-                                        <button class="quantity-btn decrease-quantity"><i class="fas fa-minus"></i></button>
-                                        <input type="number" id="product-quantity-<?php echo $i; ?>" class="product-quantity" name="quantity" value="1" min="1" step="1">
-                                        <button class="quantity-btn increase-quantity"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                    <button class="product-button">Comprar</button>
+                                    <button class="product-button"><i class="fab fa-whatsapp"></i>Contato</button>
                                 </div>
                             </div>
                         </div>

@@ -41,8 +41,8 @@ include 'components/header.php';
                 </div>
 
             </div>
-            <div>
-                <p class="info-valor-antigo">R$999,00 <strong class="info-novo-valor"> R$990,00 À vista</strong></p>
+            <div class="valor-produto-detalhes">
+                <p class="info-valor-antigo"><strong class="info-novo-valor"> R$990,00 À vista</strong></p>
             </div>
             <p class="info-descricao-valor">No PIX ou até <span class="valor-com-destaque">12x</span> de <span class="valor-com-destaque">R$83,25</span> sem juros!</p>
             <div class="container-opcoes">
@@ -50,12 +50,7 @@ include 'components/header.php';
                 <span><i class="fas fa-heart"></i> Adicionar aos favoritos </span>
             </div>
             <div class="quantidade-add-carrinho">
-                <div class="field qty">
-                    <div class="control-qty">
-                        <div class="control"><input type="number" name="qty" id="qty" min="1" value="1" title="Qtd" class="input-text qty" data-validate="{&quot;required-number&quot;:true,&quot;validate-item-quantity&quot;:{&quot;minAllowed&quot;:1,&quot;maxAllowed&quot;:10000}}"></div><span class="plus" title="Increase the quantity"><i class="fa-solid fa-caret-up"></i></span> <span class="minus" title="Reduce the quantity"><i class="fa-solid fa-caret-down"></i></span>
-                    </div>
-                </div>
-                <button id="btnAdicionarCarrinho"><i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho</button>
+                <button id="btnEntrarEmContato"><i class="fab fa-whatsapp"></i> Entar em contato!</button>
             </div>
 
         </div>
@@ -132,10 +127,10 @@ include 'components/header.php';
                     <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
                     <div class="precos">
                         <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
+                        <span class="preco-atual">R$ 1.909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
 
@@ -149,7 +144,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -162,7 +157,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -175,7 +170,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -188,7 +183,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -201,7 +196,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -214,7 +209,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -227,7 +222,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -240,7 +235,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -253,7 +248,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -266,7 +261,7 @@ include 'components/header.php';
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;">Comprar</button>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
                 </div>
             </div>
             <!-- Repita conforme necessário -->
@@ -292,14 +287,7 @@ include 'components/footer.php';
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.carousel').slick({
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 4000,
-        });
-    });
+
 </script>
 
 

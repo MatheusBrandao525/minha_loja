@@ -1,510 +1,668 @@
 .conteiner-titulo-detalhes {
-    display: flex;
-    width: 100%;
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    justify-content: center;
+  display: flex;
+  width: 100%;
+  font-family: "montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  justify-content: center;
 }
 
 .titulo-produto-detalhes {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-
+  width: 90%;
+  display: flex;
+  flex-direction: row;
 }
 
 .titulo-produto-detalhes h2 {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .titulo-produto-detalhes h2 i {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .container-info-produto {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .detalhes-produto {
-    display: flex;
-    background-color: #fff;
-    padding: 15px;
-    width: 90%;
+  display: flex;
+  background-color: #fff;
+  padding: 15px;
+  width: 90%;
 }
 
 .detalhes-produto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .imagem-produto {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    padding: 0 10px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
 }
 
 .imagem-produto img {
-    width: 100%;
+  width: 100%;
 }
 
 .info-produto {
-    flex: 1;
-    padding: 0 10px;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25);
-    padding: 16px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    height: auto;
-
+  flex: 1;
+  padding: 0 10px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: auto;
 }
 
 .info-produto p {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .nome-produto-detalhes {
-    font-size: 2rem;
-    font-family: "Saira Extra Condensed", sans-serif;
-    font-weight: bold;
+  font-size: 2rem;
+  font-family: "Saira Extra Condensed", sans-serif;
+  font-weight: bold;
 }
 
 .flex-alinhado {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
 }
 
 .info-valor-antigo {
-    font-size: 1.3rem;
-    font-weight: 400;
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #000;
+  font-family: "montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .info-novo-valor {
-    color: var(--bg-primaria);
-    font-size: 2.4rem;
-    font-weight: bold;
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: red;
+  font-size: 2.4rem;
+  font-weight: bold;
+  font-family: "montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .info-descricao-valor {
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1rem;
+  color: green;
+  font-family: "montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
 }
 
 .valor-com-destaque {
-    color: var(--bg-primaria);
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
 }
 
 .container-opcoes {
-    display: flex;
-    height: 120px;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .container-opcoes span {
-    font-size: 1.3rem;
-    margin-bottom: 5px;
-    font-family: "Saira Extra Condensed", sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  font-family: "Saira Extra Condensed", sans-serif;
 }
 
 .quantidade-add-carrinho {
-    display: flex;
-    height: 150px;
-    align-items: center;
+  display: flex;
+  height: 150px;
+  align-items: center;
 }
 
-
 .field.qty {
-    display: block;
-    padding: 5px;
-    box-shadow: inset 0 0 0 3px #ebebeb;
-    background-color: #fff;
-    max-width: 96px;
-    height: 80px;
-    margin: 0 16px 0 0 !important;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  display: block;
+  padding: 5px;
+  box-shadow: inset 0 0 0 3px #ebebeb;
+  background-color: #fff;
+  max-width: 96px;
+  height: 80px;
+  margin: 0 16px 0 0 !important;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .field.qty .control-qty {
-    position: relative;
+  position: relative;
 }
 
 .field.qty .control-qty .control {
-    display: inline-block;
+  display: inline-block;
 }
 
 .field.qty .control-qty .plus {
-    top: 2px;
+  top: 2px;
 }
 
 .field.qty .control-qty .plus {
-    position: absolute;
-    right: 5px;
-    display: block;
-    width: 27px;
-    height: 27px;
-    line-height: 27px;
-    text-align: center;
-    font-size: 18px;
-    cursor: pointer;
-    color: #545252;
+  position: absolute;
+  right: 5px;
+  display: block;
+  width: 27px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  color: #545252;
 }
 
 .field.qty .control-qty .minus,
 .box-tocart .field.qty .control-qty .plus {
-    position: absolute;
-    right: 5px;
-    display: block;
-    width: 27px;
-    height: 27px;
-    line-height: 27px;
-    text-align: center;
-    font-size: 18px;
-    cursor: pointer;
-    color: #545252;
+  position: absolute;
+  right: 5px;
+  display: block;
+  width: 27px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  color: #545252;
 }
 
 .field.qty .control-qty .minus {
-    bottom: 2px;
+  bottom: 2px;
 }
 
 .field.qty .control-qty .control .input-text.qty {
-    width: 60px;
-    height: 28px;
-    border-radius: 4px;
-    border: none;
-    margin: 16px 33px 16px 0;
-    padding: 0 0 0 15px;
-    text-align: left;
-    font-size: 18px;
-    font-weight: 700;
-    color: #000;
+  width: 60px;
+  height: 28px;
+  border-radius: 4px;
+  border: none;
+  margin: 16px 33px 16px 0;
+  padding: 0 0 0 15px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
 }
-
 
 #qty::-webkit-inner-spin-button,
 #qty::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    /* Remover as setas no Safari */
-    margin: 0;
-    /* Espaçamento entre o número e as setas */
+  -webkit-appearance: none;
+  /* Remover as setas no Safari */
+  margin: 0;
+  /* Espaçamento entre o número e as setas */
 }
 
 #qty {
-    -moz-appearance: textfield;
-    /* Remover as setas no Firefox */
+  -moz-appearance: textfield;
+  /* Remover as setas no Firefox */
 }
 
 span.plus {
-    margin-bottom: 3px;
+  margin-bottom: 3px;
 }
 
-.info-produto button#btnAdicionarCarrinho {
-    margin-left: 10px;
-    width: 100%;
-    height: 80px;
-    font-size: 1.50rem;
-    border-radius: 5px;
-    font-weight: bold;
-    padding: 8px 12px;
-    background-color: var(--botao-primario);
-    color: #fff;
-    border: none;
-    cursor: pointer;
+.info-produto button#btnEntrarEmContato {
+  margin-left: 10px;
+  width: 100%;
+  height: 80px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 8px 12px;
+  background-color: var(--botao-primario);
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
-
 
 /* Especificações */
 
 .sessao-especificacoes {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .especificacoes-produto {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: #fff;
-    /* padding: 15px; */
-    width: 90%;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #fff;
+  /* padding: 15px; */
+  width: 90%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
 }
 
 .especificacoes-title {
-    font-size: 2rem;
-    font-family: "Saira Extra Condensed", sans-serif;
-    font-weight: bold;
+  font-size: 2rem;
+  font-family: "Saira Extra Condensed", sans-serif;
+  font-weight: bold;
 }
 
 /* Estilos para cada bloco de especificações */
 .especificacoes-bloco-info {
-    flex-basis: calc(50% - 1px);
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25);
-    box-sizing: border-box;
-    width: 100%;
-    height: auto;
+  flex-basis: calc(50% - 1px);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
 }
 
 .especificacoes-bloco-img {
-    flex-basis: calc(50% - 2px);
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-    height: auto;
+  flex-basis: calc(50% - 2px);
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  height: auto;
 }
 
 .imagem-especificacao {
-    display: flex;
-    justify-content: center;
-    padding: 0 15px;
-    border: none;
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+  border: none;
 }
 
 .imagem-especificacao img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .texto-especificacao {
-    padding: 16px;
-    box-sizing: border-box;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .texto-especificacao p {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .texto-especificacao ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .texto-especificacao li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
-
-
-
 
 /* Sessão avaliações */
 .sessaoAvaliacoes {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .container-avaliacoes {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .avaliacoes {
-    width: 50%;
-    background-color: #fff;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+  width: 50%;
+  background-color: #fff;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
 }
 
 .avaliacoes h3,
 .formulario-avaliacao h3 {
-    margin-bottom: 10px;
-    font-size: 2rem;
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-family: "montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .avaliacao {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .formulario-avaliacao {
-    width: 50%;
-    background-color: #fff;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+  width: 50%;
+  background-color: #fff;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
 }
 
 .avaliacao {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .avaliacao-estrelas {
-    display: flex;
+  display: flex;
 }
 
 .star-icon {
-    list-style-type: none;
-    border: 1px solid #fff;
-    cursor: pointer;
-    height: auto;
-    color: #ffe500;
-    font-size: 40px;
+  list-style-type: none;
+  border: 1px solid #fff;
+  cursor: pointer;
+  height: auto;
+  color: #ffe500;
+  font-size: 40px;
 }
 
 .star-icon::before {
-    content: "\2605";
+  content: "\2605";
 }
 
-.star-icon.ativo~.star-icon::before {
-    content: "\2606";
+.star-icon.ativo ~ .star-icon::before {
+  content: "\2606";
 }
 
 .avaliacao:hover .star-icon::before {
-    content: "\2605";
+  content: "\2605";
 }
 
-.star-icon:hover~.star-icon::before {
-    content: "\2606";
+.star-icon:hover ~ .star-icon::before {
+  content: "\2606";
 }
-
-
-
 
 .formulario-avaliacao textarea {
-    width: 100%;
-    padding-top: 10px;
-    padding-left: 10px;
-    margin-bottom: 10px;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
 }
 
 .formulario-avaliacao button {
-    padding: 8px 12px;
-    background-color: var(--botao-primario);
-    color: #fff;
-    border: none;
-    width: 100%;
-    cursor: pointer;
+  padding: 8px 12px;
+  background-color: var(--botao-primario);
+  color: #fff;
+  border: none;
+  width: 100%;
+  cursor: pointer;
 }
 
-.container-produtos-semelhantes{
-    display: flex;
-    justify-content: center;
+.container-produtos-semelhantes {
+  display: flex;
+  justify-content: center;
 }
 
 .produtos-semelhantes {
-    width: 90%;
-    background-color: #fff;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+  width: 90%;
+  background-color: #fff;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
 }
 
 .produtos-semelhantes h3 {
-    margin-bottom: 10px;
-    font-size: 2rem;
-    font-family: "Saira Extra Condensed", sans-serif;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-family: "Saira Extra Condensed", sans-serif;
 }
 
 .carousel {
-    display: flex;
-    overflow-x: hidden;
-    margin-bottom: 20px;
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .produto-relacionado {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
+.avaliacao-estrelas {
+  margin-bottom: 1rem;
+}
 
-.avaliacao-estrelas{
+.avaliacao-estrelas > li {
+  font-size: 2rem;
+  color: #a7a7a7;
+}
+
+.avaliacao-estrelas > li.ativo {
+  color: gold;
+}
+
+.produto-relacionado {
+  position: relative;
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+}
+
+.produto-relacionado .precos {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.produto-relacionado .precos .preco-antigo {
+  font-family: "Saira Extra Condensed", sans-serif;
+  font-size: 1.1rem;
+}
+
+.produto-relacionado .precos .preco-atual {
+  font-family: "Saira Extra Condensed", sans-serif;
+  font-size: 1.8rem;
+  color: red;
+}
+
+.produto-relacionado .nome-produto-semelhante {
+  width: 100%;
+  margin-top: 0;
+  font-family: "Saira Extra Condensed", sans-serif;
+  padding-top: 0;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.detalhes-produto-semelhante {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  padding: 0 !important;
+  flex-direction: column;
+  height: 200px;
+}
+
+.descricao-produto-semelhante {
+  font-family: "montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.detalhes-produto-semelhante strong {
+  color: var(--bg-primaria);
+}
+
+.botao-comprar {
+  position: absolute;
+  background-color: var(--botao-primario);
+  width: 100%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  font-family: "Saira Extra Condensed", sans-serif;
+  color: var(--link-primario);
+  border-radius: 5px;
+  height: 40px;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 1280px) and (max-width: 1600px) {
+}
+
+/* Dispositivos de tela grande (como desktops) */
+@media (min-width: 1200px) {
+}
+
+/* Laptops e monitores maiores */
+@media (min-width: 1024px) {
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .detalhes-produto {
+    flex-direction: column;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .imagem-produto {
+    width: 100% !important;
+    height: auto;
     margin-bottom: 1rem;
+  }
+
+  .info-produto {
+    width: 100% !important;
+  }
+
+  .valor-produto-detalhes {
+    width: 100% !important;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  #btnEntrarEmContato i {
+    font-size: 1.9rem;
+  }
+
+  .flex-alinhado h4 {
+    font-size: 14px;
+  }
+
+  .especificacoes-produto {
+    width: 100% !important;
+  }
+
+  .imagem-especificacao {
+    width: 100% !important;
+    height: auto;
+  }
+
+  .container-avaliacoes {
+    flex-direction: column-reverse;
+    width: 100% !important;
+  }
+
+  .avaliacoes {
+    width: 100% !important;
+  }
+
+  .formulario-avaliacao {
+    text-align: center;
+    width: 100%;
+  }
+
+  .avaliacao-estrelas {
+    width: 100% !important;
+    justify-content: center;
+  }
+
+  .icone-estrela-avaliacao {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .icone-estrela-avaliacao i {
+    padding: 7px !important;
+  }
+
+  .btnEnviarAvaliacao {
+    height: 50px !important;
+  }
+
+  .formulario-avaliacao button {
+    height: 50px !important;
+    border-radius: 5px;
+  }
+
+  .produtos-semelhantes {
+    width: 100% !important;
+  }
+
+  .carousel {
+    display: flex;
+    max-width: 100% !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .botao-comprar {
+    display: block !important;
+    position: static;
+    margin-top: 10px;
+    transform: none;
+  }
+
+  .produto-relacionado {
+    height: auto !important;
+    width: 30%;
+    margin: 0 5px;
+    color: black;
+  }
+
+  .nome-produto-semelhante {
+    font-family: "Saira Extra Condensed", sans-serif;
+    font-size: 0.6rem;
+    color: black;
+  }
+
+  .detalhes-produto-semelhante{
+    margin-top: 10px;
+  }
+
+  .detalhes-produto-semelhante .precos {
+    text-align: left !important;
+    width: 100% !important;
+    font-family: "Saira Extra Condensed", sans-serif;
+    color: black;
+  }
+
+  .detalhes-produto-semelhante .precos .preco-antigo {
+    text-align: left !important;
+    width: 100% !important;
+    color: black;
+  }
+
+  .detalhes-produto-semelhante .precos .preco-atual {
+    font-size: 1.4rem;
+    color: red;
+    width: 100% !important;
+  }
+
+  .descricao-produto-semelhante{
+    color: green;
+  }
+
+  .descricao-produto-semelhante strong{
+    color: red;
+  }
+
+  .nome-produto-semelhante {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .precos {
+    flex-direction: column !important;
+  }
 }
 
-.avaliacao-estrelas > li{
-    font-size: 2rem;
-    color: #a7a7a7;
+/* Smartphones */
+@media (max-width: 480px) {
 }
 
-
-.avaliacao-estrelas > li.ativo{
-    color: gold;
+/* Pequenos dispositivos */
+@media (max-width: 320px) {
 }
-
-    .produto-relacionado {
-        position: relative;
-        display: flex;
-        width: 300px;
-        flex-direction: column;
-
-    }
-
-    .produto-relacionado .precos {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .produto-relacionado .precos .preco-antigo {
-        font-family: "Saira Extra Condensed", sans-serif;
-        font-size: 1.1rem;
-    }
-
-    .produto-relacionado .precos .preco-atual {
-        font-family: "Saira Extra Condensed", sans-serif;
-        font-size: 1.8rem;
-        color: red;
-    }
-
-    .produto-relacionado .nome-produto-semelhante {
-        width: 100%;
-        margin-top: 0;
-        font-family: "Saira Extra Condensed", sans-serif;
-        padding-top: 0;
-        font-weight: 400;
-        font-size: 1.4rem;
-        line-height: 1;
-    }
-
-    .detalhes-produto-semelhante {
-        display: flex;
-        width: 100%;
-        justify-content: start;
-        padding: 0 !important;
-        flex-direction: column;
-        height: 200px;
-    }
-
-
-    .descricao-produto-semelhante {
-        font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-
-    .detalhes-produto-semelhante strong {
-        color: var(--bg-primaria);
-    }
-
-
-    .botao-comprar {
-        position: absolute;
-        background-color: var(--botao-primario);
-        width: 100%;
-        font-size: 1.4rem;
-        font-weight: bold;
-        border: none;
-        font-family: "Saira Extra Condensed", sans-serif;
-        color: var(--link-primario);
-        border-radius: 5px;
-        height: 40px;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }

@@ -4,7 +4,7 @@
             <div class="banner_vantagens">
                 <div id="banner-slider-carousel">
                     <ul id="banners-list-items-1-65ea7a297bd41" class="">
-                        <li class="item-content" style="" aria-hidden="true" tabindex="0">
+                        <li class="item-content" style="" aria-hidden="true" tabindex="1">
                             <i class="fa-solid fa-calendar-days"></i>
                             <div>
                                 <p><strong class="strongBeneficios">Desde 1977</strong></p>
@@ -98,15 +98,6 @@
 
 
                 </div>
-                <!--                 <aside class="faceplugin">
-                    <div id="fb-root" class=" fb_reset">
-                        <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
-                            <div></div>
-                        </div>
-                    </div>
-                    <p class="blockfootertitle">Curta no Facebook</p>
-                    <div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/miraodistribuidora" data-hide-cover="false" data-show-facepile="true" data-small-header="false" data-tabs="" data-width="" data-height="" data-adapt-container-width="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=&amp;container_width=320&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fmiraodistribuidora&amp;locale=pt_BR&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=&amp;width="><span style="vertical-align: bottom; width: 320px; height: 130px;"><iframe name="f5b718c79d82b0d98" width="1000px" height="1000px" data-testid="fb:page Facebook Social Plugin" title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://web.facebook.com/v5.0/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df6568607b5c43b8df%26domain%3Dwww.mirao.com.br%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.mirao.com.br%252Ff3087ee8a53dfb974%26relation%3Dparent.parent&amp;container_width=320&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fmiraodistribuidora&amp;locale=pt_BR&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=&amp;width=" style="border: none; visibility: visible; width: 320px; height: 130px;" class=""></iframe></span></div>
-                </aside> -->
             </div>
         </div>
         <section class="customcopyright">
@@ -169,29 +160,31 @@
                     <dl class="rodapeItem">
                         <dt><span>Segurança e Certificação</span></dt>
                         <dd class="seloList">
-                            <p><a href="https://www.lojaconfiavel.com/miraoinformatica.com.br" target="_blank"
-                                    rel="noopener"><img
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII="
-                                        data-amsrc="//service.yourviews.com.br/Image/ae326850-be02-445f-8f5a-9ccf66bee176/Footer.jpg"
-                                        alt="Loja Confiável" width="88" height="91"></a></p>
+                            <div class="espaco">
                             <a id="seloEbit" href="http://www.ebit.com.br/50946/selo" target="_blank"
                                 data-noop="redir(this.href);" title="Avaliado pelos consumidores"
                                 oncontextmenu="alert(&quot;Cópia proibida! A certificação Ebit é de uso exclusivo de lojas conveniadas à Ebit.&quot;);return false;"
                                 style="display: block; overflow: hidden; position: relative;"><img
                                     src="https://newimgebit-a.akamaihd.net/ebitBR/selo/img_50946.png"
                                     style="border: 0px;"></a>
+                            </div>
 
-                            <div id="sslblindado">&nbsp;</div>
-                            <img src="https://www.mirao.com.br/media/wysiwyg/Selo_Amazon_1_.png" alt=""
-                                style="display: block;">
-                            <div id="___ratingbadge_0"
-                                style="border: 1px none rgb(245, 245, 245); z-index: 2147483647; right: 0px; bottom: 0px; box-shadow: rgb(162, 162, 162) -1px 1px 3px; text-indent: 0px; margin: 0px; padding: 0px; background: transparent; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 165px; height: 54px;">
-                                <iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0"
-                                    scrolling="no"
-                                    style="position: static; top: 0px; width: 165px; margin: 0px; border-style: none; display: block; left: 0px; visibility: visible; height: 54px;"
-                                    tabindex="0" vspace="0" width="100%" id="I0_1709865515331" name="I0_1709865515331"
-                                    src="https://www.google.com/shopping/customerreviews/badge?usegapi=1&amp;merchant_id=100346691&amp;origin=https%3A%2F%2Fwww.mirao.com.br&amp;gsrc=3p&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.QaiVwE1bhjg.O%2Fd%3D1%2Frs%3DAHpOoo_F81QtgZocBSx52KoUTACq0vb5Ew%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I0_1709865515331&amp;_gfid=I0_1709865515331&amp;parent=https%3A%2F%2Fwww.mirao.com.br&amp;pfname=&amp;rpctoken=62752991"
-                                    data-gapiattached="true" title="Google Avaliações do Consumidor"></iframe></div>
+<div class="espaco">
+    <div id="sslblindado">&nbsp;</div>
+    <img src="https://www.mirao.com.br/media/wysiwyg/Selo_Amazon_1_.png" alt=""
+        style="display: block;">
+</div>
+<div class="espaco">
+    <div id="___ratingbadge_0"
+        style="border: 1px none rgb(245, 245, 245); z-index: 2147483647; right: 0px; bottom: 0px; box-shadow: rgb(162, 162, 162) -1px 1px 3px; text-indent: 0px; margin: 0px; padding: 0px; background: transparent; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 165px; height: 54px;">
+        <iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0"
+            scrolling="no"
+            style="position: static; top: 0px; width: 165px; margin: 0px; border-style: none; display: block; left: 0px; visibility: visible; height: 54px;"
+            tabindex="0" vspace="0" width="100%" id="I0_1709865515331" name="I0_1709865515331"
+            src="https://www.google.com/shopping/customerreviews/badge?usegapi=1&amp;merchant_id=100346691&amp;origin=https%3A%2F%2Fwww.mirao.com.br&amp;gsrc=3p&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.QaiVwE1bhjg.O%2Fd%3D1%2Frs%3DAHpOoo_F81QtgZocBSx52KoUTACq0vb5Ew%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I0_1709865515331&amp;_gfid=I0_1709865515331&amp;parent=https%3A%2F%2Fwww.mirao.com.br&amp;pfname=&amp;rpctoken=62752991"
+            data-gapiattached="true" title="Google Avaliações do Consumidor"></iframe>
+    </div>
+</div>
                         </dd>
                     </dl>
                 </section>
@@ -204,13 +197,12 @@
                             de acordo com o seu estado.</p>
                     </div>
                     <ul class="boxBis">
-                        <li> <a href="brandaodev.com.br" target="_blank" title="" rel="nofollow"><img
+                        <li> <a href="https://brandaodev.com.br" target="_blank" title="" rel="nofollow"><img
                                     src="public/assets/img/site/desenvolvedor.png" alt=""
                                     style="display: block; width:300px;"></a></li>
-                        <li> <span> <a href="https://www.bis2bis.com.br" target="_blank"
+                        <li> <span> <a href="https://brandaodev.com.br" target="_blank"
                                     title="Loja virtual Magento de alta performance é com a Bis2Bis Comércio Eletrônico"
-                                    rel="nofollow">Crie sua loja virtual</a> com a melhor empresa de e-commerce do
-                                Brasil.</span></li>
+                                    rel="nofollow">Crie sua loja virtual, blog ou página web</a> com quem entende do assunto, entre em contato conosco!</span></li>
                     </ul>
                 </div>
             </div>

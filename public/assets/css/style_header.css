@@ -697,8 +697,9 @@ li {
     padding-right: 15px;
 }
 
-li.borda-direita {
+.borda-direita {
     border-right: 1px solid var(--link-primario);
+    padding-right: 5px !important;
 }
 
 li a span {
@@ -925,4 +926,9 @@ li a i {
 
 /* Pequenos dispositivos */
 @media (max-width: 320px) {
+}
+
+li.borda-direita {
+    border-right: 1px solid var(--link-primario);
+    padding-right: 5px !important;
 }

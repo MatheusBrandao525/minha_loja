@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'core/Conexao.php';
 require 'models/UsuarioModel.php';
 
@@ -74,9 +73,15 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                 </ul>
                 <ul class="topLinks topLinks-responsivo">
                     <li class="borda-direita">
-                        <a class="topHeader_link mconta" href="conta">
-                            <i class="fa fa-user" aria-hidden="true"></i> Minha Conta
-                        </a>
+                        <?php if (isset($_SESSION['ID'])) { ?>
+                            <a class="topHeader_link mconta" href="conta">
+                                <i class="fa fa-user" aria-hidden="true"></i> Minha Conta
+                            </a>
+                        <?php } else { ?>
+                            <a class="topHeader_link mconta" href="login">
+                                <i class="fa fa-user" aria-hidden="true"></i> Minha Conta
+                            </a>
+                        <?php } ?>
                     </li>
                     <li>
                         <a class="topHeader_link mpedidos" href="">

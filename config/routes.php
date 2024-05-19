@@ -1,23 +1,24 @@
 <?php
+session_start();
 
 $routes = [
-    '/minha_loja/' => 'HomeController@apresentarTelaDeHome',
-    '/minha_loja/login' => 'LoginController@redirecionaParaTelaDeLogin',
+    '/minha_loja/' => 'HomeController@apresentarTelaDeHome', //✅ 768px
+    '/minha_loja/login' => 'LoginController@redirecionaParaTelaDeLogin', //✅ 768px
     '/minha_loja/validarLogin' => 'LoginController@autenticarUsuario',
     '/minha_loja/sair' => 'LoginController@deslogarUsuario',
-    '/minha_loja/home' => 'HomeController@apresentarTelaDeHome',
+    '/minha_loja/home' => 'HomeController@apresentarTelaDeHome', //✅ 768px 
     '/minha_loja/cadastro' => 'CadastroController@redirecionaParaTelaDeCadastro',
-    '/minha_loja/categoria' => 'CategoriaController@redirecionarParaTelaCategoria',
-    '/minha_loja/detalhes' => 'ProdutoController@redirecionaParaTelaDetalhes',
+    '/minha_loja/categoria' => 'CategoriaController@redirecionarParaTelaCategoria', //✅ 768px
+    '/minha_loja/detalhes' => 'ProdutoController@redirecionaParaTelaDetalhes', //✅ 768px
     '/minha_loja/conta' => 'PerfilController@apresentarTelaPerfil',
-    '/minha_loja/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
-    '/minha_loja/checkout' => 'CheckoutController@apresentarTelaCheckout',
-    '/minha_loja/subCategoria' => 'CategoriaController@redirecionarParaSubCategorias',
-    '/minha_loja/detalhesPedido' => 'PerfilController@redirecionaParaDetalhesPedido',
-    '/minha_loja/pesquisa' => 'PesquisaController@redirecionaParaTelaDePesquisa',
-    '/minha_loja/sucesso' => 'CheckoutController@redirecionaParaTelaDeSucesso',
+    // '/minha_loja/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
+    // '/minha_loja/checkout' => 'CheckoutController@apresentarTelaCheckout',
+    // '/minha_loja/subCategoria' => 'CategoriaController@redirecionarParaSubCategorias',
+    // '/minha_loja/detalhesPedido' => 'PerfilController@redirecionaParaDetalhesPedido',
+    '/minha_loja/pesquisa' => 'PesquisaController@redirecionaParaTelaDePesquisa', //✅ 768px
+    // '/minha_loja/sucesso' => 'CheckoutController@redirecionaParaTelaDeSucesso',
     '/minha_loja/erro_404' => 'ErroController@redirecionarParaTelaDeErro404',
-    '/minha_loja/produtos' => 'ProdutoController@apresentarTodosOsProdutos',
+    '/minha_loja/produtos' => 'ProdutoController@apresentarTodosOsProdutos', //✅ 768px
     '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado'
 ];
 

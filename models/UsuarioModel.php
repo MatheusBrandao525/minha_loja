@@ -1,6 +1,7 @@
 <?php
-class UsuarioModel {
-    
+class UsuarioModel
+{
+
     private $conexao;
 
     public function __construct()
@@ -10,7 +11,7 @@ class UsuarioModel {
 
     public function buscarDadosUsuarioLogado($idUsuarioLogado)
     {
-        $sql = "SELECT * FROM usuarios WHERE id = :usuarioID";
+        $sql = "SELECT * FROM clientes WHERE cliente_id = :usuarioID";
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindParam(':usuarioID', $idUsuarioLogado);
 

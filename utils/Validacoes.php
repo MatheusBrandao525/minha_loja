@@ -39,14 +39,13 @@ class Validacoes
 
     private function verificarCredenciaisNoBanco($email, $senha)
     {
-        $stmt = $this->conexao->prepare("SELECT * FROM usuarios WHERE email = :email LIMIT 1");
+        $stmt = $this->conexao->prepare("SELECT * FROM clientes WHERE email = :email LIMIT 1");
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
 
         if ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
             if ($senha == $user['senha']) {
-                session_start();
-                $_SESSION['ID'] = $user['id'];
+                $_SESSION['ID'] = $user['cliente_id'];
                 return [
                     'status' => 'sucesso',
                     'mensagem' => 'Credenciais validadas com sucesso.'

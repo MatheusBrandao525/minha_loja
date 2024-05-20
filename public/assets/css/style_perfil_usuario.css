@@ -259,6 +259,11 @@
         padding-right: 10px !important;
     }
 
+    .card-dados-perfil p{
+        font-size: 0.90rem;
+        color: #000;
+    }
+
     .dados-usuario{
         width: 100% !important;
     }

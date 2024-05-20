@@ -4,16 +4,9 @@ include 'components/header.php';
 
 <div class="conteiner-formulario-cadastro">
     <div class="coluna-formulario-cadastro">
-        <div class="form-group-cadastro">
-            <label>Tipo da Conta</label>
-            <select id="tipoCadastro">
-                <option value="fisica">Pessoa Física</option>
-                <option value="juridica">Pessoa Jurídica</option>
-            </select>
-        </div>
-
         <!-- Formulário Pessoa Física -->
-        <div id="formFisica" style="display:none;">
+        <form id="formFisica" action="processarCadastro" method="post">
+            <input type="hidden" name="tipoPessoa" value="Prssoa Física">
             <div class="titulo-form-cadastro">
                 <h3>Informações Pessoais</h3>
             </div>
@@ -99,141 +92,82 @@ include 'components/header.php';
                     <button type="submit" class="botaoCadastrarPessoaFisica">Cadastrar</button>
                 </div>
             </div>
-        </div>
-
-        <!-- Formulário Pessoa Jurídica -->
-        <div id="formJuridica" style="display:none;">
-            <div class="titulo-form-cadastro">
-                <h3>Informações da Empresa</h3>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="cnpj">CNPJ:</label>
-                <input type="text" name="cnpj"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="nomeEmpresa">Nome da Empresa:</label>
-                <input type="text" name="nomeEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <div class="numero-ie-cadastro">
-                    <div class="numero-ie">
-                        <label for="inscricaoEstadual">Inscrição Estadual:</label>
-                        <input type="text" name="inscricaoEstadual">
-                    </div>
-                    <div class="opcao-sem-numero-ie">
-                        <input type="checkbox" name="insento">
-                        <label for="insento">Isento</label><br>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="nomeResponsavel">Nome Responsável:</label>
-                <input type="text" name="nomeResponsavel"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="sobrenomeResponsavel">Sobrenome Responsável:</label>
-                <input type="text" name="sobrenomeResponsavel"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="telefoneEmpresa">Número de telefone:</label>
-                <input type="text" name="telefoneEmpresa"><br>
-            </div>
-
-            <div class="titulo-form-cadastro">
-                <h3>Informações de Endereço</h3>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="cepEmpresa">CEP:</label>
-                <input type="text" name="cepEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="enderecoEmpresa">Endereço:</label>
-                <input type="text" name="enderecoEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <div class="numero-endereco-cadastro">
-                    <div class="numero-endereco">
-                        <label for="numeroEmpresa">Número:</label>
-                        <input type="text" name="numeroEmpresa">
-                    </div>
-                    <div class="opcao-sem-numero-cadastro">
-                        <input type="checkbox" name="semNumeroEmpresa">
-                        <label for="semNumeroEmpresa">Sem número</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="bairroEmpresa">Bairro:</label>
-                <input type="text" name="bairroEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="complementoEmpresa">Complemento:</label>
-                <input type="text" name="complementoEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="cidadeEmpresa">Cidade:</label>
-                <input type="text" name="cidadeEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="estadoEmpresa">Estado:</label>
-                <input type="text" name="estadoEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="paisEmpresa">País:</label>
-                <input type="text" name="paisEmpresa"><br>
-            </div>
-
-            <div class="titulo-form-cadastro">
-                <h3>Informações de Acesso</h3>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="emailEmpresa">E-mail:</label>
-                <input type="email" name="emailEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="senhaEmpresa">Senha:</label>
-                <input type="password" name="senhaEmpresa"><br>
-            </div>
-            <div class="form-group-cadastro">
-                <label for="confirmarSenhaEmpresa">Confirmar Senha:</label>
-                <input type="password" name="confirmarSenhaEmpresa"><br>
-            </div>
-            <div class="container-botoes-cadastro">
-                <div class="botoes-cadastro">
-                    <button type="button" class="botao-voltar-cadastro">Voltar</button>
-                    <button type="submit" class="botaoCadastrarPessoaJuridica">Cadastrar</button>
-                </div>
-            </div>
-        </div>
-
+        </form>
     </div>
 
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script>
+    $(document).ready(function() {
+        $('#formFisica').on('submit', function(event) {
+            event.preventDefault();
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: 'processarCadastro',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    alert(response);
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    alert('Erro ao processar o cadastro.');
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script> -->
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Função para alternar a exibição dos formulários
-        function toggleForm(value) {
-            if (value === 'juridica') {
-                document.getElementById('formFisica').style.display = 'none';
-                document.getElementById('formJuridica').style.display = 'block';
-            } else {
-                // A exibição do formulário de pessoa física é o padrão
-                document.getElementById('formFisica').style.display = 'block';
-                document.getElementById('formJuridica').style.display = 'none';
-            }
-        }
+    $(document).ready(function() {
+        $('#formFisica').on('submit', function(event) {
+            event.preventDefault();
 
-        // Adiciona o evento de mudança ao campo select e exibe o formulário de pessoa física por padrão
-        const tipoCadastroSelect = document.getElementById('tipoCadastro');
-        tipoCadastroSelect.addEventListener('change', function() {
-            toggleForm(this.value);
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: 'processarCadastro',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    try {
+                        // Parseia a resposta JSON
+                        var jsonResponse = JSON.parse(response);
+
+                        // Verifica se a resposta contém sucesso
+                        if (jsonResponse.sucesso) {
+                            alert('Cadastro realizado com sucesso! Você já pode fazer login.');
+                            window.location.href = 'login'; // Redireciona para a tela de login
+                        } else {
+                            // Formata as mensagens de erro para exibição amigável
+                            var mensagensDeErro = '';
+                            if (jsonResponse.erros) {
+                                for (var campo in jsonResponse.erros) {
+                                    if (jsonResponse.erros.hasOwnProperty(campo)) {
+                                        mensagensDeErro += jsonResponse.erros[campo] + '\n';
+                                    }
+                                }
+                            } else if (jsonResponse.erro) {
+                                mensagensDeErro = jsonResponse.erro;
+                            }
+                            alert('Erro ao processar o cadastro:\n' + mensagensDeErro);
+                        }
+                    } catch (e) {
+                        alert('Erro inesperado ao processar a resposta do servidor.');
+                        console.error('Erro de parsing JSON:', e);
+                        console.error('Resposta do servidor:', response);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Erro ao processar o cadastro.');
+                    console.error(xhr.responseText);
+                }
+            });
         });
-
-        // Chama a função toggleForm no carregamento da página para configurar o estado inicial dos formulários
-        // Isso assegura que o formulário de pessoa física esteja visível por padrão
-        toggleForm(tipoCadastroSelect.value);
     });
 </script>
 

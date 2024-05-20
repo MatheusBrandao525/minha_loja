@@ -8,6 +8,7 @@ $routes = [
     '/minha_loja/sair' => 'LoginController@deslogarUsuario',
     '/minha_loja/home' => 'HomeController@apresentarTelaDeHome', //✅ 768px 
     '/minha_loja/cadastro' => 'CadastroController@redirecionaParaTelaDeCadastro', //✅ 768px
+    '/minha_loja/processarCadastro' => 'CadastroController@cadastrarCliente', //✅ 768px
     '/minha_loja/categoria' => 'CategoriaController@redirecionarParaTelaCategoria', //✅ 768px
     '/minha_loja/detalhes' => 'ProdutoController@redirecionaParaTelaDetalhes', //✅ 768px
     '/minha_loja/conta' => 'PerfilController@apresentarTelaPerfil',

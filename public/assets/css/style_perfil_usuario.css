@@ -187,3 +187,123 @@
     border-radius:3px;
     cursor: pointer;
 }
+
+@media (min-width: 1280px) and (max-width: 1600px) {
+}
+
+/* Dispositivos de tela grande (como desktops) */
+@media (min-width: 1200px) {
+}
+
+/* Laptops e monitores maiores */
+@media (min-width: 1024px) {
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+
+    .page-header {
+        background-color: var(--bg-primaria);
+        margin-bottom: 0 !important;
+        font-family: "Saira Extra Condensed", sans-serif;
+        font-size: 16px;
+    }
+
+    .container-centro {
+        width: 100% !important;
+        height: 100vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .menu-lateral {
+        width: 100% !important; 
+        background-color: #f4f4f4;
+        height: 100%;
+        min-width: 30% !important;
+        max-width: 31% !important;
+    }
+
+    
+
+    .menu-lateral ul{
+        padding: 0 10px;
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+
+    .menu-lateral ul li {
+        list-style: none;
+        padding-right: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .menu-lateral ul li a{
+        font-size: 0.8rem;
+        padding: 10px 0px 10px 5px;
+    }
+
+    .conteudo {
+        margin-left: 0 !important;
+        width: 100% !important;
+        display: flex;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0 !important;
+        padding-right: 10px !important;
+    }
+
+    .dados-usuario{
+        width: 100% !important;
+    }
+
+    #dadosPessoais,#meusPedidos,#endereco,#metodoPagamento,#minhasAvaliacoes,#pontosEReconpensas,#meusFavoritos{
+        height: 100vh !important;
+        margin-top: 20px;
+    }
+
+    .pedido-cabecalho span,.favoritos-cabecalho span {
+        margin-right: 20px;
+        flex-grow: 1;
+    }
+
+    .pedido-imagem,.favorito-imagem {
+        width: 50px !important;
+        height: 50px !important;
+        margin-right: 20px !important;
+    }
+
+    
+
+    .pedido-nome, .pedido-data,.favorito-nome,.favorito-data {
+        margin-right: 20px;
+        flex-grow: 1;
+        font-size: 0.8rem;
+    }
+
+    .pedido-nome{
+        margin-right: 10px;
+        width: 100% !important;
+    }
+
+    .pedido-detalhes,.favorito-detalhes {
+        padding: 5px 2px !important;
+        background-color: #007bff;
+        color: white;
+        font-size: 0.8rem;
+        font-family: "Saira Extra Condensed", sans-serif;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+}
+
+/* Pequenos dispositivos */
+@media (max-width: 320px) {
+}

@@ -222,15 +222,24 @@
     white-space: nowrap;
     width: 100%;
     height: 48px;
+    display: flex;
     font-family: "Saira Extra Condensed", sans-serif;
     font-size: 21px;
+    justify-content: center;
     font-weight: 500;
+    color: #fff;
+    align-items: center;
+    text-align: center;
     text-transform: uppercase;
     border-radius: 5px;
     padding-left: 0;
     background-color: var(--botao-primario);
     border: var(--botao-primario);
     padding-right: 0;
+}
+
+.product-button i{
+    margin-right: 5px;
 }
 
 .product-button:hover {

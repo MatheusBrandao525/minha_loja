@@ -1,7 +1,11 @@
 <?php
-
 require 'components/header.php';
-
+require_once 'controllers/RedesSociaisController.php';
+require_once 'controllers/ProdutoController.php';
+$produtoController = new ProdutoController();
+$produtosPesquisa = $produtoController->exibirProdutosPesquisados();
+$redesSociaisController = new RedesSociaisController();
+$linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp();
 ?>
 <div class="categoria-container">
     <div class="container">
@@ -11,8 +15,7 @@ require 'components/header.php';
         </div>
 
         <div class="conteudo">
-            <aside class="sidebar">
-                <!-- Filtro de Categoria -->
+            <!--             <aside class="sidebar">
                 <div class="filtro">
                     <div class="filtro-titulo">Resultados Para:</div>
                     <div class="filtro-opcoes">
@@ -21,7 +24,6 @@ require 'components/header.php';
                     </div>
                 </div>
 
-                <!-- Filtro de Preço -->
                 <div class="filtro">
                     <div class="filtro-titulo">Preço</div>
                     <div class="filtro-opcoes">
@@ -31,7 +33,6 @@ require 'components/header.php';
                     </div>
                 </div>
 
-                <!-- Filtro de Cor -->
                 <div class="filtro">
                     <div class="filtro-titulo">Cor</div>
                     <div class="filtro-opcoes">
@@ -40,11 +41,11 @@ require 'components/header.php';
                         <label><input type="checkbox" name="cor" value="cor3"> Opção 3</label>
                     </div>
                 </div>
-            </aside>
+            </aside> -->
 
 
             <div class="produtos-categoria">
-                <div class="toolbar toolbar-products">
+                <!--                 <div class="toolbar toolbar-products">
                     <div class="modes"> <strong class="modes-label" id="modes-label">Ver como</strong> <strong title="Grade" class="modes-mode active mode-grid" data-value="grid"><span>Grade</span></strong> <a class="modes-mode mode-list" title="Lista" href="#" data-role="mode-switcher" data-value="list" id="mode-list" aria-labelledby="modes-label mode-list"><span>Lista</span></a> </div>
                     <p class="toolbar-amount" id="toolbar-amount"> Itens encontrados <span class="toolbar-number">1</span>-<span class="toolbar-number">20</span> of <span class="toolbar-number">782</span> </p>
                     <div class="toolbar-sorter sorter"><label class="sorter-label" for="sorter">Ordenar por:</label>
@@ -73,31 +74,39 @@ require 'components/header.php';
                             <li class="item pages-item-next"> <a class="link  next-page" href="" title="PRÓXIMA PÁGINA"><span class="label">Página</span> <span>PRÓXIMA PÁGINA</span></a></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="produtos">
-                    <?php for ($i = 1; $i <= 12; $i++) : ?>
-                        <div class="product-card">
-                            <form method="post" action="detalhes" class="product-image">
-                                <button type="submit" href="/minha_loja/detalhes/<?php echo $i; ?>">
-                                    <img src="public/assets/img/fonte.jpg" alt="Nome do Produto">
-                                </button>
-                            </form>
-                            <div class="product-info">
-                                <h3 class="product-title">Título do Produto <?php echo $i; ?></h3>
-                                <p class="product-old-price">R$100,00</p>
-                                <p class="product-new-price">R$80,00 À Vista</p>
-                                <p class="product-description">Descrição curta do produto...</p>
-                                <div class="product-action">
-                                    <div class="qtywrap">
-                                        <button class="quantity-btn decrease-quantity"><i class="fas fa-minus"></i></button>
-                                        <input type="number" id="product-quantity-<?php echo $i; ?>" class="product-quantity" name="quantity" value="1" min="1" step="1">
-                                        <button class="quantity-btn increase-quantity"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                    <button class="product-button">Comprar</button>
-                                </div>
+                    <?php foreach ($produtosPesquisa as $produto): ?>
+                    <div class="product-card">
+                        <form method="post" action="detalhes" class="product-image">
+                        <input type="hidden" name="produtoId" value="<?php echo $produto['produto_id'];?>">
+                            <button type="submit" href="/minha_loja/detalhes/1">
+                                <img src="public/assets/img/produtos/<?php echo $produto['imagem1'];?>"
+                                    alt="Nome do Produto">
+                            </button>
+
+                        </form>
+                        <div class="product-info">
+                            <h3 class="product-title"><?php echo htmlspecialchars($produto['nome']);?></h3>
+                            <p class="product-old-price">R$
+                                <?php echo number_format($produto['preco_unitario'],2,'.',',');?></p>
+                            <p class="product-new-price">R$
+                                <?php echo number_format($produto['preco_promocao'],2,'.',',');?> À
+                                Vista</p>
+                            <p class="product-description"><?php echo htmlspecialchars($produto['descricao']);?></p>
+                            <div class="product-action">
+                                <?php
+                        // Gerar o link do WhatsApp para o produto atual
+                        $produtoNomeOuCodigo = $produto['codigo'];
+                        $linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp($produtoNomeOuCodigo);
+                    ?>
+                                <a href="<?php echo $linkWhatsapp; ?>" class="product-button" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Whatsapp
+                                </a>
                             </div>
                         </div>
-                    <?php endfor; ?>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
 
             </div>

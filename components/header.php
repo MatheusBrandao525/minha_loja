@@ -1,6 +1,10 @@
 <?php
 require_once 'core/Conexao.php';
 require 'models/UsuarioModel.php';
+require_once 'controllers/CategoriaController.php';
+
+$categoriaController = new CategoriaController();
+$categoriaData = $categoriaController->exibirCategorias();
 
 if (isset($_SESSION['ID'])) {
     $usuarioModel = new UsuarioModel();
@@ -93,16 +97,16 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             </div>
         </section>
         <div id="headerStarter" class="header container-wrapper">
-            <a class="logo" href="" title="" aria-label="store logo">
+            <a class="logo" href="home" title="" aria-label="store logo">
                 <img src="public/assets/img/site/tm_plus.png" title="" alt="" width="170">
             </a>
 
             <div class="block block-search">
                 <div class="block block-content">
-                    <form class="form minisearch" id="search_mini_form" action="" method="get">
+                    <form class="form minisearch" id="search_mini_form" action="pesquisa" method="post">
                         <div class="field search">
                             <div class="control has-icon">
-                                <input id="search" type="text" name="q" value="" placeholder="Digite o que está buscando..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
+                                <input id="search" type="text" name="pesquisa" value="" placeholder="Digite o que está buscando..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
                                 <button type="submit" class="search-btn"><i class="fas fa-search search-icon"></i></button>
                                 <div id="search_autocomplete" class="search-autocomplete"></div>
                             </div>
@@ -132,7 +136,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             </ul>
 
             <!-- Segundo logo substituindo a seção do carrinho -->
-            <a class="logo" href="" title="" aria-label="second store logo">
+            <a class="logo" href="home" title="" aria-label="second store logo">
                 <img src="public/assets/img/site/top_motos.png" title="" alt="" width="170">
             </a>
         </div>
@@ -143,54 +147,14 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
+                <?php foreach($categoriaData as $categoria): ?>
                 <li>
-                    <form action="categorias" method="post">
-                        <input type="hidden" value="" name="">
-                        <button type="submit"><i class="fas fa-tools"></i> Categoria01</button>
+                    <form action="categoria" method="post">
+                        <input type="hidden" value="<?php echo $categoria['categoria_id'];?>" name="categoriaId">
+                        <button type="submit"><?php echo htmlspecialchars($categoria['nome_categoria']);?></button>
                     </form>
                 </li>
-                <li>
-                    <form action="categorias" method="post">
-                        <input type="hidden" value="" name="">
-                        <button type="submit"><i class="fas fa-motorcycle"></i> Categoria02</button>
-                    </form>
-                </li>
-                <li>
-                    <form action="categorias" method="post">
-                        <input type="hidden" value="" name="">
-                        <button type="submit"><i class="fas fa-cog"></i> Categoria03</button>
-                    </form>
-                </li>
-                <li>
-                    <form action="categorias" method="post">
-                        <input type="hidden" value="" name="">
-                        <button type="submit"><i class="fas fa-toolbox"></i> Categoria04</button>
-                    </form>
-                </li>
-                <li>
-                    <form action="categorias" method="post">
-                        <input type="hidden" value="" name="">
-                        <button type="submit"><i class="fas fa-car"></i> Categoria05</button>
-                    </form>
-                </li>
-                <li>
-                    <form action="categorias" method="post">
-                        <input type="hidden" value="" name="">
-                        <button type="submit"><i class="fas fa-lightbulb"></i> Categoria06</button>
-                    </form>
-                </li>
-                <li>
-                    <form action="categorias" method="post">
-                        <input type="hidden" value="" name="">
-                        <button type="submit"><i class="fas fa-plug"></i> Categoria07</button>
-                    </form>
-                </li>
-                <li>
-                    <form action="categorias" method="post">
-                        <input type="hidden" value="" name="">
-                        <button type="submit"><i class="fas fa-shield-alt"></i> Categoria08</button>
-                    </form>
-                </li>
+                <?php endforeach; ?>
             </ul>
         </nav>
     </header>

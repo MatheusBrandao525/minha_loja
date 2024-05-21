@@ -164,4 +164,25 @@
     margin-top: 20px;
 }
 
-/* Ajustes adicionais podem ser necessários conforme o design geral da página */
+@media (min-width: 1280px) and (max-width: 1600px) {
+}
+
+/* Dispositivos de tela grande (como desktops) */
+@media (min-width: 1200px) {
+}
+
+/* Laptops e monitores maiores */
+@media (min-width: 1024px) {
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+}
+
+/* Pequenos dispositivos */
+@media (max-width: 320px) {
+}

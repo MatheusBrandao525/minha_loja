@@ -1,171 +1,165 @@
-.container-formulario-cadastro {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+.container-formulario-cadastro{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .coluna-formulario-cadastro {
-  max-width: 60%;
-  margin: auto;
-  padding: 20px;
-  /* border: 1px solid #ccc; */
-  border-radius: 5px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
+    max-width: 60%;
+    margin: auto;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.titulo-form-cadastro {
-  width: 100%;
-  display: flex;
-  justify-content: right;
-  font-size: 1.2rem;
-  margin-top: 2rem;
-  font-family: "montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: var(--bg-gray);
+.titulo-form-cadastro{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--bg-gray);
 }
 
-.titulo-form-cadastro h3 {
-  width: 77%;
-  text-align: left;
-  margin-bottom: 1rem;
+.titulo-form-cadastro h3{
+    width: 77%;
+    text-align: left;
+    margin-bottom: 1rem;
 }
 
-.form-group-cadastro {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.form-group-cadastro{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-.numero-endereco,
-.numero-ie-cadastro {
-  display: flex;
-  justify-content: right;
-  flex-direction: row;
-  align-items: center;
+.numero-endereco,.numero-ie-cadastro{
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    align-items: center;
 }
 
-.opcao-sem-numero-cadastro {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: center;
+.opcao-sem-numero-cadastro{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
 }
 
-.numero-endereco input {
-  width: 290px;
+.numero-endereco input{
+    width: 290px;
 }
 
-.numero-endereco label {
-  margin-right: 13px;
+.numero-endereco label{
+    margin-right: 13px;
 }
 
-.numero-endereco,
-.opcao-sem-numero-cadastro {
-  width: 50% !important;
+.numero-endereco,.opcao-sem-numero-cadastro{
+    width: 50% !important; 
+
 }
 
-.form-group-cadastro label {
-  width: 30%;
-  text-align: right;
-  padding-right: 1rem;
+.form-group-cadastro label{
+    width: 30%;
+    text-align: right;
+    padding-right: 1rem;
 }
 
-.opcao-sem-numero-cadastro input,
-.opcao-sem-numero-ie input {
-  width: 10%;
+.opcao-sem-numero-cadastro input,.opcao-sem-numero-ie input{
+   width: 10%;
 }
 
-.opcao-sem-numero-cadastro label,
-.opcao-sem-numero-ie label {
-  text-align: left;
-  width: 150px;
+.opcao-sem-numero-cadastro label,.opcao-sem-numero-ie label{
+    text-align: left;
+    width: 150px;
+ }
+
+.numero-endereco-cadastro,.numero-ie-cadastro{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: right;
+    justify-content: space-around;
 }
 
-.numero-endereco-cadastro,
-.numero-ie-cadastro {
-  width: 70%;
-  display: flex;
-  flex-direction: row;
-  align-items: right;
-  justify-content: space-around;
+.numero-endereco label{
+    width: 20%;
 }
 
-.numero-endereco label {
-  width: 20%;
+.numero-ie-cadastro{
+    width: 100%;
 }
 
-.numero-ie-cadastro {
-  width: 100%;
+.numero-ie input{
+    width: 315px;
 }
 
-.numero-ie input {
-  width: 315px;
+.opcao-sem-numero-ie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.opcao-sem-numero-ie {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.opcao-sem-numero-ie input{
+    width: 20%;
 }
 
-.opcao-sem-numero-ie input {
-  width: 20%;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 5px;
-  margin: 10px 0;
-  border-radius: 2px;
-  border: 1px solid #ccc;
+input, select {
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 2px;
+    border: 1px solid #ccc;
 }
 
 .botao-voltar-cadastro {
-  padding: 5px 25px;
-  border: none;
-  border-radius: 5px;
-  background-color: blue;
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: "Saira Extra Condensed", sans-serif;
-  color: white;
-  cursor: pointer;
+    padding: 5px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: blue;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: "Saira Extra Condensed", sans-serif;
+    color: white;
+    cursor: pointer;
 }
 
-.container-botoes-cadastro {
-  width: 100%;
-  display: flex;
-  justify-content: right;
-  align-items: center;
+.container-botoes-cadastro{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
 }
 
-.botoes-cadastro {
-  width: 77%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.botoes-cadastro{
+    width: 77%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.botaoCadastrarPessoaJuridica,
-.botaoCadastrarPessoaFisica {
-  padding: 5px 25px;
-  border: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: "Saira Extra Condensed", sans-serif;
-  border-radius: 5px;
-  background-color: var(--botao-segundario);
-  color: white;
-  cursor: pointer;
+.botaoCadastrarPessoaJuridica,.botaoCadastrarPessoaFisica{
+    padding: 5px 25px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: "Saira Extra Condensed", sans-serif;
+    border-radius: 5px;
+    background-color: var(--botao-segundario);
+    color: white;
+    cursor: pointer; 
 }
 
-.botaoCadastrarPessoaJuridica:hover,
-.botaoCadastrarPessoaFisica:hover {
-  background-color: var(--botao-primario);
+.botaoCadastrarPessoaJuridica:hover,.botaoCadastrarPessoaFisica:hover {
+    background-color: var(--botao-primario);
 }
+
 
 @media (min-width: 1280px) and (max-width: 1600px) {
 }
@@ -180,40 +174,6 @@ select {
 
 /* Tablets */
 @media (max-width: 768px) {
-  .coluna-formulario-cadastro {
-    max-width: 98%;
-  }
-
-  .numero-endereco-cadastro {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .form-group-cadastro,
-  .numero-endereco {
-    flex-direction: column !important;
-  }
-
-  .form-group-cadastro label,
-  .numero-endereco label {
-    width: 100%;
-    text-align: left;
-  }
-
-  .numero-endereco label {
-    margin-right: 0 !important;
-  }
-
-  .opcao-sem-numero-cadastro {
-    flex-direction: row-reverse;
-    margin-bottom: 20px;
-  }
-
-  .numero-endereco-cadastro .numero-endereco input {
-    width: 100%;
-  }
 }
 
 /* Smartphones */

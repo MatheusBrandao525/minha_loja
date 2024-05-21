@@ -146,6 +146,25 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                 <span>Categorias</span>
                 <i class="fas fa-bars"></i>
             </div>
+            <ul class="linksCustomer linksCustomer-responsivo">
+                <li class="header_account_link_list">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <?php if (!isset($_SESSION['ID'])) {  ?>
+                        <div>
+                            <span>Faça <a class="header_account_link login" href="login" class="login"><strong>Login</strong></a> ou </span>
+                            <a class="header_account_link cadastro strong" href="cadastro"><strong>Cadastre-se</strong></a>
+                        </div>
+                    <?php } else { ?>
+                        <div>
+                            <a class="header_account_link login" href="conta" class="login" style="margin-left: 0 !important;"><strong>Minha Conta</strong></a>
+                            <form action="sair" method="post">
+                                <input type="hidden" name="idsessaousuario" value="<?php echo $_SESSION['ID']; ?>">
+                                <button type="submit" class="header_account_link sair strong"><strong>Sair</strong></button>
+                            </form>
+                        </div>
+                    <?php } ?>
+                </li>
+            </ul>
             <ul class="nav-links">
                 <?php foreach($categoriaData as $categoria): ?>
                 <li>

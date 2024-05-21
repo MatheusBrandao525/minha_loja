@@ -166,6 +166,10 @@ li a i {
     /* Ocupa 62% da largura */
 }
 
+.linksCustomer-responsivo{
+    display: none !important;
+}
+
 .linksCustomer,
 #custom-sliding-cart {
     flex: 1;
@@ -872,7 +876,10 @@ li a i {
     }
 
     .navigation{
+        width: 100% !important;
         align-items: center !important;
+        display: flex;
+        justify-content: space-between !important;
     }
 
     .nav-links {
@@ -910,11 +917,28 @@ li a i {
     }
 
     .menu-toggle {
+        padding-left: 20px;
+        width: 50% !important;
         display: block !important;
     }
 
     .navigation.open .nav-links {
         display: flex;
+    }
+
+    .linksCustomer-responsivo{
+        justify-content: right;
+        width: 50% !important;
+        display: block !important;
+    }
+
+    .linksCustomer-responsivo .header_account_link_list{
+        justify-content: right !important;
+    }
+
+    .linksCustomer-responsivo .header_account_link_list i {
+        color: #fff !important;
+        font-size: 25px !important;
     }
 }
 

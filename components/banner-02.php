@@ -33,7 +33,7 @@ function autoMoveSlide() {
     moveSlide(1);
 }
 
-setInterval(autoMoveSlide, 3000);
+setInterval(autoMoveSlide, 5000);
 
 const slidesContainer = document.querySelector('.carousel .slides');
 

@@ -88,7 +88,7 @@ include 'components/header.php';
             </div>
             <div class="container-botoes-cadastro">
                 <div class="botoes-cadastro">
-                    <button type="button" class="botao-voltar-cadastro">Voltar</button>
+                    <a href="login" type="button" class="botao-voltar-cadastro">Voltar</a>
                     <button type="submit" class="botaoCadastrarPessoaFisica">Cadastrar</button>
                 </div>
             </div>

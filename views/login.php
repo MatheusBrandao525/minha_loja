@@ -55,7 +55,7 @@ include 'components/header.php';
                     <span>Criar uma nova conta tem muitos benefícios: fechar pedidos rapidamente, registrar mais endereços, acompanhar pedidos e muito mais.</span>
                 </div>
                 <div class="exibe-botao-cadastrar">
-                    <a href="">Cadastre-se</a>
+                    <a href="cadastro">Cadastre-se</a>
                 </div>
             </div>
         </div>

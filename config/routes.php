@@ -12,12 +12,7 @@ $routes = [
     '/minha_loja/categoria' => 'CategoriaController@redirecionarParaTelaCategoria', //✅ 768px
     '/minha_loja/detalhes' => 'ProdutoController@redirecionaParaTelaDetalhes', //✅ 768px
     '/minha_loja/conta' => 'PerfilController@apresentarTelaPerfil',
-    // '/minha_loja/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
-    // '/minha_loja/checkout' => 'CheckoutController@apresentarTelaCheckout',
-    // '/minha_loja/subCategoria' => 'CategoriaController@redirecionarParaSubCategorias',
-    // '/minha_loja/detalhesPedido' => 'PerfilController@redirecionaParaDetalhesPedido',
     '/minha_loja/pesquisa' => 'PesquisaController@redirecionaParaTelaDePesquisa', //✅ 768px
-    // '/minha_loja/sucesso' => 'CheckoutController@redirecionaParaTelaDeSucesso',
     '/minha_loja/erro_404' => 'ErroController@redirecionarParaTelaDeErro404',
     '/minha_loja/produtos' => 'ProdutoController@apresentarTodosOsProdutos', //✅ 768px
     '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado'
@@ -32,3 +27,10 @@ if (isset($_GET['url'])) {
         exit;
     }
 }
+    // rotas que podem ser usadas futuramente.
+    // '/minha_loja/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
+    // '/minha_loja/checkout' => 'CheckoutController@apresentarTelaCheckout',
+    // '/minha_loja/subCategoria' => 'CategoriaController@redirecionarParaSubCategorias',
+    // '/minha_loja/detalhesPedido' => 'PerfilController@redirecionaParaDetalhesPedido',
+    
+    // '/minha_loja/sucesso' => 'CheckoutController@redirecionaParaTelaDeSucesso',

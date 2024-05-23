@@ -1,242 +1,27 @@
-.container-block-title {
-    width: 100%;
+.special-offer {
+    background: #f8f8f8;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.special-offer h2 {
+    margin-bottom: 20px;
+}
+
+.offer-products {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-top: 2rem;
 }
 
-.block-title {
-    position: relative;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: -ms-flex;
-    display: flex;
-    -webkit-align-items: center;
-    -ms-align-items: center;
-    align-items: center;
-    width: 90%;
-    margin-bottom: 30px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-family: "Saira Extra Condensed", sans-serif;
-    font-size: 16px;
-    color: #666;
-    line-height: 1;
+.product {
+    margin: 0 15px;
 }
 
-.block-title strong:before {
-    content: '';
-    background: red;
-    width: 21px;
-    height: 6px;
-    border-radius: 2px;
-    position: absolute;
-    bottom: 15px;
-    left: 0;
-    margin-top: -1px;
-    z-index: 0;
-}
-
-.block-title strong {
-    position: relative;
+.product img {
+    width: 150px;
     display: block;
-    margin: 0;
-    font-size: 35px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #000;
-    padding-left: 32px;
+    margin: 0 auto;
 }
-
-.block-title .vermais {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 0 10px;
-    background-color: red;
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 26px;
-    text-transform: uppercase;
-    color: #fff;
-    border-radius: 5px;
-    white-space: nowrap;
-}
-
-.produtos {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-}
-
-.produtos>.container {
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.product-card {
-    width: 225px;
-    padding: 2px;
-    margin: 1px;
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-.product-card:hover {
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
-    /* Efeito de sombra */
-}
-
-.product-card form {
-    border: none;
-}
-
-.product-card form button {
-    border: none;
-}
-
-.product-image img {
-    width: 100%;
-    height: auto;
-}
-
-.product-info {
-    padding: 10px;
-}
-
-.product-title {
-    margin: 10px 0;
-    font-size: 18px;
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
-}
-
-.product-old-price {
-    /* text-decoration: line-through; */
-    color: #666;
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-}
-
-.product-new-price {
-    font-size: 1.4rem;
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    white-space: nowrap;
-    color: red;
-}
-
-.product-description {
-    font-family: 'montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    color: #666;
-}
-
-.product-action {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
-}
-
-.qtywrap {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: -ms-flex;
-    display: flex;
-    width: 50%;
-    height: 48px;
-    -webkit-align-items: center;
-    -ms-align-items: center;
-    align-items: center;
-    -webkit-justify-content: space-between;
-    -ms-justify-content: space-between;
-    justify-content: space-between;
-    padding: 8px 6px;
-    box-shadow: inset 0 0 0 1px #e5e5e5;
-    border-radius: 6px;
-    margin-right: 5px;
-}
-
-.qtywrap button {
-    width: 20px;
-    height: 20px;
-    -webkit-flex: 0 0 20px;
-    -ms-flex: 0 0 20px;
-    flex: 0 0 20px;
-    background-color: #f2f2f2;
-    font-size: 16px;
-    color: #000;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    -webkit-transition: all .3s ease .5s ease;
-    -moz-transition: all .3s ease .5s ease;
-    -o-transition: all .3s ease .5s ease;
-    -ms-transition: all .3s ease .5s ease;
-    transition: all .3s ease .5s ease;
-    -webkit-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
-.qtywrap button i {
-    margin: 0;
-    padding: 0;
-}
-
-.product-quantity {
-    width: 36px;
-    padding: 5px;
-    margin-right: 10px;
-    border: none;
-    text-align: center;
-    outline: none;
-}
-
-
-.quantity-btn {
-    background-color: #f0f0f0;
-    border: none;
-    cursor: pointer;
-}
-
-.product-quantity::-webkit-inner-spin-button,
-.product-quantity::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.product-quantity {
-    -moz-appearance: textfield;
-    /* Para Firefox */
-}
-
-.product-button {
-    white-space: nowrap;
-    width: 100%;
-    height: 48px;
-    font-family: "Saira Extra Condensed", sans-serif;
-    font-size: 21px;
-    font-weight: 500;
-    text-transform: uppercase;
-    border-radius: 5px;
-    padding-left: 0;
-    background-color: var(--botao-primario);
-    border: var(--botao-primario);
-    padding-right: 0;
-}
-
-.product-button:hover {
-    background-color: var(--botao-segundario);
-}
-
 
 @media (min-width: 1280px) and (max-width: 1600px) {
 }
@@ -251,60 +36,6 @@
 
 /* Tablets */
 @media (max-width: 768px) {
-    .produtos>.container {
-        justify-content: center; /* Centraliza os cards na tela menor */
-    }
-
-    .product-card {
-        width: 30%; /* 30% da largura do contêiner, ajusta conforme necessário */
-        margin: 5px;
-    }
-
-    .product-info {
-        padding: 5px; /* Reduz o padding */
-    }
-
-    .product-title {
-        font-size: 16px; /* Diminui o tamanho da fonte do título */
-        text-align: center; /* Centraliza o texto */
-    }
-
-    .product-old-price,
-    .product-new-price {
-        font-size: 14px; /* Diminui o tamanho da fonte dos preços */
-        text-align: center; /* Centraliza o texto */
-    }
-
-    .product-description {
-        font-size: 12px; /* Diminui o tamanho da fonte da descrição */
-        text-align: center; /* Centraliza o texto */
-        margin: 5px 0; /* Adiciona margem para espaçamento */
-    }
-
-    .product-action {
-        flex-direction: column; /* Alinha os botões verticalmente */
-        align-items: center; /* Centraliza os itens */
-    }
-
-    .product-action .product-button {
-        margin-top: 10px; /* Adiciona margem superior */
-        width: 100%; /* Largura total do botão */
-    }
-
-    .qtywrap {
-        width: 100%; /* Largura total */
-        justify-content: center; /* Centraliza os itens */
-        margin: 10px 0; /* Adiciona margem superior e inferior */
-    }
-
-    .qtywrap button {
-        flex: 1; /* Faz com que os botões ocupem a mesma largura */
-    }
-
-    .product-quantity {
-        width: 60px; /* Ajusta a largura do campo de quantidade */
-        margin: 0 10px; /* Ajusta a margem para espaçamento */
-    }
 }
 
 /* Smartphones */

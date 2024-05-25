@@ -53,10 +53,11 @@
 .ul-nav-top-bar li a {
   padding: 10px;
   color: #fff;
+  text-decoration: none;
 }
 
 .logo-bar {
-  background: #f8f8f8;
+  background:#131313;
   /* border-bottom: 1px solid #ccc; */
   padding: 10px 0;
 }

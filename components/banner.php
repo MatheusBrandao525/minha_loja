@@ -9,22 +9,6 @@
     <a class="next" onclick="moveSlide(1)">❯</a>
 </div>
 
-<section class="categories">
-    <div class="container">
-        <h2>Navegue por categoria</h2>
-        <div class="category-icons">
-            <a href="#">Feminino</a>
-            <a href="#">Masculino</a>
-            <a href="#">Calçados</a>
-            <a href="#">Infantil</a>
-            <a href="#">Lingerie</a>
-            <a href="#">Plus Size</a>
-            <a href="#">Acessórios</a>
-            <a href="#">Casa</a>
-        </div>
-    </div>
-</section>
-
 <script>
 let slideIndex = 0;
 let touchStartX = 0;

@@ -134,19 +134,3 @@
     </div>
   </div>
 </section>
-
-<section class="categories">
-    <div class="container">
-        <h2>Navegue por categoria</h2>
-        <div class="category-icons">
-            <a href="#">Feminino</a>
-            <a href="#">Masculino</a>
-            <a href="#">Calçados</a>
-            <a href="#">Infantil</a>
-            <a href="#">Lingerie</a>
-            <a href="#">Plus Size</a>
-            <a href="#">Acessórios</a>
-            <a href="#">Casa</a>
-        </div>
-    </div>
-</section>

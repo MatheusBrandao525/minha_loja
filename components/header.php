@@ -23,7 +23,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <link rel="stylesheet" href="public/assets/css/style_header.css">
     <link rel="stylesheet" href="public/assets/css/style_banner.css">
     <!-- <link rel="stylesheet" href="public/assets/css/style_banner-02.css"> -->
-    <!-- <link rel="stylesheet" href="public/assets/css/style_banner-03.css"> -->
+    <link rel="stylesheet" href="public/assets/css/style_banner-03.css">
     <link rel="stylesheet" href="public/assets/css/style_produtos.css">
     <!-- <link rel="stylesheet" href="public/assets/css/style_detalhes.css"> -->
     <!-- <link rel="stylesheet" href="public/assets/css/style_login.css"> -->

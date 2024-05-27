@@ -1,9 +1,10 @@
 <?php
 include 'components/header.php';
 require_once 'Controllers/ProdutoController.php';
-$produtoModel = new ProdutoController();
-$produtoData = $produtoModel->exibirDadosProdutoPorId();
+$produtoController = new ProdutoController();
+$produtoData = $produtoController->exibirDadosProdutoPorId();
 $exibePreco = $produtoData['exibe_preco'];
+$imagensAdicionais = $produtoController->verificaSeProdutoTemMaisDeUmaImagem($produtoData);
 ?>
 <div class="conteiner-titulo-detalhes">
     <!-- Título do Produto -->
@@ -44,12 +45,14 @@ $exibePreco = $produtoData['exibe_preco'];
             </div>
             <div class="valor-produto-detalhes">
                 <?php if($exibePreco === 1){ ?>
-                <p class="info-valor-antigo"><strong class="info-novo-valor"> R$ <?php echo number_format($produtoData['preco_promocao']);?> À vista</strong></p>
+                <p class="info-valor-antigo"><strong class="info-novo-valor"> R$
+                        <?php echo number_format($produtoData['preco_promocao']);?> À vista</strong></p>
                 <?php }else { ?>
-                    <p class="info-descricao-valor">Para saber o valor deste produto entre em contato pelo whatspp</p>
+                <p class="info-descricao-valor">Para saber o valor deste produto entre em contato pelo whatspp</p>
                 <?php } ?>
             </div>
-            <p class="info-descricao-valor">No PIX ou até <span class="valor-com-destaque">12x</span> no <span class="valor-com-destaque">Cartão</span> sem juros!</p>
+            <p class="info-descricao-valor">No PIX ou até <span class="valor-com-destaque">12x</span> no <span
+                    class="valor-com-destaque">Cartão</span> sem juros!</p>
             <div class="container-opcoes">
                 <span><i class="fas fa-share"></i> Compartilhar</span>
                 <span><i class="fas fa-heart"></i> Adicionar aos favoritos </span>
@@ -66,7 +69,12 @@ $exibePreco = $produtoData['exibe_preco'];
 <div class="sessao-especificacoes">
     <div class="especificacoes-produto">
         <div class="especificacoes-bloco-img imagem-especificacao">
-            <img src="public/assets/img/placeholder.jpg" alt="Especificação do Produto">
+            <?php if (!empty($imagensAdicionais['imagem2'])): ?>
+            <img src="<?php echo $imagensAdicionais['imagem2']; ?>" alt="Especificação do Produto">
+            <?php endif; ?>
+            <?php if (!empty($imagensAdicionais['imagem3'])): ?>
+            <img src="<?php echo $imagensAdicionais['imagem3']; ?>" alt="Especificação do Produto">
+            <?php endif; ?>
         </div>
         <div class="especificacoes-bloco-info texto-especificacao">
             <h3 class="especificacoes-title">Especificações do Produto:</h3>
@@ -129,8 +137,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 1.909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
 
@@ -143,8 +153,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -156,8 +168,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -169,8 +183,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -182,8 +198,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -195,8 +213,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -208,8 +228,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -221,8 +243,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -234,8 +258,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -247,8 +273,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <div class="produto-relacionado">
@@ -260,8 +288,10 @@ $exibePreco = $produtoData['exibe_preco'];
                         <span class="preco-antigo">R$ 1.000,00</span>
                         <span class="preco-atual">R$ 909,90 À vista</span>
                     </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i> Contato</button>
+                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
+                        juros</span>
+                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
+                        Contato</button>
                 </div>
             </div>
             <!-- Repita conforme necessário -->
@@ -292,46 +322,46 @@ include 'components/footer.php';
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Inicialmente marca a primeira estrela como ativa ao carregar a página
-        const stars = document.querySelectorAll('.icone-estrela-avaliacao');
-        stars[0].classList.add('ativo'); // Certifique-se de que a primeira estrela esteja ativa por padrão
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicialmente marca a primeira estrela como ativa ao carregar a página
+    const stars = document.querySelectorAll('.icone-estrela-avaliacao');
+    stars[0].classList.add('ativo'); // Certifique-se de que a primeira estrela esteja ativa por padrão
 
-        stars.forEach(function(star, index) {
-            star.addEventListener('click', function() {
-                // Remove a classe 'ativo' de todas as estrelas
-                stars.forEach(function(innerStar) {
-                    innerStar.classList.remove('ativo');
-                });
-
-                // Adiciona a classe 'ativo' para a estrela clicada e todas as anteriores a ela
-                for (let i = 0; i <= index; i++) {
-                    stars[i].classList.add('ativo');
-                }
-
-                console.log("Avaliação: " + (index + 1)); // Log da avaliação selecionada
+    stars.forEach(function(star, index) {
+        star.addEventListener('click', function() {
+            // Remove a classe 'ativo' de todas as estrelas
+            stars.forEach(function(innerStar) {
+                innerStar.classList.remove('ativo');
             });
+
+            // Adiciona a classe 'ativo' para a estrela clicada e todas as anteriores a ela
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('ativo');
+            }
+
+            console.log("Avaliação: " + (index + 1)); // Log da avaliação selecionada
         });
     });
+});
 </script>
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var produtosRelacionados = document.querySelectorAll('.produto-relacionado');
+document.addEventListener('DOMContentLoaded', function() {
+    var produtosRelacionados = document.querySelectorAll('.produto-relacionado');
 
-        produtosRelacionados.forEach(function(produtoRelacionado) {
-            produtoRelacionado.addEventListener('mouseenter', function() {
-                var botaoComprar = this.querySelector('.botao-comprar');
-                botaoComprar.style.display = 'block';
-            });
+    produtosRelacionados.forEach(function(produtoRelacionado) {
+        produtoRelacionado.addEventListener('mouseenter', function() {
+            var botaoComprar = this.querySelector('.botao-comprar');
+            botaoComprar.style.display = 'block';
+        });
 
-            produtoRelacionado.addEventListener('mouseleave', function() {
-                var botaoComprar = this.querySelector('.botao-comprar');
-                botaoComprar.style.display = 'none';
-            });
+        produtoRelacionado.addEventListener('mouseleave', function() {
+            var botaoComprar = this.querySelector('.botao-comprar');
+            botaoComprar.style.display = 'none';
         });
     });
+});
 </script>
 
 

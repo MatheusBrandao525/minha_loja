@@ -63,4 +63,21 @@ class ProdutoController
             die;
         }
     }
+
+    public function verificaSeProdutoTemMaisDeUmaImagem($produtoData)
+    {
+        $imagem2 = '';
+        $imagem3 = '';
+    
+        if (!empty($produtoData['imagem2']) && $produtoData['imagem2'] != null) {
+            $imagem2 = $produtoData['imagem2'];
+        }
+    
+        if (!empty($produtoData['imagem3']) && $produtoData['imagem3'] != null) {
+            $imagem3 = $produtoData['imagem3'];
+        }
+    
+        return ['imagem2' => $imagem2, 'imagem3' => $imagem3];
+    }
+    
 }

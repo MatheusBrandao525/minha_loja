@@ -329,8 +329,13 @@ margin-right: 10px !important;
 .avaliacoes h3,
 .formulario-avaliacao h3 {
   margin-bottom: 10px;
+  color: #333;
   font-size: 2rem;
   font-family: "montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.avaliacoes p{
+  color: #333;
 }
 
 .avaliacao {

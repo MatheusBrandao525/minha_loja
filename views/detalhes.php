@@ -1,7 +1,9 @@
 <?php
 include 'components/header.php';
-require_once 'Controllers/ProdutoController.php';
+require_once 'controllers/ProdutoController.php';
+require_once 'controllers/AvaliacaoController.php';
 $produtoController = new ProdutoController();
+$avaliacaoController = new AvaliacaoController();
 $produtoData = $produtoController->exibirDadosProdutoPorId();
 $exibePreco = $produtoData['exibe_preco'];
 $imagensAdicionais = $produtoController->verificaSeProdutoTemMaisDeUmaImagem($produtoData);
@@ -91,12 +93,27 @@ $imagensAdicionais = $produtoController->verificaSeProdutoTemMaisDeUmaImagem($pr
         <div class="avaliacoes">
             <h3>Avaliações</h3>
             <p>Avaliação média: 4.5 estrelas</p>
+            <?php 
+                $avaliacoesData = $avaliacaoController->exibirAvaliacoesDoProduto();
+            
+                if (is_array($avaliacoesData)) {
+                    foreach ($avaliacoesData as $avaliacao):
+            ?>
             <div class="avaliacao">
-                <p>Usuário: Cliente Exemplo</p>
-                <p>Estrelas: ★★★★☆</p>
-                <p>Comentário: Excelente produto, estou satisfeito!</p>
+                <p>Usuário: <?php echo htmlspecialchars($avaliacao['usuario']); ?></p>
+                <p>Estrelas:
+                    <?php echo str_repeat('★', $avaliacao['estrelas']) . str_repeat('☆', 5 - $avaliacao['estrelas']); ?>
+                </p>
+                <p>Comentário: <?php echo htmlspecialchars($avaliacao['comentario']); ?></p>
             </div>
+            <?php 
+                    endforeach;
+                } else {
+                    echo $avaliacoesData;
+                }
+            ?>
         </div>
+
 
         <div class="formulario-avaliacao">
             <h3>Avaliar o Produto</h3>

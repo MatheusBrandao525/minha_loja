@@ -50,4 +50,17 @@ class ProdutoController
             die;
         }
     }
+
+    public function exibirDadosProdutoPorId()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['produtoId'])) {
+            $produtoId = filter_input(INPUT_POST, 'produtoId', FILTER_SANITIZE_STRING);
+
+            $produtoModel = new ProdutoModel();
+            return $produtoModel->buscarDadosProdutoPorId($produtoId);
+        }else {
+            include ROOT_PATH . '/views/erro404.php';
+            die;
+        }
+    }
 }

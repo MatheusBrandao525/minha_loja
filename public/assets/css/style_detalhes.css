@@ -119,6 +119,7 @@
 .quantidade-add-carrinho {
   display: flex;
   height: 150px;
+  justify-content: center;
   align-items: center;
 }
 
@@ -208,10 +209,14 @@ span.plus {
   margin-bottom: 3px;
 }
 
-.info-produto button#btnEntrarEmContato {
-  margin-left: 10px;
+.info-produto #btnEntrarEmContato {
+  margin: 10px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 80px;
+  text-align: center;
   font-size: 1.5rem;
   border-radius: 5px;
   font-weight: bold;
@@ -220,6 +225,10 @@ span.plus {
   color: #fff;
   border: none;
   cursor: pointer;
+}
+
+#btnEntrarEmContato i{
+margin-right: 10px !important;
 }
 
 /* Especificações */
@@ -533,6 +542,7 @@ span.plus {
 
   #btnEntrarEmContato i {
     font-size: 1.9rem;
+    margin-right: 20px !important;
   }
 
   .flex-alinhado h4 {

@@ -1,13 +1,14 @@
 <?php
 include 'components/header.php';
+require_once 'Controllers/ProdutoController.php';
+$produtoModel = new ProdutoController();
+$produtoData = $produtoModel->exibirDadosProdutoPorId();
+$exibePreco = $produtoData['exibe_preco'];
 ?>
-
 <div class="conteiner-titulo-detalhes">
-
-
     <!-- Título do Produto -->
     <div class="titulo-produto-detalhes">
-        <h2><i class="fas fa-home"></i> Início / Smartphone Modelo XYZ</h2>
+        <h2><i class="fas fa-home"></i> Detalhes / <?php echo htmlspecialchars($produtoData['nome']);?></h2>
     </div>
 </div>
 
@@ -15,13 +16,13 @@ include 'components/header.php';
 <div class="container-info-produto">
     <div class="detalhes-produto">
         <div class="imagem-produto">
-            <img src="public/assets/img/placeholder.jpg" alt="Produto XYZ">
+            <img src="<?php echo $produtoData['imagem1'];?>" alt="<?php echo htmlspecialchars($produtoData['nome']);?>">
         </div>
         <div class="info-produto">
-            <h2 class="nome-produto-detalhes">Smartphone Modelo XYZ</h2>
+            <h2 class="nome-produto-detalhes"><?php echo htmlspecialchars($produtoData['nome']);?></h2>
             <div class="flex-alinhado">
                 <div class="coluna-pequena">
-                    <h4>Cod: 235345</h4>
+                    <h4>Cod: <?php echo htmlspecialchars($produtoData['codigo']);?></h4>
                 </div>
 
                 <div class="coluna-pequena">
@@ -29,7 +30,7 @@ include 'components/header.php';
                 </div>
 
                 <div class="coluna-pequena">
-                    <h4>
+                    <h4 style="color: yellow;">
                         <?php
                         // Aqui você pode utilizar um loop para exibir as estrelas, dependendo da classificação do produto
                         $quantidadeEstrelas = 5; // Substitua isso pela classificação real do produto
@@ -42,15 +43,19 @@ include 'components/header.php';
 
             </div>
             <div class="valor-produto-detalhes">
-                <p class="info-valor-antigo"><strong class="info-novo-valor"> R$990,00 À vista</strong></p>
+                <?php if($exibePreco === 1){ ?>
+                <p class="info-valor-antigo"><strong class="info-novo-valor"> R$ <?php echo number_format($produtoData['preco_promocao']);?> À vista</strong></p>
+                <?php }else { ?>
+                    <p class="info-descricao-valor">Para saber o valor deste produto entre em contato pelo whatspp</p>
+                <?php } ?>
             </div>
-            <p class="info-descricao-valor">No PIX ou até <span class="valor-com-destaque">12x</span> de <span class="valor-com-destaque">R$83,25</span> sem juros!</p>
+            <p class="info-descricao-valor">No PIX ou até <span class="valor-com-destaque">12x</span> no <span class="valor-com-destaque">Cartão</span> sem juros!</p>
             <div class="container-opcoes">
                 <span><i class="fas fa-share"></i> Compartilhar</span>
                 <span><i class="fas fa-heart"></i> Adicionar aos favoritos </span>
             </div>
             <div class="quantidade-add-carrinho">
-                <button id="btnEntrarEmContato"><i class="fab fa-whatsapp"></i> Entar em contato!</button>
+                <a href="" id="btnEntrarEmContato"><i class="fab fa-whatsapp"></i> Entar em contato!</a>
             </div>
 
         </div>
@@ -65,12 +70,7 @@ include 'components/header.php';
         </div>
         <div class="especificacoes-bloco-info texto-especificacao">
             <h3 class="especificacoes-title">Especificações do Produto:</h3>
-            <ul>
-                <li>Processador: Octa-core 2.0 GHz</li>
-                <li>Memória RAM: 4 GB</li>
-                <li>Armazenamento: 64 GB</li>
-                <li>Câmera: 12 MP + 8 MP</li>
-            </ul>
+            <p style="color: #333;"><?php echo htmlspecialchars($produtoData['descricao']);?></p>
         </div>
     </div>
 </div>
@@ -292,27 +292,27 @@ include 'components/footer.php';
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicialmente marca a primeira estrela como ativa ao carregar a página
-    const stars = document.querySelectorAll('.icone-estrela-avaliacao');
-    stars[0].classList.add('ativo'); // Certifique-se de que a primeira estrela esteja ativa por padrão
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicialmente marca a primeira estrela como ativa ao carregar a página
+        const stars = document.querySelectorAll('.icone-estrela-avaliacao');
+        stars[0].classList.add('ativo'); // Certifique-se de que a primeira estrela esteja ativa por padrão
 
-    stars.forEach(function(star, index) {
-        star.addEventListener('click', function() {
-            // Remove a classe 'ativo' de todas as estrelas
-            stars.forEach(function(innerStar) {
-                innerStar.classList.remove('ativo');
+        stars.forEach(function(star, index) {
+            star.addEventListener('click', function() {
+                // Remove a classe 'ativo' de todas as estrelas
+                stars.forEach(function(innerStar) {
+                    innerStar.classList.remove('ativo');
+                });
+
+                // Adiciona a classe 'ativo' para a estrela clicada e todas as anteriores a ela
+                for (let i = 0; i <= index; i++) {
+                    stars[i].classList.add('ativo');
+                }
+
+                console.log("Avaliação: " + (index + 1)); // Log da avaliação selecionada
             });
-
-            // Adiciona a classe 'ativo' para a estrela clicada e todas as anteriores a ela
-            for (let i = 0; i <= index; i++) {
-                stars[i].classList.add('ativo');
-            }
-
-            console.log("Avaliação: " + (index + 1)); // Log da avaliação selecionada
         });
     });
-});
 </script>
 
 

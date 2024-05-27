@@ -15,7 +15,10 @@ $routes = [
     '/minha_loja/pesquisa' => 'PesquisaController@redirecionaParaTelaDePesquisa', //✅ 768px
     '/minha_loja/erro_404' => 'ErroController@redirecionarParaTelaDeErro404',
     '/minha_loja/produtos' => 'ProdutoController@apresentarTodosOsProdutos', //✅ 768px
-    '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado'
+    '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado',
+    '/minha_loja/salvarAvaliacao' => 'AvaliacaoController@avaliarProduto',
+    '/minha_loja/obrigadoPorAvaliar' => 'AvaliacaoController@etlaObrigadoPorAvaliar',
+    '/minha_loja/erroNaAvaliacao' => 'AvaliacaoController@telErroNaAvaliacao'
 ];
 
 if (isset($_GET['url'])) {

@@ -2,6 +2,17 @@
 require_once 'models/AvaliacaoModel.php';
 class AvaliacaoController
 {
+
+    public function etlaObrigadoPorAvaliar()
+    {
+        include ROOT_PATH . '/views/obrigadoPorAvaliar.php';
+    }
+
+    public function telaErroNaAvaliacao()
+    {
+        include ROOT_PATH . '/views/erroNaAvaliacao.php';
+    }
+
     public function exibirAvaliacoesDoProduto()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['produtoId'])) {

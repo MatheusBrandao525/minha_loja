@@ -79,5 +79,12 @@ class ProdutoController
     
         return ['imagem2' => $imagem2, 'imagem3' => $imagem3];
     }
+
+    public function exibirProdutosSemelhantes($produtoId)
+    {
+        $produtoModel = new ProdutoModel();
+
+        return $produtoModel->buscarProdutosSemelhantes($produtoId);
+    }
     
 }

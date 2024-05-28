@@ -7,6 +7,7 @@ $avaliacaoController = new AvaliacaoController();
 $produtoData = $produtoController->exibirDadosProdutoPorId();
 $exibePreco = $produtoData['exibe_preco'];
 $imagensAdicionais = $produtoController->verificaSeProdutoTemMaisDeUmaImagem($produtoData);
+$produtosSemelhantes = $produtoController->exibirProdutosSemelhantes($produtoData['produto_id']);
 ?>
 <div class="conteiner-titulo-detalhes">
     <!-- Título do Produto -->
@@ -126,7 +127,7 @@ $imagensAdicionais = $produtoController->verificaSeProdutoTemMaisDeUmaImagem($pr
             </ul>
 
             <input type="hidden" name="avaliacao" id="inputAvaliacao">
-            <input type="hidden" name="usuarioId" value="<?php echo $_SESSION['ID'];?>">
+            <input type="hidden" name="usuarioId" value="<?php if(isset($_SESSION['ID'])){echo $_SESSION['ID'];}?>">
             <input type="hidden" name="produtoId" value="<?php echo $produtoData['produto_id'];?>">
             <textarea rows="7" id="comentario" name="comentario" placeholder="Deixe seu comentário"></textarea>
             <button type="submit" id="btnEnviarAvaliacao">Enviar</button>
@@ -136,197 +137,56 @@ $imagensAdicionais = $produtoController->verificaSeProdutoTemMaisDeUmaImagem($pr
 
 </div>
 
-
-<!-- Produtos Semelhantes -->
-
 <div class="container-produtos-semelhantes">
 
 
     <div class="produtos-semelhantes">
         <h3>Produtos Semelhantes</h3>
-        <!-- Carousel de Produtos Semelhantes -->
         <div class="carousel">
-            <!-- Adicione produtos relacionados conforme necessário -->
+
+            <?php 
+                if (!empty($produtosSemelhantes)) {
+                    foreach ($produtosSemelhantes as $produto):
+            ?>
             <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
+                <form action="detalhes" method="post">
+                    <input type="hidden" name="produtoId" value="<?php echo $produto['produto_id'];?>">
+                    <button type="submit">
+                    <img src="<?php echo $produto['imagem1'];?>" alt="<?php echo htmlspecialchars($produto['nome']);?>">
+                    </button>
+                </form>
 
                 <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
+                    <p class="nome-produto-semelhante"><?php echo htmlspecialchars($produto['nome']); ?></p>
                     <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 1.909,90 À vista</span>
+                        <?php if($exibePreco === 1){ ?>
+                        <span class="preco-atual">R$ <?php echo number_format($produto['preco_promocao']);?> À
+                            vista</span>
+                        <?php }else { ?>
+                        <span class="info-descricao-valor">Para saber o valor deste produto entre em contato pelo
+                            whatspp</span>
+                        <?php } ?>
                     </div>
                     <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
                         juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
+                    <a class="product-button"><i class="fab fa-whatsapp"></i>
+                        Contato</a>
                 </div>
             </div>
-
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <div class="produto-relacionado">
-                <img src="public/assets/img/placeholder.jpg" alt="Produto Relacionado 1">
-
-                <div class="detalhes-produto-semelhante">
-                    <p class="nome-produto-semelhante">Nome do Produto Relacionado 1 Nome do Produto Relacionado 1</p>
-                    <div class="precos">
-                        <span class="preco-antigo">R$ 1.000,00</span>
-                        <span class="preco-atual">R$ 909,90 À vista</span>
-                    </div>
-                    <span class="descricao-produto-semelhante">No <strong>PIX</strong> ou <strong>12X</strong> sem
-                        juros</span>
-                    <button class="botao-comprar" style="display: none;"><i class="fab fa-whatsapp"></i>
-                        Contato</button>
-                </div>
-            </div>
-            <!-- Repita conforme necessário -->
+            <?php
+                    endforeach;
+                } else {
+                    echo "<h5 style='color: #333 !important; font-size: 1.2rem;'>Nenhum produto semelhante encontrado.</h5>";
+                }
+            ?>
         </div>
     </div>
 </div>
-
 
 <?php
 include 'components/footer.php';
 
 ?>
-
-<!-- JavaScript -->
-<script src="script.js"></script>
-
 <style>
 
 
@@ -351,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     stars.forEach(function(star, index) {
         star.addEventListener('click', function() {
-            
+
             stars.forEach(function(innerStar) {
                 innerStar.classList.remove('ativo');
             });
@@ -380,25 +240,6 @@ document.addEventListener('DOMContentLoaded', function() {
     color: gold;
 }
 </style>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var produtosRelacionados = document.querySelectorAll('.produto-relacionado');
-
-    produtosRelacionados.forEach(function(produtoRelacionado) {
-        produtoRelacionado.addEventListener('mouseenter', function() {
-            var botaoComprar = this.querySelector('.botao-comprar');
-            botaoComprar.style.display = 'block';
-        });
-
-        produtoRelacionado.addEventListener('mouseleave', function() {
-            var botaoComprar = this.querySelector('.botao-comprar');
-            botaoComprar.style.display = 'none';
-        });
-    });
-});
-</script>
 
 
 </body>

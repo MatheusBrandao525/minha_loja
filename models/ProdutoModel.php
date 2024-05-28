@@ -96,4 +96,49 @@ class ProdutoModel
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function buscarProdutosSemelhantes($produtoId)
+    {
+        // Primeiro, obtemos o produto selecionado para obter seu nome e categoria
+        $query = "SELECT nome, categoria_id FROM produtos WHERE produto_id = :produto_id";
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindParam(':produto_id', $produtoId, PDO::PARAM_INT);
+        $stmt->execute();
+        $produto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($produto) {
+            $categoriaId = $produto['categoria_id'];
+            $nome = $produto['nome'];
+
+            // Buscar produtos na mesma categoria
+            $queryCategoria = "SELECT * FROM produtos WHERE categoria_id = :categoria_id AND produto_id != :produto_id LIMIT 10";
+            $stmtCategoria = $this->conexao->prepare($queryCategoria);
+            $stmtCategoria->bindParam(':categoria_id', $categoriaId, PDO::PARAM_INT);
+            $stmtCategoria->bindParam(':produto_id', $produtoId, PDO::PARAM_INT);
+            $stmtCategoria->execute();
+            $produtosCategoria = $stmtCategoria->fetchAll(PDO::FETCH_ASSOC);
+
+            // Se a busca por categoria não retornar suficientes resultados, buscar por nome com LIKE
+            if (count($produtosCategoria) < 10) {
+                $palavrasChave = explode(' ', $nome);
+                $likeClause = "%" . implode('%', $palavrasChave) . "%";
+                $queryNome = "SELECT * FROM produtos WHERE nome LIKE :nome AND produto_id != :produto_id LIMIT 10";
+                $stmtNome = $this->conexao->prepare($queryNome);
+                $stmtNome->bindParam(':nome', $likeClause, PDO::PARAM_STR);
+                $stmtNome->bindParam(':produto_id', $produtoId, PDO::PARAM_INT);
+                $stmtNome->execute();
+                $produtosNome = $stmtNome->fetchAll(PDO::FETCH_ASSOC);
+
+                // Combine resultados das duas buscas, evitando duplicados
+                $produtosSemelhantes = array_merge($produtosCategoria, $produtosNome);
+                $produtosSemelhantes = array_unique($produtosSemelhantes, SORT_REGULAR);
+
+                return array_slice($produtosSemelhantes, 0, 10);
+            }
+
+            return $produtosCategoria;
+        }
+
+        return [];
+    }
 }

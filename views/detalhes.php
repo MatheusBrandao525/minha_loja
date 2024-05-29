@@ -1,22 +1,23 @@
 <?php
 include 'components/header.php';
 require_once 'controllers/ProdutoController.php';
+require_once 'controllers/RedesSociaisController.php';
 require_once 'controllers/AvaliacaoController.php';
 $produtoController = new ProdutoController();
+$redesSociaisController = new RedesSociaisController();
+$linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp();
 $avaliacaoController = new AvaliacaoController();
 $produtoData = $produtoController->exibirDadosProdutoPorId();
-$exibePreco = $produtoData['exibe_preco'];
+$exibePreco = (int)$produtoData['exibe_preco'];
 $imagensAdicionais = $produtoController->verificaSeProdutoTemMaisDeUmaImagem($produtoData);
 $produtosSemelhantes = $produtoController->exibirProdutosSemelhantes($produtoData['produto_id']);
 ?>
 <div class="conteiner-titulo-detalhes">
-    <!-- Título do Produto -->
     <div class="titulo-produto-detalhes">
         <h2><i class="fas fa-home"></i> Detalhes / <?php echo htmlspecialchars($produtoData['nome']);?></h2>
     </div>
 </div>
 
-<!-- Detalhes do Produto -->
 <div class="container-info-produto">
     <div class="detalhes-produto">
         <div class="imagem-produto">
@@ -36,10 +37,9 @@ $produtosSemelhantes = $produtoController->exibirProdutosSemelhantes($produtoDat
                 <div class="coluna-pequena">
                     <h4 style="color: yellow;">
                         <?php
-                        // Aqui você pode utilizar um loop para exibir as estrelas, dependendo da classificação do produto
-                        $quantidadeEstrelas = 5; // Substitua isso pela classificação real do produto
+                        $quantidadeEstrelas = 5;
                         for ($i = 0; $i < $quantidadeEstrelas; $i++) {
-                            echo '<i class="fas fa-star"></i>';
+                            echo '<i class="fas fa-star" style="color:yellow"></i>';
                         }
                         ?>
                     </h4>
@@ -61,8 +61,15 @@ $produtosSemelhantes = $produtoController->exibirProdutosSemelhantes($produtoDat
                 <span><i class="fas fa-heart"></i> Adicionar aos favoritos </span>
             </div>
             <div class="quantidade-add-carrinho">
-                <a href="" id="btnEntrarEmContato"><i class="fab fa-whatsapp"></i> Entar em contato!</a>
-            </div>
+                    <?php
+                        // Gerar o link do WhatsApp para o produto atual
+                        $produtoNomeOuCodigo = $produtoData['codigo'];
+                        $linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp($produtoNomeOuCodigo);
+                    ?>
+                    <a href="<?php echo $linkWhatsapp; ?>" class="product-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Whatsapp
+                    </a>
+                </div>
 
         </div>
     </div>
@@ -192,7 +199,6 @@ include 'components/footer.php';
 
 </style>
 
-<!-- Adicione isso antes do fechamento da tag </body> -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>

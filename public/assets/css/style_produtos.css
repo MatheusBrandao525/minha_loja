@@ -1,26 +1,90 @@
+.container-produto-destaque {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .special-offer {
-    background: #f8f8f8;
-    padding: 20px 0;
-    text-align: center;
+  background: #f8f8f8;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .special-offer h2 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.centro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .offer-products {
-    display: flex;
-    justify-content: center;
+  width: 95%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
 }
 
 .product {
-    margin: 0 15px;
+  width: 232px;
+  margin: 0 15px;
 }
 
 .product img {
-    width: 150px;
-    display: block;
-    margin: 0 auto;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.product-name {
+  color: #000;
+  font-weight: 500;
+  overflow: hidden;
+  text-align: left;
+  display: block;
+  height: 42px;
+  font-size: 16px;
+  margin: 10px auto 12px;
+}
+
+.old-price {
+  color: #a7a9ac;
+  font-size: 12px;
+  text-decoration: line-through;
+  display: block;
+  margin-right: 5px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  height: 16px;
+  line-height: 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.price {
+  color: #ec008c;
+  font-size: 16px;
+  padding: 5px 0;
+  text-align: left;
+  display: block;
+  font-weight: 500;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.installments {
+  display: block;
+  height: 17px;
+  text-align: left;
+  margin: 0 0 15px 0;
+  color: #a7a9ac;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 @media (min-width: 1280px) and (max-width: 1600px) {

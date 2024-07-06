@@ -25,13 +25,14 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <!-- <link rel="stylesheet" href="public/assets/css/style_banner-02.css"> -->
     <link rel="stylesheet" href="public/assets/css/style_banner-03.css">
     <link rel="stylesheet" href="public/assets/css/style_produtos.css">
-    <!-- <link rel="stylesheet" href="public/assets/css/style_detalhes.css"> -->
-    <!-- <link rel="stylesheet" href="public/assets/css/style_login.css"> -->
+
+    <link rel="stylesheet" href="public/assets/css/style_login.css">
     <!-- <link rel="stylesheet" href="public/assets/css/style_cadastro_usuario.css"> -->
     <!-- <link rel="stylesheet" href="public/assets/css/style_perfil_usuario.css"> -->
-    <!-- <link rel="stylesheet" href="public/assets/css/style_carrinho.css"> -->
-    <?php if ($urlAtual === 'http://localhost/topMotos/categoria' || $urlAtual === 'http://localhost/topMotos/produtos' || $urlAtual === 'http://localhost/topMotos/pesquisa') { ?>
+    <link rel="stylesheet" href="public/assets/css/style_carrinho.css">
+    <?php if ($urlAtual === 'http://localhost/topMotos/categoria' || $urlAtual === 'http://localhost/topMotos/produtos' || $urlAtual === 'http://localhost/topMotos/pesquisa' || $urlAtual === 'http://localhost/topMotos/detalhes') { ?>
     <!-- Este estilo serve para a tela de Categorias, SubCategorias e Pesquisa -->
+    <link rel="stylesheet" href="public/assets/css/style_detalhes.css">
     <link rel="stylesheet" href="public/assets/css/style_categoria.css">
     <?php } ?>
     <link rel="stylesheet" href="public/assets/css/style_footer.css">
@@ -120,7 +121,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                             <i class="fas fa-user" style="margin-right:10px;"></i> Entre ou cadastrar-se
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="carrinho">
                         <div style="display:flex; flex-direction:row; text-align:left; align-items:center;">
                             <i class="fas fa-shopping-bag" style="margin-right:10px;"></i> Minhas compras
                             </br>R$ 0,00 (Subtotal)

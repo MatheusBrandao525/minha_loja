@@ -61,9 +61,9 @@ require 'components/header.php';
                 <div class="linha_carrinho"><span>Frete:</span> <span>R$ 00,00</span></div>
                 <div class="linha_carrinho total"><span>Total:</span> <span>R$ 00,00</span></div>
             </div>
-            <div class="acao_carrinho">
+            <a href="pagamento" class="acao_carrinho">
                 <button id="finalizar_pedido">Finalizar Pedido</button>
-            </div>
+</a>
         </div>
 
     </div>

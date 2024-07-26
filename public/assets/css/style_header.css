@@ -23,7 +23,7 @@
   max-width: 100%;
 }
 
-.container {
+.container-header {
   display: flex;
   justify-content: center;
   width: 90%;
@@ -62,7 +62,7 @@
   padding: 10px 0;
 }
 
-.logo-bar.container {
+.logo-bar.container-header {
   display: flex;
   justify-content: space-evenly !important;
 }

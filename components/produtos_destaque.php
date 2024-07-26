@@ -8,7 +8,9 @@ $produtosEmDestaque = $produtoModel->buscarProdutosEmDestaque();
         <h2>Ofertas</h2>
         <div class="centro">
             <div class="offer-products">
-                <div class="product">
+                <form method="post" action="detalhes" class="product">
+                    <input type="hidden" name="produto-id" value="<?php echo $produto['produto_id'];?>">
+                    <button type="submit">
                     <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 1">
                     <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
                     <div class="precos">
@@ -16,7 +18,8 @@ $produtosEmDestaque = $produtoModel->buscarProdutosEmDestaque();
                         <div class="price">Por: 79,99</div>
                         <div class="installments">5x de 16,00 sem juros</div>
                     </div>
-                </div>
+                    </button>
+                </form>
                 <div class="product">
                     <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
                     <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>

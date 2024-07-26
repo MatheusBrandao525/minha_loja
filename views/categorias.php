@@ -4,7 +4,7 @@ require 'components/header.php';
 
 ?>
 <div class="categoria-container">
-    <div class="container">
+    <div class="container-categorias">
 
         <div class="titulo-categoria">
             <h2>Titulo da Categoria</h2>

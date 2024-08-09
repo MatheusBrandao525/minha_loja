@@ -57,7 +57,7 @@
 }
 
 .logo-bar {
-  background:#131313;
+  background: #131313;
   /* border-bottom: 1px solid #ccc; */
   padding: 10px 0;
 }
@@ -151,6 +151,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.entraroucadastrar {
+  display: flex;
+  flex-direction: row;
 }
 
 .user-actions a {

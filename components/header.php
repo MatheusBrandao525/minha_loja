@@ -18,8 +18,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="public/assets/css/style_header.css">
     <link rel="stylesheet" href="public/assets/css/style_banner.css">
     <!-- <link rel="stylesheet" href="public/assets/css/style_banner-02.css"> -->
@@ -98,12 +97,8 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                                 <div class="field search">
                                     <!-- <label class="label" for="search" data-role="minisearch-label"><span>Pesquisa</span></label> -->
                                     <div class="control has-icon">
-                                        <input id="search" type="text" name="q" value=""
-                                            placeholder="Digite o que está buscando..." class="input-text"
-                                            maxlength="128" role="combobox" aria-haspopup="false"
-                                            aria-autocomplete="both" autocomplete="off" aria-expanded="false">
-                                        <button type="submit" class="search-btn"><i
-                                                class="fas fa-search search-icon"></i></button>
+                                        <input id="search" type="text" name="q" value="" placeholder="Digite o que está buscando..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
+                                        <button type="submit" class="search-btn"><i class="fas fa-search search-icon"></i></button>
                                         <div id="search_autocomplete" class="search-autocomplete"></div>
                                     </div>
                                 </div>
@@ -114,7 +109,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     </div>
                 </nav>
                 <div class="user-actions">
-                    <a href="#" style="margin-right:20px;">
+                    <a href="login" style="margin-right:20px;">
                         <div style="display:flex; flex-direction:row; text-align:left; align-items:center;">
                             <i class="fas fa-user" style="margin-right:10px;"></i> Entre ou cadastrar-se
                         </div>

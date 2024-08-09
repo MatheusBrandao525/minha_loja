@@ -1,10 +1,13 @@
 <?php
 include 'components/header.php';
 ?>
-<div class="container">
-    <div class="conteiner-titulo-detalhes">
-
-
+<style>
+    .container {
+        display: flex;
+        flex-direction: row !important;
+    }
+</style>
+<div class="conteiner-titulo-detalhes">
         <!-- Título do Produto -->
         <div class="titulo-produto-detalhes">
             <h2><i class="fas fa-home"></i> Início / Smartphone Modelo XYZ</h2>

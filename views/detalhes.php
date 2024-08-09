@@ -1,7 +1,12 @@
 <?php
 include 'components/header.php';
 ?>
-
+<style>
+    .container {
+        display: flex;
+        flex-direction: row !important;
+    }
+</style>
 <div class="conteiner-titulo-detalhes">
 
 
@@ -304,27 +309,27 @@ include 'components/footer.php';
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicialmente marca a primeira estrela como ativa ao carregar a página
-    const stars = document.querySelectorAll('.icone-estrela-avaliacao');
-    stars[0].classList.add('ativo'); // Certifique-se de que a primeira estrela esteja ativa por padrão
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicialmente marca a primeira estrela como ativa ao carregar a página
+        const stars = document.querySelectorAll('.icone-estrela-avaliacao');
+        stars[0].classList.add('ativo'); // Certifique-se de que a primeira estrela esteja ativa por padrão
 
-    stars.forEach(function(star, index) {
-        star.addEventListener('click', function() {
-            // Remove a classe 'ativo' de todas as estrelas
-            stars.forEach(function(innerStar) {
-                innerStar.classList.remove('ativo');
+        stars.forEach(function(star, index) {
+            star.addEventListener('click', function() {
+                // Remove a classe 'ativo' de todas as estrelas
+                stars.forEach(function(innerStar) {
+                    innerStar.classList.remove('ativo');
+                });
+
+                // Adiciona a classe 'ativo' para a estrela clicada e todas as anteriores a ela
+                for (let i = 0; i <= index; i++) {
+                    stars[i].classList.add('ativo');
+                }
+
+                console.log("Avaliação: " + (index + 1)); // Log da avaliação selecionada
             });
-
-            // Adiciona a classe 'ativo' para a estrela clicada e todas as anteriores a ela
-            for (let i = 0; i <= index; i++) {
-                stars[i].classList.add('ativo');
-            }
-
-            console.log("Avaliação: " + (index + 1)); // Log da avaliação selecionada
         });
     });
-});
 </script>
 
 

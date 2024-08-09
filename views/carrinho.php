@@ -55,15 +55,17 @@ require 'components/header.php';
                 <input type="text" placeholder="Código do cupom" id="codigo_cupom">
                 <button id="aplicar_cupom">Usar</button>
             </div>
-            <div class="detalhes_carrinho">
-                <div class="linha_carrinho"><span>Total Produtos:</span> <span>R$ 00,00</span></div>
-                <div class="linha_carrinho"><span>Desconto:</span> <span>R$ 00,00</span></div>
-                <div class="linha_carrinho"><span>Frete:</span> <span>R$ 00,00</span></div>
-                <div class="linha_carrinho total"><span>Total:</span> <span>R$ 00,00</span></div>
-            </div>
-            <div class="acao_carrinho">
-                <button id="finalizar_pedido">Finalizar Pedido</button>
-            </div>
+            <form action="checkout" method="post">
+                <div class="detalhes_carrinho">
+                    <div class="linha_carrinho"><span>Total Produtos:</span> <span>R$ 00,00</span></div>
+                    <div class="linha_carrinho"><span>Desconto:</span> <span>R$ 00,00</span></div>
+                    <div class="linha_carrinho"><span>Frete:</span> <span>R$ 00,00</span></div>
+                    <div class="linha_carrinho total"><span>Total:</span> <span>R$ 00,00</span></div>
+                </div>
+                <div class="acao_carrinho">
+                    <button id="finalizar_pedido">Finalizar Pedido</button>
+                </div>
+            </form>
         </div>
 
     </div>

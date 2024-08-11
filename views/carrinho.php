@@ -1,6 +1,25 @@
 <?php
 require 'components/header.php';
 ?>
+<style>
+    .excluir_produto_carrinho{
+        height: 40px;
+        width: 40px;
+        background-color: red;
+        border: none;
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .excluir_produto_carrinho:hover{
+        background-color: #d11709;
+    }
+
+    .header_total{
+        padding-right: 65px;
+    }
+</style>
 <div class="row-carrinho">
     <div class="header_carrinho">
         <span>Carrinho</span>
@@ -12,40 +31,31 @@ require 'components/header.php';
                 <div class="header_item nome_item_carrinho">Nome</div>
                 <div class="header_item">Quantidade</div>
                 <div class="header_item">V. Unitário</div>
-                <div class="header_item">Total</div>
+                <div class="header_item header_total">Total</div>
             </div>
             <div class="carrinho_item">
                 <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto" class="produto_imagem">
                 <span class="produto_nome">Nome do Produto</span>
                 <div class="quantidade_controle">
-                    <button class="quantidade_menos">-</button>
+                    <form action="alterar_quantidade" method="post">
+                    <input type="hidden" value="1" name="quantidade">
+                    <input type="hidden" value="menos" name="alterar">
+                    <input type="hidden" value="<?php echo $produto['produto_id'];?>" name="produto_id">
+                        <button class="quantidade_menos">-</button>
+                    </form>
                     <span class="quantidade">1</span>
-                    <button class="quantidade_mais">+</button>
+                    <form action="alterar_quantidade" method="post">
+                    <input type="hidden" value="mais" name="alterar">
+                    <input type="hidden" value="1" name="quantidade">
+                    <input type="hidden" value="<?php echo $produto['produto_id'];?>" name="produto_id">
+                        <button class="quantidade_mais">+</button>
+                    </form>
                 </div>
                 <span class="valor_unitario">R$ 00,00</span>
                 <span class="valor_total">R$ 00,00</span>
-            </div>
-            <div class="carrinho_item">
-                <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto" class="produto_imagem">
-                <span class="produto_nome">Nome do Produto</span>
-                <div class="quantidade_controle">
-                    <button class="quantidade_menos">-</button>
-                    <span class="quantidade">1</span>
-                    <button class="quantidade_mais">+</button>
-                </div>
-                <span class="valor_unitario">R$ 00,00</span>
-                <span class="valor_total">R$ 00,00</span>
-            </div>
-            <div class="carrinho_item">
-                <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto" class="produto_imagem">
-                <span class="produto_nome">Nome do Produto</span>
-                <div class="quantidade_controle">
-                    <button class="quantidade_menos">-</button>
-                    <span class="quantidade">1</span>
-                    <button class="quantidade_mais">+</button>
-                </div>
-                <span class="valor_unitario">R$ 00,00</span>
-                <span class="valor_total">R$ 00,00</span>
+                <span>
+                    <button class="excluir_produto_carrinho">X</button>
+                </span>
             </div>
             <!-- Repita .carrinho_item para cada produto no carrinho -->
         </div>
@@ -73,4 +83,4 @@ require 'components/header.php';
 </div>
 <?php
 require 'components/footer.php';
-?>
+ ?>

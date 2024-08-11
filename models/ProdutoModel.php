@@ -16,7 +16,7 @@ class ProdutoModel
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function buscarProdutosPorCategoria()
@@ -78,13 +78,13 @@ class ProdutoModel
     public function buscarProdutosPorPesquisa($pesquisa)
     {
         $pesquisaComCuringa = "%$pesquisa%";
-        
+
         $sql = 'SELECT * FROM produtos WHERE nome_produto LIKE :pesquisa OR descricao LIKE :pesquisa';
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindParam(':pesquisa', $pesquisaComCuringa);
-        
+
         $stmt->execute();
-        
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

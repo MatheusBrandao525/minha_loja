@@ -6,7 +6,7 @@ class Conexao
     private $servidor = "localhost";
     private $usuario = "root";
     private $senha = "1exagon1@";
-    private $dbname = "topmotos";
+    private $dbname = "colt_bella";
 
     private function __construct()
     {

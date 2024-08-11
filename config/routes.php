@@ -19,7 +19,8 @@ $routes = [
     '/minha_loja/erro_404' => 'ErroController@redirecionarParaTelaDeErro404',
     '/minha_loja/produtos' => 'ProdutoController@apresentarTodosOsProdutos',
     '/minha_loja/alterar_quantidade' => 'CarrinhoController@alterarQuantidadeCarrinho',
-    '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado'
+    '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado',
+    '/minha_loja/teste-produto' => 'ProdutoController@exibirProdutosEmDestaque'
 ];
 
 if (isset($_GET['url'])) {

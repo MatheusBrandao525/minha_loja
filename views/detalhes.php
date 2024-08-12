@@ -2,10 +2,8 @@
 include 'components/header.php';
 if (isset($_SESSION['detalhesProduto'])) {
     $detalhesProduto = $_SESSION['detalhesProduto'];
-    // Exiba os detalhes do produto aqui
 } else {
-    // Redireciona para a página de produtos se os detalhes não estiverem disponíveis
-    header("Location: produtos");
+    header("Location:produtos");
     exit;
 }
 ?>
@@ -15,7 +13,7 @@ if (isset($_SESSION['detalhesProduto'])) {
         flex-direction: row !important;
     }
 
-    .conteiner-titulo-detalhes{
+    .conteiner-titulo-detalhes {
         padding-top: 1.3rem;
     }
 

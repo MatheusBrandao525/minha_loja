@@ -4,6 +4,7 @@ class ProdutoController
 {
     public function redirecionaParaTelaDetalhes()
     {
+        session_start();
         // Captura o ID do produto a partir do POST
         if (isset($_POST['produto-id'])) {
             $produtoId = $_POST['produto-id'];

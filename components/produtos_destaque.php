@@ -8,20 +8,21 @@ $produtosEmDestaque = $produtoController->exibirProdutosEmDestaque();
         <h2>Ofertas</h2>
         <div class="centro">
             <div class="offer-products">
-                <?php while ($produtosEmDestaque) { ?>
+                <?php foreach ($produtosEmDestaque as $produtoDestaque) { ?>
                     <form method="post" action="detalhes" class="product">
-                        <input type="hidden" name="produto-id" value="<?php echo $produto['produto_id']; ?>">
+                        <input type="hidden" name="produto-id" value="<?php echo $produtoDestaque['produto_id']; ?>">
                         <button type="submit">
-                            <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 1">
-                            <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
+                            <img src="public/assets/img/produto-exemplo.jpeg" alt="<?php echo htmlspecialchars($produtoDestaque['nome']); ?>">
+                            <p class="product-name"><?php echo htmlspecialchars($produtoDestaque['nome']); ?></p>
                             <div class="precos">
-                                <div class="old-price">De 99,99</div>
-                                <div class="price">Por: 79,99</div>
-                                <div class="installments">5x de 16,00 sem juros</div>
+                                <div class="old-price">De <?php echo number_format($produtoDestaque['preco_unitario'], 2, ',', '.'); ?></div>
+                                <div class="price">Por: <?php echo number_format($produtoDestaque['preco_promocao'], 2, ',', '.'); ?></div>
+                                <div class="installments">5x de <?php echo number_format($produtoDestaque['preco_promocao'] / 5, 2, ',', '.'); ?> sem juros</div>
                             </div>
                         </button>
                     </form>
                 <?php } ?>
+
             </div>
         </div>
     </div>

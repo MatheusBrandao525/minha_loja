@@ -31,9 +31,9 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <?php if ($urlAtual === 'http://localhost/minha_loja/categoria') { ?> <link rel="stylesheet" href="public/assets/css/style_categoria.css"> <?php } ?> 
     <?php if ($urlAtual === 'http://localhost/minha_loja/produtos') { ?> <?php } ?> 
     <?php if ($urlAtual === 'http://localhost/minha_loja/pesquisa') { ?> <?php } ?> 
-    <?php if ($urlAtual === 'http://localhost/minha_loja/detalhes') { ?> <link rel="stylesheet" href="public/assets/css/style_detalhes.css"> <link rel="stylesheet" href="public/assets/css/style_categoria.css"> <?php } ?>
+    <?php if ($urlAtual === 'http://localhost/minha_loja/detalhesproduto') { ?> <link rel="stylesheet" href="public/assets/css/style_detalhes.css"> <link rel="stylesheet" href="public/assets/css/style_categoria.css"> <?php } ?>
     <link rel="stylesheet" href="public/assets/css/style_footer.css">
-    <title>NomeLoja</title>
+    <title>Colt Bella</title>
 </head>
 
 <body>

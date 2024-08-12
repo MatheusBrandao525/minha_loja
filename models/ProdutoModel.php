@@ -1,5 +1,7 @@
 <?php
 
+require_once 'core/Conexao.php';
+
 class ProdutoModel
 {
 
@@ -15,10 +17,10 @@ class ProdutoModel
         $sql = 'SELECT * FROM produtos WHERE destaque = 1';
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
     public function buscarProdutosPorCategoria()
     {
         $categoriaId = $_POST['idCategoria'];

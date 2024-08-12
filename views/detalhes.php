@@ -1,10 +1,151 @@
 <?php
 include 'components/header.php';
+if (isset($_SESSION['detalhesProduto'])) {
+    $detalhesProduto = $_SESSION['detalhesProduto'];
+    // Exiba os detalhes do produto aqui
+} else {
+    // Redireciona para a página de produtos se os detalhes não estiverem disponíveis
+    header("Location: produtos");
+    exit;
+}
 ?>
 <style>
     .container {
         display: flex;
         flex-direction: row !important;
+    }
+
+    .conteiner-titulo-detalhes{
+        padding-top: 1.3rem;
+    }
+
+    .radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        /* max-width: 600px; */
+        user-select: none;
+
+        &>* {
+            margin: .5rem 0.5rem;
+        }
+    }
+
+    .radio-group-legend {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #9c9c9c;
+        text-align: center;
+        line-height: 1.125;
+        margin-bottom: 1.25rem;
+    }
+
+    .radio {
+        width: 50px;
+        height: 50px;
+    }
+
+    .radio-input {
+        clip: rect(0 0 0 0);
+        clip-path: inset(100%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+
+        &:checked+.radio-tile {
+            border-color: #f1b5b8;
+            box-shadow: 0 5px 10px rgba(#000, 0.1);
+            color: #f1b5b8;
+
+            &:before {
+                transform: scale(1);
+                opacity: 1;
+                background-color: #f1b5b8;
+                border-color: #f1b5b8;
+            }
+
+            .radio-icon,
+            .radio-label {
+                color: #f1b5b8;
+            }
+        }
+
+        &:focus+.radio-tile {
+            border-color: #f1b5b8;
+            box-shadow: 0 5px 10px rgba(#000, 0.1), 0 0 0 4px #f1b5b8;
+
+            &:before {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    }
+
+    .radio-tile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* width: 1rem; */
+        padding: 10px;
+        /* min-height: ; */
+        border-radius: 50%;
+        border: 2px solid #333333;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(#000, 0.1);
+        transition: 0.15s ease;
+        cursor: pointer;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #f1b5b8;
+            background-color: #fff;
+            border-radius: 50%;
+            top: 0.25rem;
+            left: 0.25rem;
+            opacity: 0;
+            transform: scale(0);
+            transition: 0.25s ease;
+            /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E"); */
+            background-size: 12px;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+        }
+
+        &:hover {
+            border-color: #f1b5b8;
+
+            &:before {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    }
+
+    .radio-icon {
+        transition: .375s ease;
+        color: #f1b5b8;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    .radio-label {
+        color: #707070;
+        transition: .375s ease;
+        text-align: center;
     }
 </style>
 <div class="conteiner-titulo-detalhes">
@@ -20,7 +161,13 @@ include 'components/header.php';
         <div class="imagem-produto">
             <img src="public/assets/img/placeholder.jpg" alt="Produto XYZ">
         </div>
-        <div class="info-produto">
+        <form method="post" action="adicionar-carrinho" class="info-produto">
+            <input type="hidden" value="10" name="vlrfrete">
+            <input type="hidden" value="<?php echo $detalhesProduto['nome']; ?>" name="nomeproduto">
+            <input type="hidden" value="<?php echo $detalhesProduto['preco_unitario']; ?>" name="vlrunitario">
+            <input type="hidden" value="<?php echo $detalhesProduto['preco_custo']; ?>" name="vlrcusto">
+            <input type="hidden" value="1" name="usuarioid">
+            <input type="hidden" value="<?php echo $detalhesProduto['produto_id']; ?>" name="produtoid">
             <h2 class="nome-produto-detalhes">Smartphone Modelo XYZ</h2>
             <div class="flex-alinhado">
                 <div class="coluna-pequena">
@@ -52,16 +199,66 @@ include 'components/header.php';
                 <span><i class="fas fa-share"></i> Compartilhar</span>
                 <span><i class="fas fa-heart"></i> Adicionar aos favoritos </span>
             </div>
+
+            <div class="mt-3 radio-group" style="display: flex; flex-direction: row;">
+                <div class="radio">
+                    <label class="radio-wrapper">
+                        <input type="radio" name="tamanhosmodelos" value="XL" class="radio-input" />
+                        <span class="radio-tile">
+                            <span class="radio-label">XL</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label class="radio-wrapper">
+                        <input type="radio" name="tamanhosmodelos" value="M" class="radio-input" />
+                        <span class="radio-tile">
+                            <span class="radio-label">M</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label class="radio-wrapper">
+                        <input type="radio" name="tamanhosmodelos" value="P" class="radio-input" />
+                        <span class="radio-tile">
+                            <span class="radio-label">P</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label class="radio-wrapper">
+                        <input type="radio" name="tamanhosmodelos" value="G" class="radio-input" />
+                        <span class="radio-tile">
+                            <span class="radio-label">G</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label class="radio-wrapper">
+                        <input type="radio" name="tamanhosmodelos" value="GG" class="radio-input" />
+                        <span class="radio-tile">
+                            <span class="radio-label">GG</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+
             <div class="quantidade-add-carrinho">
                 <div class="field qty">
                     <div class="control-qty">
-                        <div class="control"><input type="number" name="qty" id="qty" min="1" value="1" title="Qtd" class="input-text qty" data-validate="{&quot;required-number&quot;:true,&quot;validate-item-quantity&quot;:{&quot;minAllowed&quot;:1,&quot;maxAllowed&quot;:10000}}"></div><span class="plus" title="Increase the quantity"><i class="fa-solid fa-caret-up"></i></span> <span class="minus" title="Reduce the quantity"><i class="fa-solid fa-caret-down"></i></span>
+                        <div class="control">
+                            <input type="number" name="qty" id="qty" min="1" value="1" title="Qtd" class="input-text qty" data-validate="{&quot;required-number&quot;:true,&quot;validate-item-quantity&quot;:{&quot;minAllowed&quot;:1,&quot;maxAllowed&quot;:10000}}">
+                        </div>
+                        <span class="plus" title="Increase the quantity"><i class="fa-solid fa-caret-up"></i></span>
+                        <span class="minus" title="Reduce the quantity"><i class="fa-solid fa-caret-down"></i></span>
+
                     </div>
                 </div>
-                <button id="btnAdicionarCarrinho" style="background-color: #359a29;"><i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho</button>
+                <button type="submit" id="btnAdicionarCarrinho" style="background-color: #359a29;"><i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho</button>
             </div>
 
-        </div>
+        </form>
     </div>
 </div>
 
@@ -349,6 +546,21 @@ include 'components/footer.php';
     });
 </script>
 
+<script>
+    document.querySelector('.plus').addEventListener('click', function() {
+        var qtyInput = document.getElementById('qty');
+        var currentValue = parseInt(qtyInput.value);
+        qtyInput.value = currentValue + 1;
+    });
+
+    document.querySelector('.minus').addEventListener('click', function() {
+        var qtyInput = document.getElementById('qty');
+        var currentValue = parseInt(qtyInput.value);
+        if (currentValue > 1) {
+            qtyInput.value = currentValue - 1;
+        }
+    });
+</script>
 
 </body>
 

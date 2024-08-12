@@ -1,5 +1,11 @@
 <?php
 require 'components/header.php';
+require_once 'controllers/CarrinhoController.php';
+$carrinhoController = new CarrinhoController();
+$produtosCarrinho = $carrinhoController->exibirProdutosNoCarrinho(1);
+echo '<pre>';
+var_dump($produtosCarrinho);
+exit;
 ?>
 <style>
     .excluir_produto_carrinho{
@@ -33,9 +39,10 @@ require 'components/header.php';
                 <div class="header_item">V. Unitário</div>
                 <div class="header_item header_total">Total</div>
             </div>
+            <?php foreach($produtosCarrinho as $produto): ?>
             <div class="carrinho_item">
                 <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto" class="produto_imagem">
-                <span class="produto_nome">Nome do Produto</span>
+                <span class="produto_nome"><?php echo $produto['nome_produto'];?></span>
                 <div class="quantidade_controle">
                     <form action="alterar_quantidade" method="post">
                     <input type="hidden" value="1" name="quantidade">
@@ -43,7 +50,7 @@ require 'components/header.php';
                     <input type="hidden" value="<?php echo $produto['produto_id'];?>" name="produto_id">
                         <button class="quantidade_menos">-</button>
                     </form>
-                    <span class="quantidade">1</span>
+                    <span class="quantidade"><?php echo $produto['quantidade'];?></span>
                     <form action="alterar_quantidade" method="post">
                     <input type="hidden" value="mais" name="alterar">
                     <input type="hidden" value="1" name="quantidade">
@@ -51,13 +58,13 @@ require 'components/header.php';
                         <button class="quantidade_mais">+</button>
                     </form>
                 </div>
-                <span class="valor_unitario">R$ 00,00</span>
+                <span class="valor_unitario">R$ <?php echo number_format($produto['preco_unitario'],2,',','.');?></span>
                 <span class="valor_total">R$ 00,00</span>
                 <span>
                     <button class="excluir_produto_carrinho">X</button>
                 </span>
             </div>
-            <!-- Repita .carrinho_item para cada produto no carrinho -->
+            <?php endforeach; ?>
         </div>
 
         <div class="info_carrinho">

@@ -9,8 +9,10 @@ $routes = [
     '/minha_loja/cadastro' => 'CadastroController@redirecionaParaTelaDeCadastro',
     '/minha_loja/categoria' => 'CategoriaController@redirecionarParaTelaCategoria',
     '/minha_loja/detalhes' => 'ProdutoController@redirecionaParaTelaDetalhes',
+    '/minha_loja/detalhesproduto' => 'ProdutoController@detalhesProduto',
     '/minha_loja/conta' => 'PerfilController@apresentarTelaPerfil',
     '/minha_loja/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
+    '/minha_loja/adicionar-carrinho' => 'CarrinhoController@adicionarAoCarrinho',
     '/minha_loja/pagamento' => 'CheckoutController@apresentarTelaCheckout',
     '/minha_loja/subCategoria' => 'CategoriaController@redirecionarParaSubCategorias',
     '/minha_loja/detalhesPedido' => 'PerfilController@redirecionaParaDetalhesPedido',
@@ -21,6 +23,7 @@ $routes = [
     '/minha_loja/alterar_quantidade' => 'CarrinhoController@alterarQuantidadeCarrinho',
     '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado',
     '/minha_loja/teste-produto' => 'ProdutoController@exibirProdutosEmDestaque'
+    
 ];
 
 if (isset($_GET['url'])) {

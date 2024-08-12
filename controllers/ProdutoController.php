@@ -4,6 +4,29 @@ class ProdutoController
 {
     public function redirecionaParaTelaDetalhes()
     {
+        // Captura o ID do produto a partir do POST
+        if (isset($_POST['produto-id'])) {
+            $produtoId = $_POST['produto-id'];
+
+
+            // Busca os detalhes do produto
+            $produtoModel = new ProdutoModel();
+            $detalhesProduto = $produtoModel->buscarDadosProdutoPorId($produtoId);
+
+            // Armazena os detalhes em uma sessão
+            $_SESSION['detalhesProduto'] = $detalhesProduto;
+            // Redireciona para a página de detalhes
+            header('location:detalhesproduto');
+            exit;
+        } else {
+            // Se não houver produto ID, redireciona para a página de produtos
+            echo 'erro esta aqui!';
+            exit;
+        }
+    }
+
+    public function detalhesProduto()
+    {
         include ROOT_PATH . '/views/detalhes.php';
     }
 
@@ -16,5 +39,13 @@ class ProdutoController
     {
         $produtoModel = new ProdutoModel();
         $produtosEmDestaque = $produtoModel->buscarProdutosEmDestaque();
+        return $produtosEmDestaque;
+    }
+
+    public function exibeDadosProdutoPorId($produtoId)
+    {
+        $produtoModel = new ProdutoModel();
+        $dadosProdutoPorId = $produtoModel->buscarDadosProdutoPorId($produtoId);
+        return $dadosProdutoPorId;
     }
 }

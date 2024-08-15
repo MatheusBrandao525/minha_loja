@@ -1,7 +1,9 @@
 <?php
+require '../vendor/autoload.php';
 require 'components/header.php';
 require_once 'controllers/CarrinhoController.php';
-require_once 'core/Correios.php'; // Inclua a classe Correios
+
+use \Core\webservice\Correios;
 
 $carrinhoController = new CarrinhoController();
 $produtosCarrinho = $carrinhoController->exibirProdutosNoCarrinho(1);

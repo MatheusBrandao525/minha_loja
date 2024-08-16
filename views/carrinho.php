@@ -1,62 +1,11 @@
 <?php
-require '../vendor/autoload.php';
 require 'components/header.php';
 require_once 'controllers/CarrinhoController.php';
-
-use \Core\webservice\Correios;
 
 $carrinhoController = new CarrinhoController();
 $produtosCarrinho = $carrinhoController->exibirProdutosNoCarrinho(1);
 $totalCarrinho = 0;
 $valorFrete = 0;
-
-// Instancie a classe Correios
-$correios = new Correios();
-
-// CEP de origem (exemplo)
-$cepOrigem = '76935-000';
-
-// CEP de destino (exemplo)
-$cepDestino = '78048-990';
-
-// Valores mínimos para o cálculo do frete
-$pesoMinimo = 0.3; // Peso mínimo em kg
-$comprimentoMinimo = 16; // Comprimento mínimo em cm
-$alturaMinima = 2; // Altura mínima em cm
-$larguraMinima = 11; // Largura mínima em cm
-
-foreach ($produtosCarrinho as $produto) {
-    $valorTotalProduto = $produto['quantidade'] * $produto['preco_unitario'];
-    $totalCarrinho += $valorTotalProduto;
-
-    // Calcular o frete para cada produto
-    $frete = $correios->calcularFrete(
-        Correios::SERVICO_SEDEX,  // Tipo de serviço
-        $cepOrigem,                // CEP de origem
-        $cepDestino,               // CEP de destino
-        $pesoMinimo,               // Peso do produto
-        Correios::FORMATO_CAIXA_PACOTE, // Formato do pacote
-        $comprimentoMinimo,        // Comprimento
-        $alturaMinima,             // Altura
-        $larguraMinima,            // Largura
-        0,                         // Diâmetro
-        false,                     // Mão própria
-        0,                         // Valor declarado
-        false                      // Aviso de recebimento
-    );
-
-    if ($frete) {
-        // Somar o valor do frete ao total
-        $valorFrete += (float)$frete->Valor;
-    } else {
-        // Log de erro para verificação
-        echo 'Erro ao calcular o frete: ', print_r($frete, true);
-    }
-}
-
-// Verificar a resposta da API
-echo 'Valor do frete calculado: ', var_dump($valorFrete);
-exit;
 
 ?>
 

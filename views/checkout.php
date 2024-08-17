@@ -1,18 +1,15 @@
 <?php
-require 'core/Conexao.php';
-
+require_once 'vendor/autoload.php';
+require 'controllers/ClienteController.php';
+$clienteController = new ClienteController();
 error_reporting(E_ALL ^ E_DEPRECATED);
-require_once 'vendor/autoload.php'; // Caminho para o autoload do Composer
 
+$idUsuarioLogado = isset($_POST['idusuario']) ? $_POST['idusuario'] : null;
+$valorComDesconto = isset($_POST['valorcomdesconto']) ? (float)$_POST['valorcomdesconto'] : 0;
+$valorTotalSemDesconto = isset($_POST['totalpedidosemdesconto']) ? (float)$_POST['totalpedidosemdesconto'] : 0;
+$valorFrete = isset($_POST['valorFrete']) ? (float)$_POST['valorFrete'] : 0;
 
-$idUsuarioLogado = $_POST['idusuario'];
-
-if ($_POST['valorcomdesconto'] != 0 && $_POST['valorcomdesconto'] >= 0) {
-    $valorComDesconto = $_POST['valorcomdesconto'];
-    $valorTotal = (float)$valorComDesconto;
-} else {
-    $valorTotal = (float)$_POST['totalpedidosemdesconto'];
-}
+$valorTotal = $valorComDesconto ? $valorComDesconto : $valorTotalSemDesconto;
 
 if (!empty($_POST['cupomValor'])) {
     $codigoCupom = $_POST['cupomValor'];
@@ -20,17 +17,11 @@ if (!empty($_POST['cupomValor'])) {
     $codigoCupom = 'vazio';
 }
 
-require '../database/consultas/consultar_cupom_por_codigo.php';
-require '../database/consultas/consulta_carrinho.php';
-require '../database/consultas/consulta_cliente_logado.php';
+$dadosUsuario = $clienteController->exibirDadosClienteLogado($idUsuarioLogado);
 
 $nomeUsuario = $dadosUsuario['nome'];
-/* $dotenv = Dotenv\Dotenv::createImmutable('../../'); // Caminho para o diretório do seu arquivo .env
-$dotenv->load(); // Carrega as variáveis de ambiente
- */
-MercadoPago\SDK::setAccessToken($_ENV['MP_ACCESS_TOKEN']);
 
-// Cria um objeto de preferência
+MercadoPago\SDK::setAccessToken("TEST-6819797163859486-042622-0bb4b98962c0524f7c5f20053166a16b-669050670");
 $preference = new MercadoPago\Preference();
 
 
@@ -55,7 +46,7 @@ $preference->payer = (object) [
         "number" => $dadosUsuario['cpf']
     ],
     "address" => [
-        "street_name" => $dadosUsuario['rua'],
+        "street_name" => $dadosUsuario['endereco'],
         "street_number" => $dadosUsuario['numero'],
         "zip_code" => $dadosUsuario['cep']
     ],
@@ -71,8 +62,6 @@ $preference->notification_url = "https://lizziimports.com.br/config/notificacoes
 $preference->statement_descriptor = "LIZZIIMPORTS";
 $preference->external_reference = $idUsuarioLogado;
 $preference->save();
-
-/* echo $preference->id; */
 
 ?>
 <!DOCTYPE html>
@@ -93,7 +82,7 @@ $preference->save();
         }
 
         .row-container {
-            background-color: #f1b5b8;
+            background-color: #0f0f0f !important;
             border-radius: 20px;
             padding: 4rem;
         }
@@ -109,7 +98,7 @@ $preference->save();
     </style>
 </head>
 
-<body style="background-color: #f1b5b8;">
+<body style="background-color: #0f0f0f;">
     <div class="container mt-5" style="background-color: #fff; padding:2rem;border-radius:20px;">
         <table class="table table-bordered">
             <tbody>
@@ -125,13 +114,13 @@ $preference->save();
                     <td><strong>Nome:</strong></td>
                     <td><?php echo $dadosUsuario['nome']; ?></td>
                     <td><strong>Total Produtos:</strong></td>
-                    <td>R$ <?php echo number_format($subtotal, 2, ',', '.'); ?></td>
+                    <td>R$ <?php echo number_format($valorTotalSemDesconto, 2, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <td><strong>Email:</strong></td>
                     <td><?php echo $dadosUsuario['email']; ?></td>
                     <td><strong>Frete:</strong></td>
-                    <td>R$ <?php echo number_format($frete, 2, ',', '.'); ?></td>
+                    <td>R$ <?php echo number_format($valorFrete, 2, ',', '.'); ?></td>
                 </tr>
                 <?php if (isset($dadosCupom['porcentagem'])) { ?>
                     <tr>
@@ -142,7 +131,7 @@ $preference->save();
                     </tr>
                     <tr>
                         <td><strong>Endereço:</strong></td>
-                        <td><?php echo $dadosUsuario['rua'] . ', ' . $dadosUsuario['numero']; ?></td>
+                        <td><?php echo $dadosUsuario['endereco'] . ', ' . $dadosUsuario['numero']; ?></td>
                         <td><strong>Total Pedido:</strong></td>
                         <td>R$ <?php echo number_format($valorTotal, 2, ',', '.'); ?></td>
                     </tr>
@@ -155,7 +144,7 @@ $preference->save();
                     </tr>
                     <tr>
                         <td><strong>Endereço:</strong></td>
-                        <td><?php echo $dadosUsuario['rua'] . ', ' . $dadosUsuario['numero']; ?></td>
+                        <td><?php echo $dadosUsuario['endereco'] . ', ' . $dadosUsuario['numero']; ?></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -180,7 +169,7 @@ $preference->save();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script>
-        const mp = new MercadoPago("<?= $_ENV['MP_PUBLIC']; ?>", {
+        const mp = new MercadoPago("TEST-e95dc122-b8bc-40dd-8419-ae8f8cb39e40", {
             locale: 'pt-BR'
         });
 
@@ -195,4 +184,5 @@ $preference->save();
         });
     </script>
 </body>
+
 </html>

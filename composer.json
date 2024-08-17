@@ -10,5 +10,9 @@
   },
   "scripts": {
     "test": "./vendor/bin/phpunit --colors=always --testdox test"
+  },
+  "require": {
+    "vlucas/phpdotenv": "^5.5",
+    "mercadopago/dx-php": "2.4.0"
   }
 }

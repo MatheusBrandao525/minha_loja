@@ -10,16 +10,16 @@ $produtosEmDestaque = $produtoController->exibirProdutosEmDestaque();
             <div class="offer-products">
                 <?php foreach ($produtosEmDestaque as $produtoDestaque) { ?>
                     <form method="post" action="detalhes" class="product">
-                        <input type="hidden" name="produto-id" value="<?php echo $produtoDestaque['produto_id']; ?>">
+                        <input type="hidden" name="produto-id" value="<?php echo htmlspecialchars($produtoDestaque['produto_id']); ?>">
                         <button type="submit">
-                            <img src="public/assets/img/produto-exemplo.jpeg" alt="<?php echo htmlspecialchars($produtoDestaque['nome']); ?>">
+                            <img src="<?php echo htmlspecialchars($produtoDestaque['imagem1']); ?>" alt="<?php echo htmlspecialchars($produtoDestaque['nome']); ?>">
                             <p class="product-name"><?php echo htmlspecialchars($produtoDestaque['nome']); ?></p>
-                            <div class="precos">
-                                <div class="old-price">De <?php echo number_format($produtoDestaque['preco_unitario'], 2, ',', '.'); ?></div>
-                                <div class="price">Por: <?php echo number_format($produtoDestaque['preco_promocao'], 2, ',', '.'); ?></div>
-                                <div class="installments">5x de <?php echo number_format($produtoDestaque['preco_promocao'] / 5, 2, ',', '.'); ?> sem juros</div>
-                            </div>
                         </button>
+                        <div class="precos">
+                            <div class="old-price">De <?php echo htmlspecialchars($produtoDestaque['preco_unitario']); ?></div>
+                            <div class="price">Por: <?php echo htmlspecialchars($produtoDestaque['preco_promocao']); ?></div>
+                            <div class="installments">10x de sem juros</div>
+                        </div>
                     </form>
                 <?php } ?>
 

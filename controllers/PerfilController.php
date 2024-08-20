@@ -1,5 +1,5 @@
 <?php
-require 'models/UsuarioModel.php';
+// require 'models/UsuarioModel.php';
 class PerfilController
 {
     public function apresentarTelaPerfil()

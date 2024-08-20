@@ -1,106 +1,27 @@
 <?php
-require_once 'models/ProdutoModel.php';
-$produtoModel = new ProdutoModel();
-$produtosEmDestaque = $produtoModel->buscarProdutosEmDestaque();
+require_once 'controllers/ProdutoController.php';
+$produtoController = new ProdutoController();
+$produtosNovidade = $produtoController->exibirProdutosNovidade();
 ?>
 <section class="special-offer">
     <div class="container-produto-destaque">
-        <h2>novidades</h2>
+        <h2>Novidades</h2>
         <div class="centro">
             <div class="offer-products">
-                <form method="post" action="detalhes" class="product">
-                    <input type="hidden" name="produto-id" value="1">
-                    <button type="submit">
-                        <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 1">
-                        <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    </button>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </form>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="public/assets/img/produto-exemplo.jpeg" alt="Produto 2">
-                    <p class="product-name">Produto para efetuar testes. Produto para efetuar testes.</p>
-                    <div class="precos">
-                        <div class="old-price">De 99,99</div>
-                        <div class="price">Por: 79,99</div>
-                        <div class="installments">5x de 16,00 sem juros</div>
-                    </div>
-                </div>
+                <?php foreach ($produtosNovidade as $produto): ?>
+                    <form method="post" action="detalhes" class="product">
+                        <input type="hidden" name="produto-id" value="<?php echo htmlspecialchars($produto['produto_id']); ?>">
+                        <button type="submit">
+                            <img src="<?php echo htmlspecialchars($produto['imagem1']); ?>" alt="<?php echo htmlspecialchars($produto['nome']); ?>">
+                            <p class="product-name"><?php echo htmlspecialchars($produto['nome']); ?></p>
+                        </button>
+                        <div class="precos">
+                            <div class="old-price">De <?php echo htmlspecialchars($produto['preco_unitario']); ?></div>
+                            <div class="price">Por: <?php echo htmlspecialchars($produto['preco_promocao']); ?></div>
+                            <div class="installments">10x de sem juros</div>
+                        </div>
+                    </form>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

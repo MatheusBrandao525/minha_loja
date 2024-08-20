@@ -2,14 +2,15 @@
 
 require 'utils/Validacoes.php';
 
-class LoginController {
+class LoginController
+{
 
     public function redirecionaParaTelaDeLogin()
     {
         include ROOT_PATH . '/views/login.php';
     }
 
-    public function autenticarUsuario()
+    public function autenticarCliente()
     {
         $emailUsuario = $_POST['txtemail'];
         $senhaUsuario = $_POST['txtsenha'];
@@ -20,7 +21,7 @@ class LoginController {
 
         header('Content-Type: application/json');
         echo json_encode($autenticacao);
-        exit; 
+        exit;
     }
 
     function deslogarUsuario()
@@ -30,7 +31,7 @@ class LoginController {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-    
+
         if (isset($_SESSION['ID']) && $_SESSION['ID'] == $sessaoUsuarioLogado) {
             $_SESSION = array();
 
@@ -40,5 +41,4 @@ class LoginController {
             exit();
         }
     }
-    
 }

@@ -216,4 +216,20 @@
             </style>
         </p>
     </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdown = document.querySelector('.dropdown');
+            var dropdownContent = document.querySelector('.dropdown-content');
+
+            dropdown.addEventListener('click', function(event) {
+                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+                event.stopPropagation();
+            });
+
+            document.addEventListener('click', function() {
+                dropdownContent.style.display = 'none';
+            });
+        });
+    </script>
 </footer>

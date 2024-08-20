@@ -17,10 +17,19 @@ class ProdutoModel
         $sql = 'SELECT * FROM produtos WHERE destaque = 1';
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
-    
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
+    public function buscarProdutosNovidade()
+    {
+        $sql = 'SELECT * FROM produtos WHERE destaque = 1 ORDER BY data_cadastro DESC LIMIT 20';
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function buscarProdutosPorCategoria()
     {
         $categoriaId = $_POST['idCategoria'];

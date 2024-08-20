@@ -1,5 +1,5 @@
 <?php
-require 'core/Conexao.php';
+// require 'core/Conexao.php';
 
 class ClienteModel
 {

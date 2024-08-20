@@ -1,12 +1,24 @@
 <?php
 session_start();
 require_once 'core/Conexao.php';
-require 'models/UsuarioModel.php';
+require 'controllers/ClienteController.php';
+require_once 'controllers/CarrinhoController.php';
 
 if (isset($_SESSION['ID'])) {
-    $usuarioModel = new UsuarioModel();
-    $dadosUsuario = $usuarioModel->buscarDadosUsuarioLogado($_SESSION['ID']);
+    $clienteController = new ClienteController();
+    $dadosUsuario = $clienteController->exibirDadosClienteLogado($_SESSION['ID']);
+
+    $carrinhoController = new CarrinhoController();
+    $produtosCarrinho = $carrinhoController->exibirProdutosNoCarrinho($_SESSION['ID']);
+
+    $totalCarrinho = 0;
+    foreach ($produtosCarrinho as $produto) {
+        $totalCarrinho += $produto['preco_unitario'] * $produto['quantidade'];
+    }
 }
+
+
+
 $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
@@ -28,12 +40,66 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <link rel="stylesheet" href="public/assets/css/style_cadastro_usuario.css">
     <!-- <link rel="stylesheet" href="public/assets/css/style_perfil_usuario.css"> -->
     <link rel="stylesheet" href="public/assets/css/style_carrinho.css">
-    <?php if ($urlAtual === 'http://localhost/minha_loja/categoria') { ?> <link rel="stylesheet" href="public/assets/css/style_categoria.css"> <?php } ?> 
-    <?php if ($urlAtual === 'http://localhost/minha_loja/produtos') { ?> <?php } ?> 
-    <?php if ($urlAtual === 'http://localhost/minha_loja/pesquisa') { ?> <?php } ?> 
-    <?php if ($urlAtual === 'http://localhost/minha_loja/detalhesproduto') { ?> <link rel="stylesheet" href="public/assets/css/style_detalhes.css"> <link rel="stylesheet" href="public/assets/css/style_categoria.css"> <?php } ?>
+    <?php if ($urlAtual === 'http://localhost/minha_loja/categoria') { ?>
+        <link rel="stylesheet" href="public/assets/css/style_categoria.css"> <?php } ?>
+    <?php if ($urlAtual === 'http://localhost/minha_loja/produtos') { ?> <?php } ?>
+    <?php if ($urlAtual === 'http://localhost/minha_loja/pesquisa') { ?> <?php } ?>
+    <?php if ($urlAtual === 'http://localhost/minha_loja/detalhesproduto') { ?>
+        <link rel="stylesheet" href="public/assets/css/style_detalhes.css">
+        <link rel="stylesheet" href="public/assets/css/style_categoria.css"> <?php } ?>
     <link rel="stylesheet" href="public/assets/css/style_footer.css">
     <title>Colt Bella</title>
+
+    <style>
+        .minhaconta div {
+            color: #e90064;
+        }
+
+        .container-header {
+            overflow: visible;
+            /* Certifique-se de que o contêiner permita que o dropdown seja exibido completamente */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            min-width: 120px;
+            border-radius: 4px;
+        }
+
+        .dropdown-content a {
+            padding: 10px 5px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-left: 0 !important;
+            display: block;
+            color: black;
+            background-color: white;
+        }
+
+        .dropdown-content form button {
+            border: none;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Certifique-se de que o contêiner permita a exibição completa do dropdown */
+        .container-header {
+            position: relative;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -88,7 +154,9 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         </nav>
         <div class="logo-bar">
             <div class="container-header">
-                <img src="public/assets/img/site/logo_colt_bella.png" alt="Logo" class="logo">
+                <a href="home">
+                    <img src="public/assets/img/site/logo_colt_bella.png" alt="Logo" class="logo">
+                </a>
                 <nav class="main-nav">
                     <div class="block block-search">
                         <!-- <div class="block block-title"><strong>Pesquisa</strong></div> -->
@@ -109,18 +177,42 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     </div>
                 </nav>
                 <div class="user-actions">
-                    <a href="login" style="margin-right:20px;">
-                        <div style="display:flex; flex-direction:row; text-align:left; align-items:center;">
-                            <i class="fas fa-user" style="margin-right:10px;"></i> Entre ou cadastrar-se
+                    <?php if (isset($_SESSION['ID'])): ?>
+                        <!-- Se a variável $_SESSION['ID'] estiver definida, exibe o nome do usuário com um dropdown -->
+                        <div class="dropdown" style="position: relative;">
+                            <div class="minhaconta" style="margin-right:20px;">
+                                <div style="display:flex; flex-direction:row; text-align:left; align-items:center; cursor:pointer;">
+                                    <i class="fas fa-user" style="margin-right:10px;"></i> <?php echo $dadosUsuario['nome']; ?>
+                                </div>
+                            </div>
+                            <!-- Dropdown content -->
+                            <div class="dropdown-content">
+                                <a href="minhaconta">Minha Conta</a>
+                                <form action="logout" method="post">
+                                    <input type="hidden" value="<?php echo $dadosUsuario['cliente_id']; ?>" name="idsessaousuario">
+                                    <button>Sair</button>
+                                </form>
+                            </div>
                         </div>
-                    </a>
+                    <?php else: ?>
+                        <!-- Caso contrário, exibe o link para 'Login' -->
+                        <a href="login" style="margin-right:20px;">
+                            <div style="display:flex; flex-direction:row; text-align:left; align-items:center;">
+                                <i class="fas fa-user" style="margin-right:10px;"></i> Entre ou cadastrar-se
+                            </div>
+                        </a>
+                    <?php endif; ?>
+
+                    <!-- Link para 'Minhas compras' -->
                     <a href="carrinho">
                         <div style="display:flex; flex-direction:row; text-align:left; align-items:center;">
                             <i class="fas fa-shopping-bag" style="margin-right:10px;"></i> Minhas compras
-                            </br>R$ 0,00 (Subtotal)
+                            <br>R$ <?php echo isset($_SESSION['ID']) ? number_format($totalCarrinho, 2, ',', '.') : '0,00'; ?> (Subtotal)
                         </div>
                     </a>
                 </div>
+
+
             </div>
         </div>
         <div class="categorias">

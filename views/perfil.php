@@ -1,129 +1,314 @@
 <?php
 include 'components/header.php';
 ?>
+<style>
+    .container-preto {
+        padding-left: 0 !important;
+    }
 
-<div class="container">
-    <div class="container-centro">
-        <nav class="menu-lateral">
-            <ul>
-                <li><a href="#dadosPessoais">Dados Pessoais</a></li>
-                <li><a href="#meusPedidos">Meus Pedidos</a></li>
-                <li><a href="#meusFavoritos">Meus Favoritos</a></li>
-                <div class="linha-bottom"></div>
-                <li><a href="#endereco">Endereço</a></li>
-                <li><a href="#metodoPagamento">Metodos de Pagamento</a></li>
-                <li><a href="#minhasAvaliacoes">Minhas Avaliações</a></li>
-                <li><a href="#pontosEReconpensas">Historico de Pontos e Recompensas</a></li>
-            </ul>
-        </nav>
-        <div class="conteudo">
-            <div class="dados-usuario" id="dadosPessoais">
-                <h2>Dados Pessoais</h2>
-                <div class="card-dados-perfil">
-                    <p>Matheus Felipe Brandao Silva</p>
-                    <p>brandao.matheus.dev@gmail.com</p>
-                    <p>(69) 9 9357-6137</p>
-                    <p>Documento: 03600717243</p>
-                    <p><a href="">Alterar senha</a></p>
+    .profile-container {
+        display: flex;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .sidebar {
+        width: 250px;
+        background-color: #131313;
+        color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        min-height: 100vh;
+    }
+
+    .user-avatar-section {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .user-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .sidebar-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-nav ul li {
+        margin-bottom: 20px;
+    }
+
+    .sidebar-nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .sidebar-nav ul li a:hover {
+        background-color: #2c3a52;
+    }
+
+    .profile-main {
+        flex: 1;
+        background-color: #fff;
+        padding: 30px;
+        box-sizing: border-box;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .back-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .header-buttons .btn-premium,
+    .header-buttons .btn-logout {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-left: 10px;
+        transition: background 0.3s;
+    }
+
+    .header-buttons .btn-logout {
+        background-color: #dc3545;
+    }
+
+    .header-buttons .btn-premium:hover,
+    .header-buttons .btn-logout:hover {
+        background-color: #0056b3;
+    }
+
+    .header-buttons .btn-logout:hover {
+        background-color: #c82333;
+    }
+
+    .profile-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .profile-section {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-section h3 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    .profile-section form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    .profile-section form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .btn-save {
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .btn-save:hover {
+        background-color: #218838;
+    }
+
+    .invoices-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .invoices-list a {
+        text-decoration: none;
+        color: #131313;
+    }
+
+    .invoices-list li {
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .close-account-section {
+        grid-column: span 2;
+        background-color: #fff3cd;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #ffeeba;
+    }
+
+    .close-account-section p {
+        margin: 0 0 20px;
+        color: #856404;
+    }
+
+    .close-account-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-close-account {
+        background-color: #dc3545;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .btn-keep-account {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .btn-close-account:hover {
+        background-color: #c82333;
+    }
+
+    .btn-keep-account:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        .profile-content {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+<div class="container container-preto">
+    <div class="profile-container">
+        <aside class="sidebar">
+            <div class="user-avatar-section">
+                <img src="public/assets/img/placeholder.jpg" alt="User Avatar" class="user-avatar">
+                <h2><?php echo $dadosUsuario['nome']; ?></h2>
+                <p><?php echo $dadosUsuario['email']; ?></p>
+            </div>
+        </aside>
+        <main class="profile-main">
+            <header class="profile-header">
+                <a href="home" class="back-link">home</a>
+                <div class="header-buttons">
+                    <a href="logout" class="btn-logout">Sair</a>
                 </div>
-                <h2>Dados Endereço</h2>
-                <div class="card-dados-perfil">
-                    <p>Rua Princesa Isabel</p>
-                    <p>Nº 4762</p>
-                    <p>Cidade Alta</p>
-                    <p>Rondonia</p>
-                    <p>76935-000</p>
-                    <p>Complemento</p>
+            </header>
+            <section class="profile-content">
+                <div class="profile-section">
+                    <h3>Informações Pessoais</h3>
+                    <form>
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" value="<?php echo $dadosUsuario['nome']; ?>">
+
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" name="cpf" value="<?php echo $dadosUsuario['cpf']; ?>">
+
+                        <label for="cpf">E-mail</label>
+                        <input type="text" id="cpf" name="cpf" value="<?php echo $dadosUsuario['email']; ?>">
+
+                        <label for="cpf">Telefone</label>
+                        <input type="text" id="cpf" name="cpf" value="<?php echo $dadosUsuario['telefone']; ?>">
+                    </form>
                 </div>
+                <div class="profile-section">
+                    <h3>Endereço Padrão</h3>
+                    <form>
+                        <label for="direccion">Endereço</label>
+                        <input type="text" id="direccion" name="direccion" value="<?php echo $dadosUsuario['endereco']; ?>">
 
-                <!-- Adicione os dados do usuário aqui -->
-            </div>
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" name="numero" value="<?php echo $dadosUsuario['numero']; ?>">
 
-            <div class="dados-usuario" id="meusPedidos" style="display:none;">
-                <h4 class="titulo-aba-pedidos">Pedidos</h4>
-                <div class="exibicao-produtos-pedidos">
-                    <div class="pedido-cabecalho">
-                        <span>Imagem</span>
-                        <span>Nome</span>
-                        <span>Data</span>
-                        <span>Opções</span>
-                    </div>
-                    <div class="pedido-item">
-                        <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto" class="pedido-imagem">
-                        <span class="pedido-nome">Nome do Produto</span>
-                        <span class="pedido-data">10/10/2023</span>
-                        <button class="pedido-detalhes">Detalhes</button>
-                    </div>
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" name="bairro" value="<?php echo $dadosUsuario['bairro']; ?>">
 
-                    <!-- Repita a div pedido-item para cada pedido -->
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep" value="<?php echo $dadosUsuario['cep']; ?>">
+
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento" name="complemento" value="<?php echo $dadosUsuario['complemento']; ?>">
+
+                        <button type="submit" class="btn-save">Alterar Dados</button>
+                    </form>
                 </div>
-            </div>
+                <div class="profile-section">
+                    <h3>Alterar Senha</h3>
+                    <form>
+                        <label for="current-password">Contraseña Actual</label>
+                        <input type="password" id="current-password" name="current-password">
 
-            <div class="dados-usuario" id="meusFavoritos" style="display:none;">
-                <h4 class="titulo-aba-favoritos">Favoritos</h4>
-                <div class="exibicao-produtos-favoritos">
-                    <div class="favoritos-cabecalho">
-                        <span>Imagem</span>
-                        <span>Nome</span>
-                        <span>Data</span>
-                        <span>Opções</span>
-                    </div>
-                    <div class="favorito-item">
-                        <img src="public/assets/img/placeholder.jpg" alt="Nome do Produto" class="favorito-imagem">
-                        <span class="favorito-nome">Nome do Produto</span>
-                        <span class="favorito-data">10/10/2023</span>
-                        <button class="favorito-detalhes">Detalhes</button>
-                    </div>
-                    <!-- Repita a div favorito-item para cada favorito -->
+                        <label for="new-password">Nueva Contraseña</label>
+                        <input type="password" id="new-password" name="new-password">
+
+                        <label for="confirm-password">Repite la Nueva Contraseña</label>
+                        <input type="password" id="confirm-password" name="confirm-password">
+
+                        <button type="submit" class="btn-save">Guardar Nueva Contraseña</button>
+                    </form>
                 </div>
-            </div>
-
-            <div class="dados-usuario" id="endereco" style="display:none;">
-                <!-- Dados dos Favoritos aqui -->
-                <h4>Endereço de entrega</h4>
-            </div>
-            <div class="dados-usuario" id="metodoPagamento" style="display:none;">
-                <!-- Dados dos Favoritos aqui -->
-                <h4>Metodos de pagamento</h4>
-            </div>
-            <div class="dados-usuario" id="minhasAvaliacoes" style="display:none;">
-                <!-- Dados dos Favoritos aqui -->
-                <h4>Minhas avaliações</h4>
-            </div>
-            <div class="dados-usuario" id="pontosEReconpensas" style="display:none;">
-                <!-- Dados dos Favoritos aqui -->
-                <h4>Meus pontos e recompensas</h4>
-            </div>
-        </div>
+                <div class="profile-section">
+                    <h3>Últimas Compras</h3>
+                    <ul class="invoices-list">
+                        <a href="detalhespedido">
+                            <li>Septiembre 2023 - Produto 1</li>
+                        </a>
+                        <a href="detalhespedido">
+                            <li>Agosto 2023 - Produto 2</li>
+                        </a>
+                        <a href="detalhespedido">
+                            <li>Julio 2023 - Produto 3</li>
+                        </a>
+                    </ul>
+                </div>
+            </section>
+        </main>
     </div>
 
+
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuLinks = document.querySelectorAll('.menu-lateral a');
-
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                // Ocultar todos os elementos
-                document.querySelectorAll('.conteudo .dados-usuario').forEach(el => {
-                    el.style.display = 'none';
-                });
-
-                // Obter o id do elemento a ser mostrado
-                const targetId = link.getAttribute('href').replace('#', '');
-                const targetElement = document.getElementById(targetId);
-
-                // Mostrar o elemento clicado
-                if (targetElement) {
-                    targetElement.style.display = 'block';
-                }
-            });
-        });
-    });
-</script>
 
 <?php
 include 'components/footer.php';

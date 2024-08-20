@@ -55,7 +55,7 @@ include 'components/header.php';
                     <span>Criar uma nova conta tem muitos benefícios: fechar pedidos rapidamente, registrar mais endereços, acompanhar pedidos e muito mais.</span>
                 </div>
                 <div class="exibe-botao-cadastrar">
-                    <a href="">Cadastre-se</a>
+                    <a href="cadastro">Cadastre-se</a>
                 </div>
             </div>
         </div>
@@ -67,43 +67,43 @@ include 'components/header.php';
 
 
 <script>
-$(document).ready(function() {
-    var modal = $("#modal");
-    var modalContent = $("#modal .modal-content p"); // Ajuste o seletor conforme sua estrutura HTML
-    $(".close-button, .ok-button").click(function() {
-        modal.hide();
-    });
-
-    $(window).click(function(event) {
-        if (event.target.id === "modal") {
+    $(document).ready(function() {
+        var modal = $("#modal");
+        var modalContent = $("#modal .modal-content p"); // Ajuste o seletor conforme sua estrutura HTML
+        $(".close-button, .ok-button").click(function() {
             modal.hide();
-        }
-    });
+        });
 
-    $("#formulario-login").submit(function(event) {
-        event.preventDefault();
-
-        $.ajax({
-            type: "POST",
-            url: "validarLogin",
-            data: $(this).serialize(),
-            dataType: "json",
-            success: function(response) {
-                if (response.status === "sucesso") {
-                    window.location.href = "home";
-                } else {
-                    modalContent.text(response.mensagem);
-                    modal.show();
-                }
-            },
-            error: function(xhr, status, error) {
-
-                modalContent.text(error);
-                modal.show();
+        $(window).click(function(event) {
+            if (event.target.id === "modal") {
+                modal.hide();
             }
         });
+
+        $("#formulario-login").submit(function(event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "validarlogin",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function(response) {
+                    if (response.status === "sucesso") {
+                        window.location.href = "home";
+                    } else {
+                        modalContent.text(response.mensagem);
+                        modal.show();
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    modalContent.text(error);
+                    modal.show();
+                }
+            });
+        });
     });
-});
 </script>
 
 

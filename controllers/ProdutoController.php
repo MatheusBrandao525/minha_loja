@@ -49,4 +49,11 @@ class ProdutoController
         $dadosProdutoPorId = $produtoModel->buscarDadosProdutoPorId($produtoId);
         return $dadosProdutoPorId;
     }
+
+    public function exibirProdutosNovidade()
+    {
+        $produtoModel = new ProdutoModel();
+        $produtosNovidade = $produtoModel->buscarProdutosNovidade();
+        return $produtosNovidade;
+    }
 }

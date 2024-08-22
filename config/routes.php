@@ -22,7 +22,8 @@ $routes = [
     '/minha_loja/produtos' => 'ProdutoController@apresentarTodosOsProdutos',
     '/minha_loja/alterar_quantidade' => 'CarrinhoController@alterarQuantidadeCarrinho',
     '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado',
-    '/minha_loja/teste-produto' => 'ProdutoController@exibirProdutosEmDestaque'
+    '/minha_loja/teste-produto' => 'ProdutoController@exibirProdutosEmDestaque',
+    '/minha_loja/detalhespedido' => 'PedidoController@telaDetalhesPedido'
 
 ];
 

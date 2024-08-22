@@ -13,7 +13,7 @@ include 'components/header.php';
     }
 
     .sidebar {
-        width: 250px;
+        width: 25%;
         background-color: #131313;
         color: #fff;
         padding: 20px;
@@ -277,30 +277,36 @@ include 'components/header.php';
                 <div class="profile-section">
                     <h3>Alterar Senha</h3>
                     <form>
-                        <label for="current-password">Contraseña Actual</label>
+                        <label for="current-password">Senha Atual</label>
                         <input type="password" id="current-password" name="current-password">
 
-                        <label for="new-password">Nueva Contraseña</label>
+                        <label for="new-password">Nova Senha</label>
                         <input type="password" id="new-password" name="new-password">
 
-                        <label for="confirm-password">Repite la Nueva Contraseña</label>
+                        <label for="confirm-password">Repita a Nova Senha</label>
                         <input type="password" id="confirm-password" name="confirm-password">
 
-                        <button type="submit" class="btn-save">Guardar Nueva Contraseña</button>
+                        <button type="submit" class="btn-save">Alterar Senha</button>
                     </form>
                 </div>
                 <div class="profile-section">
                     <h3>Últimas Compras</h3>
                     <ul class="invoices-list">
-                        <a href="detalhespedido">
-                            <li>Septiembre 2023 - Produto 1</li>
-                        </a>
-                        <a href="detalhespedido">
-                            <li>Agosto 2023 - Produto 2</li>
-                        </a>
-                        <a href="detalhespedido">
-                            <li>Julio 2023 - Produto 3</li>
-                        </a>
+                        <?php
+                        if (!empty($pedidosCliente)) {
+                            foreach ($pedidosCliente as $pedido): ?>
+                                <li>
+                                    <form action="detalhespedido" method="post">
+                                        <input type="hidden" name="clienteid" value="<?php echo $_SESSION['ID']; ?>">
+                                        <input type="hidden" name="pedidoid" value="<?php echo $pedido['pedido_id']; ?>">
+                                        <input type="hidden" name="ticketpedido" value="<?php echo $pedido['ticket_pedido']; ?>">
+                                        <button type="submit"><?php echo $pedido['ticket_pedido']; ?> - <?php echo date('d/m/Y', strtotime($pedido['data_pedido'])); ?></button>
+                                    </form>
+                                </li>
+                            <?php endforeach;
+                        } else { ?>
+                            <h6>Você ainda não realizou nenhum pedido.</h6>
+                        <?php } ?>
                     </ul>
                 </div>
             </section>

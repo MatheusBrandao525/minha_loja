@@ -3,6 +3,7 @@ session_start();
 require_once 'core/Conexao.php';
 require 'controllers/ClienteController.php';
 require_once 'controllers/CarrinhoController.php';
+require_once 'controllers/PedidoController.php';
 
 if (isset($_SESSION['ID'])) {
     $clienteController = new ClienteController();
@@ -15,6 +16,9 @@ if (isset($_SESSION['ID'])) {
     foreach ($produtosCarrinho as $produto) {
         $totalCarrinho += $produto['preco_unitario'] * $produto['quantidade'];
     }
+
+    $pedidoController = new PedidoController();
+    $pedidosCliente = $pedidoController->exibirPedidosDoCliente($_SESSION['ID']);
 }
 
 

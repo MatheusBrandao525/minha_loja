@@ -255,7 +255,7 @@ include 'components/header.php';
                 </div>
                 <div class="profile-section">
                     <h3>Endereço Padrão</h3>
-                    <form>
+                    <form action="alteraendereco" method="post">
                         <label for="direccion">Endereço</label>
                         <input type="text" id="direccion" name="direccion" value="<?php echo $dadosUsuario['endereco']; ?>">
 

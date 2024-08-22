@@ -21,4 +21,19 @@ class ClienteModel
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function atualizarEnderecoCliente($clienteId, $endereco, $numero, $bairro, $cep, $complemento)
+    {
+        $sql = "UPDATE clientes SET endereco = :endereco, numero = :numero, bairro = :bairro, cep = :cep, complemento = :complemento WHERE id = :clienteId";
+
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(':endereco', $endereco);
+        $stmt->bindParam(':numero', $numero);
+        $stmt->bindParam(':bairro', $bairro);
+        $stmt->bindParam(':cep', $cep);
+        $stmt->bindParam(':complemento', $complemento);
+        $stmt->bindParam(':clienteId', $clienteId);
+
+        return $stmt->execute();
+    }
 }

@@ -20,22 +20,19 @@ class ClienteController
             isset($_POST['bairro']) && isset($_POST['cep']) &&
             isset($_POST['complemento'])
         ) {
-            // Recuperar os dados enviados via POST
+
             $novoEndereco = filter_input(INPUT_POST, 'direccion', FILTER_SANITIZE_STRING);
             $novoNumero = filter_input(INPUT_POST, 'numero', FILTER_SANITIZE_STRING);
             $novoBairro = filter_input(INPUT_POST, 'bairro', FILTER_SANITIZE_STRING);
             $novoCEP = filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_STRING);
             $novoComplemento = filter_input(INPUT_POST, 'complemento', FILTER_SANITIZE_STRING);
 
-            // Recuperar o ID do cliente logado (supondo que você tenha isso armazenado na sessão)
             session_start();
-            $clienteId = $_SESSION['cliente_id'];
+            $clienteId = $_SESSION['ID'];
 
-            // Recuperar os dados atuais do cliente no banco de dados
             $clienteModel = new ClienteModel();
             $dadosCliente = $clienteModel->buscarDadosDoClienteLogado($clienteId);
 
-            // Verificar se há mudanças nos dados
             if (
                 $novoEndereco !== $dadosCliente['endereco'] ||
                 $novoNumero !== $dadosCliente['numero'] ||
@@ -43,7 +40,7 @@ class ClienteController
                 $novoCEP !== $dadosCliente['cep'] ||
                 $novoComplemento !== $dadosCliente['complemento']
             ) {
-                // Atualizar os dados no banco de dados
+
                 $atualizado = $clienteModel->atualizarEnderecoCliente($clienteId, $novoEndereco, $novoNumero, $novoBairro, $novoCEP, $novoComplemento);
 
                 if ($atualizado) {

@@ -1,9 +1,8 @@
 <?php
-// require 'core/Conexao.php';
+require_once 'core/Conexao.php';
 
 class ClienteModel
 {
-
     private $conexao;
 
     public function __construct()
@@ -24,16 +23,21 @@ class ClienteModel
 
     public function atualizarEnderecoCliente($clienteId, $endereco, $numero, $bairro, $cep, $complemento)
     {
-        $sql = "UPDATE clientes SET endereco = :endereco, numero = :numero, bairro = :bairro, cep = :cep, complemento = :complemento WHERE id = :clienteId";
+        $sql = "UPDATE clientes SET endereco = :endereco, numero = :numero, bairro = :bairro, cep = :cep, complemento = :complemento WHERE cliente_id = :clienteId";
 
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(':endereco', $endereco);
-        $stmt->bindParam(':numero', $numero);
-        $stmt->bindParam(':bairro', $bairro);
-        $stmt->bindParam(':cep', $cep);
-        $stmt->bindParam(':complemento', $complemento);
-        $stmt->bindParam(':clienteId', $clienteId);
+        try {
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindParam(':endereco', $endereco);
+            $stmt->bindParam(':numero', $numero);
+            $stmt->bindParam(':bairro', $bairro);
+            $stmt->bindParam(':cep', $cep);
+            $stmt->bindParam(':complemento', $complemento);
+            $stmt->bindParam(':clienteId', $clienteId);
 
-        return $stmt->execute();
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+            exit;
+        }
     }
 }

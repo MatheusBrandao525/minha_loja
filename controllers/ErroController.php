@@ -1,8 +1,9 @@
 <?php
 
-class ErroController {
+class ErroController
+{
 
-    public function redirecionarParaTelaDeErro404() 
+    public function redirecionarParaTelaDeErro404()
     {
         include ROOT_PATH . '/views/erro404.php';
     }
@@ -10,5 +11,10 @@ class ErroController {
     public function redirecionartelaUsuarioNaoEncontrado()
     {
         include ROOT_PATH . '/views/erroUsuarioNaoEncontrado.php';
+    }
+
+    public function redirecionarParaTelaDeErroCadastro()
+    {
+        include ROOT_PATH . '/views/errocadastro.php';
     }
 }

@@ -55,4 +55,84 @@ class ClienteController
             echo "Erro ao tentar alterar dados de endereço.";
         }
     }
+
+    public function cadastrarCliente()
+    {
+        try {
+            $cpf = $_POST['cpf'] ?? null;
+            $nome = $_POST['nome'] ?? null;
+            $sobrenome = $_POST['sobrenome'] ?? null;
+            $telefone = $_POST['telefone'] ?? null;
+            $cep = $_POST['cep'] ?? null;
+            $endereco = $_POST['endereco'] ?? null;
+            $numero = isset($_POST['semNumero']) ? null : $_POST['numero'];
+            $semNumero = isset($_POST['semNumero']) ? 1 : 0;
+            $bairro = $_POST['bairro'] ?? null;
+            $complemento = $_POST['complemento'] ?? null;
+            $cidade = $_POST['cidade'] ?? null;
+            $estado = $_POST['estado'] ?? null;
+            $pais = $_POST['pais'] ?? null;
+            $email = $_POST['email'] ?? null;
+            $senha = $_POST['senha'] ?? null;
+            $confirmarSenha = $_POST['confirmarSenha'] ?? null;
+
+            if (
+                empty($cpf) || empty($nome) || empty($sobrenome) || empty($telefone) || empty($cep) ||
+                empty($endereco) || empty($bairro) || empty($cidade) || empty($estado) || empty($pais) ||
+                empty($email) || empty($senha) || empty($confirmarSenha)
+            ) {
+                echo "Todos os campos obrigatórios devem ser preenchidos.";
+                return;
+            }
+
+            if ($senha !== $confirmarSenha) {
+                echo "As senhas não coincidem.";
+                return;
+            }
+
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+            $dadosCliente = [
+                'cpf' => $cpf,
+                'nome' => $nome,
+                'sobrenome' => $sobrenome,
+                'telefone' => $telefone,
+                'cep' => $cep,
+                'endereco' => $endereco,
+                'numero' => $numero,
+                'sem_numero' => $semNumero,
+                'bairro' => $bairro,
+                'complemento' => $complemento,
+                'cidade' => $cidade,
+                'estado' => $estado,
+                'pais' => $pais,
+                'email' => $email,
+                'senha' => $senhaHash
+            ];
+
+            $clienteModel = new ClienteModel();
+            // Salvar os dados no banco de dados e obter o cliente_id
+            $clienteId = $clienteModel->salvarDadosClienteDatabase($dadosCliente);
+
+            // Iniciar a sessão e armazenar o cliente_id
+            session_start();
+            $_SESSION['ID'] = $clienteId;
+
+            // Redirecionar o cliente para a tela home
+            header('Location: home');
+            exit();
+        } catch (PDOException $e) {
+            // Iniciar a sessão caso não esteja iniciada
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            // Armazenar a mensagem de erro na sessão
+            $_SESSION['erro_cadastro'] = $e->getMessage();
+
+            // Redirecionar o usuário para a tela de erro
+            header('Location: erro_cadastro');
+            exit();
+        }
+    }
 }

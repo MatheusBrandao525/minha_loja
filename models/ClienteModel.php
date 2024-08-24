@@ -40,4 +40,37 @@ class ClienteModel
             exit;
         }
     }
+
+    public function salvarDadosClienteDatabase($dadosCliente)
+    {
+        // SQL para inserir os dados
+        $sql = "INSERT INTO clientes (cpf, nome, sobrenome, telefone, cep, endereco, numero, sem_numero, bairro, complemento, cidade, estado, pais, email, senha)
+       VALUES (:cpf, :nome, :sobrenome, :telefone, :cep, :endereco, :numero, :sem_numero, :bairro, :complemento, :cidade, :estado, :pais, :email, :senha)";
+
+        // Preparar a declaração
+        $stmt = $this->conexao->prepare($sql);
+
+        // Fazer o bind de cada parâmetro
+        $stmt->bindParam(':cpf', $dadosCliente['cpf']);
+        $stmt->bindParam(':nome', $dadosCliente['nome']);
+        $stmt->bindParam(':sobrenome', $dadosCliente['sobrenome']);
+        $stmt->bindParam(':telefone', $dadosCliente['telefone']);
+        $stmt->bindParam(':cep', $dadosCliente['cep']);
+        $stmt->bindParam(':endereco', $dadosCliente['endereco']);
+        $stmt->bindParam(':numero', $dadosCliente['numero']);
+        $stmt->bindParam(':sem_numero', $dadosCliente['sem_numero']);
+        $stmt->bindParam(':bairro', $dadosCliente['bairro']);
+        $stmt->bindParam(':complemento', $dadosCliente['complemento']);
+        $stmt->bindParam(':cidade', $dadosCliente['cidade']);
+        $stmt->bindParam(':estado', $dadosCliente['estado']);
+        $stmt->bindParam(':pais', $dadosCliente['pais']);
+        $stmt->bindParam(':email', $dadosCliente['email']);
+        $stmt->bindParam(':senha', $dadosCliente['senha']);
+
+        // Executar a declaração
+        $stmt->execute();
+
+        // Retornar o cliente_id gerado
+        return $this->conexao->lastInsertId();
+    }
 }

@@ -1,5 +1,4 @@
 <?php
-
 require 'core/Conexao.php';
 
 class Validacoes
@@ -44,7 +43,8 @@ class Validacoes
         $stmt->execute();
 
         if ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            if ($senha == $user['senha']) {
+            // Verificar a senha usando password_verify
+            if (password_verify($senha, $user['senha'])) {
                 session_start();
                 $_SESSION['ID'] = $user['cliente_id'];
                 return [

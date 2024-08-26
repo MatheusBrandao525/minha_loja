@@ -1,6 +1,7 @@
 <?php
-
-class CategoriaController {
+require_once 'models/CategoriaModel.php';
+class CategoriaController
+{
 
     public function redirecionarParaTelaCategoria()
     {
@@ -10,5 +11,13 @@ class CategoriaController {
     public function redirecionarParaSubCategorias()
     {
         include ROOT_PATH . '/views/subCategoria.php';
+    }
+
+    public function exibirTodasCategorias()
+    {
+        $categoriaModel = new CategoriaModel();
+        $todasAsCategorias = $categoriaModel->buscarTodasAsCategorias();
+
+        return $todasAsCategorias;
     }
 }

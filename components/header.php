@@ -3,6 +3,7 @@ session_start();
 require_once 'core/Conexao.php';
 require 'controllers/ClienteController.php';
 require_once 'controllers/CarrinhoController.php';
+require_once 'controllers/CategoriaController.php';
 require_once 'controllers/PedidoController.php';
 
 if (isset($_SESSION['ID'])) {

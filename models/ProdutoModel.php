@@ -30,10 +30,8 @@ class ProdutoModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function buscarProdutosPorCategoria()
+    public function buscarProdutosPorCategoria($categoriaId)
     {
-        $categoriaId = $_POST['idCategoria'];
-
         $sql = 'SELECT * FROM produtos WHERE categoria_id = :idCategoria';
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindParam(':idCategoria', $categoriaId);

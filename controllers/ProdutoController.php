@@ -56,4 +56,13 @@ class ProdutoController
         $produtosNovidade = $produtoModel->buscarProdutosNovidade();
         return $produtosNovidade;
     }
+
+    public function exibeProdutosPorCategoria($categoriaId)
+    {
+        $produtoModel = new ProdutoModel();
+
+        $produtosCategoria = $produtoModel->buscarProdutosPorCategoria($categoriaId);
+
+        return $produtosCategoria;
+    }
 }

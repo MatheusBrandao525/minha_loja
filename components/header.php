@@ -6,6 +6,9 @@ require_once 'controllers/CarrinhoController.php';
 require_once 'controllers/CategoriaController.php';
 require_once 'controllers/PedidoController.php';
 
+$categforiaContoller = new CategoriaController();
+$categoriasPrincipais = $categforiaContoller->exibirCategoriasPrincipais();
+
 if (isset($_SESSION['ID'])) {
     $clienteController = new ClienteController();
     $dadosUsuario = $clienteController->exibirDadosClienteLogado($_SESSION['ID']);
@@ -222,16 +225,18 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         </div>
         <div class="categorias">
             <div class="category-icons">
-                <a href="#">Feminino</a>
-                <a href="#">Masculino</a>
-                <a href="#">Calçados</a>
-                <a href="#">Infantil</a>
-                <a href="#">Lingerie</a>
-                <a href="#">Plus Size</a>
-                <a href="#">Acessórios</a>
-                <a href="#">Casa</a>
+                <?php
+                foreach ($categoriasPrincipais as $categoria): ?>
+                    <form action="categoria" method="post">
+                        <input type="hidden" name="categoriaid" value="<?php echo $categoria['categoria_id']; ?>">
+                        <button type="submit" style="border: none; background-color:transparent">
+                            <a href="#"><?php echo $categoria['nome_categoria']; ?></a>
+                        </button>
+                    </form>
+                <?php endforeach; ?>
             </div>
         </div>
+
         <div class="promo-bar">
             <div class="container">
                 <img src="public/assets/img/site/exemplo-banner-whatsapp.jpeg" alt="">

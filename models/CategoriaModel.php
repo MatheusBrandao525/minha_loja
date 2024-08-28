@@ -22,4 +22,20 @@ class CategoriaModel
             echo $e;
         }
     }
+
+    public function buscarCategoriasPrinpais()
+    {
+        $statusPrincipal = 1;
+        $sql = "SELECT * FROM categorias WHERE principal = :statusPrincipal";
+
+        try {
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindParam(':statusPrincipal', $statusPrincipal);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }

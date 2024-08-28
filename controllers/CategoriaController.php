@@ -20,4 +20,12 @@ class CategoriaController
 
         return $todasAsCategorias;
     }
+
+    public function exibirCategoriasPrincipais()
+    {
+        $categoriaModel = new CategoriaModel();
+        $categoriasPrincipais = $categoriaModel->buscarCategoriasPrinpais();
+
+        return $categoriasPrincipais;
+    }
 }

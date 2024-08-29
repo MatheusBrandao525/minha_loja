@@ -1,5 +1,14 @@
 <?php
 include 'components/header.php';
+
+if (isset($_SESSION['mensagem'])) {
+    $mensagem = $_SESSION['mensagem'];
+    $tipoMensagem = $_SESSION['tipo_mensagem'];
+
+    // Limpar a mensagem da sessão para evitar que seja exibida novamente ao recarregar a página
+    unset($_SESSION['mensagem']);
+    unset($_SESSION['tipo_mensagem']);
+}
 ?>
 <style>
     .container-preto {
@@ -214,6 +223,38 @@ include 'components/header.php';
         background-color: #0056b3;
     }
 
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        /* Ajuste a largura conforme necessário */
+        max-width: 800px;
+        /* Define um tamanho máximo para o pop-up */
+        height: 60px;
+        padding: 20px;
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        display: none;
+        /* Inicialmente escondido */
+        text-align: center;
+        box-sizing: border-box;
+        /* Inclui padding e border no tamanho total */
+    }
+
+    .popup.sucesso {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    .popup.erro {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
     @media (max-width: 768px) {
         .profile-content {
             grid-template-columns: 1fr;
@@ -221,6 +262,20 @@ include 'components/header.php';
     }
 </style>
 <div class="container container-preto">
+    <?php if (isset($mensagem)): ?>
+        <div id="popup" class="popup <?= $tipoMensagem; ?>">
+            <?= $mensagem; ?>
+        </div>
+        <script>
+            // Exibir o pop-up
+            document.getElementById('popup').style.display = 'block';
+
+            // Fechar o pop-up após 5 segundos
+            setTimeout(function() {
+                document.getElementById('popup').style.display = 'none';
+            }, 5000);
+        </script>
+    <?php endif; ?>
     <div class="profile-container">
         <aside class="sidebar">
             <div class="user-avatar-section">
@@ -276,7 +331,8 @@ include 'components/header.php';
                 </div>
                 <div class="profile-section">
                     <h3>Alterar Senha</h3>
-                    <form>
+                    <form method="post" action="alterarsenha">
+                        <input type="hidden" name="clienteid" value="<?php echo $_SESSION['ID']; ?>">
                         <label for="current-password">Senha Atual</label>
                         <input type="password" id="current-password" name="current-password">
 

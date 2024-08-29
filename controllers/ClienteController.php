@@ -135,4 +135,35 @@ class ClienteController
             exit();
         }
     }
+
+    public function alterarSenha()
+    {
+        session_start();
+        $clienteModel = new ClienteModel();
+
+        if (isset($_SESSION['ID'])) {
+            $clienteId = $_SESSION['ID']; // Use o ID da sessão, não o do POST
+            $senhaAtual = $_POST['current-password'];
+            $novaSenha = $_POST['new-password'];
+            $confirmarSenha = $_POST['confirm-password'];
+
+            if ($novaSenha !== $confirmarSenha) {
+                $_SESSION['mensagem'] = 'As novas senhas não coincidem.';
+                $_SESSION['tipo_mensagem'] = 'erro';
+                header("Location: minhaconta"); // Redirecionar para a página minhaconta
+                exit();
+            }
+
+            $resultado = $clienteModel->alterarSenhaCliente($clienteId, $senhaAtual, $novaSenha);
+
+            // Mensagem e tipo de mensagem já foram definidos na função alterarSenhaCliente
+            header("Location: minhaconta"); // Redirecionar para a página minhaconta
+            exit();
+        } else {
+            $_SESSION['mensagem'] = 'Usuário não autenticado.';
+            $_SESSION['tipo_mensagem'] = 'erro';
+            header("Location: minhaconta"); // Redirecionar para a página minhaconta
+            exit();
+        }
+    }
 }

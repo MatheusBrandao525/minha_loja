@@ -73,4 +73,37 @@ class ClienteModel
         // Retornar o cliente_id gerado
         return $this->conexao->lastInsertId();
     }
+
+    public function alterarSenhaCliente($clienteId, $senhaAtual, $novaSenha)
+    {
+        // Busca a senha atual no banco de dados
+        $sql = "SELECT senha FROM clientes WHERE cliente_id = :clienteId";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(':clienteId', $clienteId);
+        $stmt->execute();
+        $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        session_start();
+
+        if ($cliente && password_verify($senhaAtual, $cliente['senha'])) {
+            // Se a senha atual estiver correta, atualiza para a nova senha
+            $novaSenhaHash = password_hash($novaSenha, PASSWORD_BCRYPT);
+
+            $sqlUpdate = "UPDATE clientes SET senha = :novaSenha WHERE cliente_id = :clienteId";
+            $stmtUpdate = $this->conexao->prepare($sqlUpdate);
+            $stmtUpdate->bindParam(':novaSenha', $novaSenhaHash);
+            $stmtUpdate->bindParam(':clienteId', $clienteId);
+
+            if ($stmtUpdate->execute()) {
+                $_SESSION['mensagem'] = 'Senha alterada com sucesso!';
+                $_SESSION['tipo_mensagem'] = 'sucesso';
+            } else {
+                $_SESSION['mensagem'] = 'Erro ao atualizar a senha. Tente novamente.';
+                $_SESSION['tipo_mensagem'] = 'erro';
+            }
+        } else {
+            $_SESSION['mensagem'] = 'Senha atual incorreta.';
+            $_SESSION['tipo_mensagem'] = 'erro';
+        }
+    }
 }

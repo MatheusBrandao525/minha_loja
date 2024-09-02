@@ -104,8 +104,8 @@ if (isset($_SESSION['detalhesProduto'])) {
             content: "";
             position: absolute;
             display: block;
-            width: 1.25rem;
-            height: 1.25rem;
+            width: 0.6rem;
+            height: 0.6rem;
             border: 2px solid #f1b5b8;
             background-color: #fff;
             border-radius: 50%;
@@ -135,8 +135,8 @@ if (isset($_SESSION['detalhesProduto'])) {
         color: #f1b5b8;
 
         svg {
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1rem;
+            height: 1rem;
         }
     }
 
@@ -201,7 +201,7 @@ if (isset($_SESSION['detalhesProduto'])) {
             <div class="mt-3 radio-group" style="display: flex; flex-direction: row;">
                 <div class="radio">
                     <label class="radio-wrapper">
-                        <input type="radio" name="tamanhosmodelos" value="XL" class="radio-input" />
+                        <input type="radio" name="tamanhosmodelos" value="XL" class="radio-input" checked />
                         <span class="radio-tile">
                             <span class="radio-label">XL</span>
                         </span>
@@ -240,6 +240,7 @@ if (isset($_SESSION['detalhesProduto'])) {
                     </label>
                 </div>
             </div>
+
 
 
             <div class="quantidade-add-carrinho">

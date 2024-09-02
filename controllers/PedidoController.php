@@ -1,10 +1,15 @@
 <?php
+session_start();
 require 'models/PedidoModel.php';
 class PedidoController
 {
 
     public function telaDetalhesPedido()
     {
+        if (!isset($_SESSION['ID']) || empty($_SESSION['ID'])) {
+            header("Location: login");
+            exit();
+        }
         include ROOT_PATH . '/views/detalhesPedido.php';
     }
 

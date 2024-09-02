@@ -1,9 +1,14 @@
 <?php
-
-class CheckoutController{
+session_start();
+class CheckoutController
+{
 
     public function apresentarTelaCheckout()
     {
+        if (!isset($_SESSION['ID']) || empty($_SESSION['ID'])) {
+            header("Location: login");
+            exit();
+        }
         include ROOT_PATH . '/views/checkout.php';
     }
 

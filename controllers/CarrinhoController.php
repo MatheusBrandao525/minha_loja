@@ -1,13 +1,22 @@
 <?php
-
+session_start();
 require_once 'core/Conexao.php';
 require_once 'models/CarrinhoModel.php';
-class CarrinhoController {
+class CarrinhoController
+{
 
     public function apresentarTelaDeCarrinho()
     {
-        include ROOT_PATH . '/views/carrinho.php';
+        $sessao = $_SESSION['ID'];
+
+        if (isset($sessao) && !empty($sessao)) {
+            include ROOT_PATH . '/views/carrinho.php';
+        } else {
+            header("Location: login");
+        }
+        exit();
     }
+
 
     public function alterarQuantidadeCarrinho()
     {
@@ -16,13 +25,17 @@ class CarrinhoController {
             var_dump($_POST);
             $quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_VALIDATE_INT);
             $produtoId = filter_input(INPUT_POST, 'produto_id', FILTER_VALIDATE_INT);
-        }else {
-            
+        } else {
         }
     }
 
     public function adicionarAoCarrinho()
     {
+
+        if (!isset($_SESSION['ID']) || empty($_SESSION['ID'])) {
+            header("Location: login");
+            exit();
+        }
         try {
 
             if (isset($_POST['produtoid'], $_POST['tamanhosmodelos'], $_POST['qty'], $_POST['nomeproduto'], $_POST['vlrunitario'], $_POST['vlrcusto'], $_POST['vlrfrete'], $_POST['usuarioid'])) {
@@ -34,9 +47,9 @@ class CarrinhoController {
                 $nomeProduto = $_POST['nomeproduto'];
                 $vlrUnitario = (float)$_POST['vlrunitario'];
                 $vlrCusto = (float)$_POST['vlrcusto'];
-    
+
                 $conexao = Conexao::getInstance()->getConexao();
-    
+
                 $sql = "SELECT * FROM carrinho WHERE usuario_id = :usuario_id AND produto_id = :produto_id AND tamanho_modelo = :tamanho_modelo";
                 $stmt = $conexao->prepare($sql);
                 $stmt->bindParam(':usuario_id', $usuarioId, PDO::PARAM_INT);
@@ -44,7 +57,7 @@ class CarrinhoController {
                 $stmt->bindParam(':tamanho_modelo', $tamanhoModelo, PDO::PARAM_STR);
                 $stmt->execute();
                 $produtoExistente = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
                 if ($produtoExistente) {
                     $novaQuantidade = $produtoExistente['quantidade'] + $quantidade;
                     $sqlUpdate = "UPDATE carrinho SET quantidade = :quantidade WHERE id_carrinhocupom_desconto = :id";
@@ -65,7 +78,7 @@ class CarrinhoController {
                     $stmtInsert->bindParam(':tamanho_modelo', $tamanhoModelo, PDO::PARAM_STR);
                     $stmtInsert->execute();
                 }
-    
+
                 header("Location: carrinho");
                 exit;
             } else {
@@ -84,5 +97,4 @@ class CarrinhoController {
         $produtosCarrinho = $carrinhoModel->buscarProdutosNoCarrinhoDoUsuario($usuarioId);
         return $produtosCarrinho;
     }
-    
 }

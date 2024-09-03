@@ -34,7 +34,7 @@
         justify-content: center;
         align-items: center;
         font-weight: bold;
-        color: #ec008c;
+        color: #caad5f;
         background-color: #f1f1f1;
         text-align: center;
         border-radius: 10px;

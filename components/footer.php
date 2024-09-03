@@ -30,7 +30,7 @@
                 <div class="footer__top">
                     <div class="row-footer">
                         <div class="footer__right" data-position="2">
-                            <p class="search-title c-03">Não encontrou o que estava procurando?</p>
+                            <!--                             <p class="search-title c-03">Não encontrou o que estava procurando?</p>
 
                             <div class="search-content">
                                 <p>
@@ -45,12 +45,12 @@
                                         Encontre as lojas mais próximas.
                                     </a>
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="footer__left">
                             <div class="row-footer-left">
-                                <div class="footer__nav--container ">
+                                <!--                                 <div class="footer__nav--container ">
                                     <div class="title">Departamentos</div>
                                     <ul class="footer__nav--links" id="collapseDepartamentosNavNode">
                                         <li class="footer__link ">
@@ -119,7 +119,7 @@
                                             <a href="" title="Regras e Promoções"> Regras e Promoções</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

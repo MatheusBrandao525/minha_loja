@@ -67,12 +67,13 @@
 }
 
 .price {
-  color: #ec008c;
+  color: #c59207;
+  font-weight: bold;
   font-size: 16px;
   padding: 5px 0;
   text-align: left;
   display: block;
-  font-weight: 500;
+  /* font-weight: 500; */
   letter-spacing: 1px;
   white-space: nowrap;
 }

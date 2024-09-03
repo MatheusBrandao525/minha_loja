@@ -62,7 +62,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
     <style>
         .minhaconta div {
-            color: #e90064;
+            color: #caad5f;
         }
 
         .container-header {

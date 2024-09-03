@@ -1,5 +1,4 @@
 <style>
-
   .page-homepage .benefits-bar {
     background-color: #FFF;
     width: 100% !important;
@@ -36,7 +35,7 @@
     cursor: pointer;
   }
 
-  .benefit-item{
+  .benefit-item {
     margin: 0 20px;
   }
 
@@ -58,7 +57,7 @@
   .benefits-bar .benefit-titulo {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #ec008c;
+    color: #caad5f;
   }
 
   .benefits-bar .benefit-titulo2 {
@@ -84,14 +83,14 @@
 
 
 
-      <div class="benefit-item">
-        <div class="benefit-title pull-left"><img src="https://images2.marisa.com.br/medias/sys_master/images/images/hc1/h62/15252102447134/20221020-ICON-PAGAMENTO.png" class="benefit-icon" alt=""></div>
-        <div class="benefit-description">
-          <h3>
-            <div class="benefit-titulo" data-toggle="modal" data-target=".cemdias">Pagamento</div>
-            <div class="benefit-titulo2" data-toggle="modal" data-target=".cemdias">de fatura</div>
-          </h3>
-        </div>
+        <div class="benefit-item">
+          <div class="benefit-title pull-left"><img src="https://images2.marisa.com.br/medias/sys_master/images/images/hc1/h62/15252102447134/20221020-ICON-PAGAMENTO.png" class="benefit-icon" alt=""></div>
+          <div class="benefit-description">
+            <h3>
+              <div class="benefit-titulo" data-toggle="modal" data-target=".cemdias">Pagamento</div>
+              <div class="benefit-titulo2" data-toggle="modal" data-target=".cemdias">de fatura</div>
+            </h3>
+          </div>
 
 
 
@@ -99,38 +98,38 @@
 
 
 
-      <div class="benefit-item">
-        <div class="benefit-title pull-left"><img src="https://images2.marisa.com.br/medias/sys_master/images/images/h49/h79/14055924563998/20221020-ICON-PARCELE.png" class="benefit-icon" alt=""></div>
-        <div class="benefit-description">
-          <h3>
-            <div class="benefit-titulo" data-toggle="modal" data-target=".Parcele12x">Parcele em até 5x</div>
-            <div class="benefit-titulo2" data-toggle="modal" data-target=".Parcele12x">sem juros*</div>
-          </h3>
-        </div>
+          <div class="benefit-item">
+            <div class="benefit-title pull-left"><img src="https://images2.marisa.com.br/medias/sys_master/images/images/h49/h79/14055924563998/20221020-ICON-PARCELE.png" class="benefit-icon" alt=""></div>
+            <div class="benefit-description">
+              <h3>
+                <div class="benefit-titulo" data-toggle="modal" data-target=".Parcele12x">Parcele em até 5x</div>
+                <div class="benefit-titulo2" data-toggle="modal" data-target=".Parcele12x">sem juros*</div>
+              </h3>
+            </div>
 
 
 
-      <div class="benefit-item">
-        <div class="benefit-title pull-left"><img src="https://images2.marisa.com.br/medias/sys_master/images/images/h2a/he2/14055924629534/20221020-ICON-TROCA.png" class="benefit-icon" alt=""></div>
-        <div class="benefit-description">
-          <h3>
-            <div class="benefit-titulo" data-toggle="modal" data-target=".TrocaLoja">Compre no site e troque</div>
-            <div class="benefit-titulo2" data-toggle="modal" data-target=".TrocaLoja">também nas lojas</div>
-          </h3>
-        </div>
+            <div class="benefit-item">
+              <div class="benefit-title pull-left"><img src="https://images2.marisa.com.br/medias/sys_master/images/images/h2a/he2/14055924629534/20221020-ICON-TROCA.png" class="benefit-icon" alt=""></div>
+              <div class="benefit-description">
+                <h3>
+                  <div class="benefit-titulo" data-toggle="modal" data-target=".TrocaLoja">Compre no site e troque</div>
+                  <div class="benefit-titulo2" data-toggle="modal" data-target=".TrocaLoja">também nas lojas</div>
+                </h3>
+              </div>
 
 
-      <div class="benefit-item">
-        <div class="benefit-title pull-left"><img src="https://images2.marisa.com.br/medias/sys_master/images/images/ha3/h7a/14850478899230/20230217-ICON-MBANK.png" class="benefit-icon" alt=""></div>
-        <div class="benefit-description">
-          <h3>
-            <div class="benefit-titulo" data-toggle="modal" data-target=".Mbank">Cartão Marisa</div>
-            <div class="benefit-titulo2" data-toggle="modal" data-target=".Mbank">solicite o seu</div>
-          </h3>
-        </div>
+              <div class="benefit-item">
+                <div class="benefit-title pull-left"><img src="https://images2.marisa.com.br/medias/sys_master/images/images/ha3/h7a/14850478899230/20230217-ICON-MBANK.png" class="benefit-icon" alt=""></div>
+                <div class="benefit-description">
+                  <h3>
+                    <div class="benefit-titulo" data-toggle="modal" data-target=".Mbank">Cartão Marisa</div>
+                    <div class="benefit-titulo2" data-toggle="modal" data-target=".Mbank">solicite o seu</div>
+                  </h3>
+                </div>
 
 
-      <!-- <div class="benefit-item col-md-1"></div></div> -->
-    </div>
-  </div>
+                <!-- <div class="benefit-item col-md-1"></div></div> -->
+              </div>
+            </div>
 </section>

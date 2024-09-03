@@ -123,23 +123,25 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         </div>
         <nav class="nav-top-bar">
 
+            <a href="home" style="text-decoration: none;">
+                <ul class="ul-nav-top-bar">
+                    <li>
+                        <h3>Colt</h3>
+                    </li>
+                    <li>
+                        <h3>Bella</h3>
+                    </li>
+                </ul>
+            </a>
             <ul class="ul-nav-top-bar">
-                <li>
-                    <h3>Colt</h3>
-                </li>
-                <li>
-                    <h3>Bella</h3>
-                </li>
-            </ul>
-            <ul class="ul-nav-top-bar">
                 <li class="">
-                    <a href="" title="Meus Pedidos">Meus Pedidos</a>
+                    <a href="minhaconta" title="Meus Pedidos">Meus Pedidos</a>
                 </li>
                 <li class="">
-                    <a href="" title="Nossas Lojas">Nossas Lojas</a>
+                    <a href="localizacao" title="Nossas Lojas">Nossas Lojas</a>
                 </li>
                 <li class="">
-                    <a href="" class="">
+                    <a href="contato" class="">
                         Atendimento<i class="ion-chevron-down hide"></i>
                     </a>
 

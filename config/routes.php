@@ -26,8 +26,9 @@ $routes = [
     '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado',
     '/minha_loja/teste-produto' => 'ProdutoController@exibirProdutosEmDestaque',
     '/minha_loja/detalhespedido' => 'PedidoController@telaDetalhesPedido',
-    '/minha_loja/alterarsenha' => 'ClienteController@alterarSenha'
-
+    '/minha_loja/alterarsenha' => 'ClienteController@alterarSenha',
+    '/minha_loja/localizacao' => 'LocalizacaoController@redirecionarTelaLocalizacao',
+    '/minha_loja/contato' => 'ContatoController@redirecionarParaTelaContato'
 ];
 
 if (isset($_GET['url'])) {

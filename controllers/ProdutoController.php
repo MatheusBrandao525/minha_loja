@@ -65,4 +65,15 @@ class ProdutoController
 
         return $produtosCategoria;
     }
+
+    public function exibeProdutosPorBusca($pesquisa)
+    {
+        $produtoModel = new ProdutoModel();
+
+        if (isset($pesquisa) && !empty($pesquisa)) {
+            $produtosPesquisados = $produtoModel->buscarProdutosPorPesquisa($pesquisa);
+        }
+
+        return $produtosPesquisados;
+    }
 }

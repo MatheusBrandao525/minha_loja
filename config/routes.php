@@ -18,6 +18,7 @@ $routes = [
     '/minha_loja/alteraendereco' => 'ClienteController@alterarEnderecoCliente',
     '/minha_loja/detalhesPedido' => 'PerfilController@redirecionaParaDetalhesPedido',
     '/minha_loja/pesquisa' => 'PesquisaController@redirecionaParaTelaDePesquisa',
+    '/minha_loja/resultados' => 'PesquisaController@redirecionarParaTelaResultados',
     '/minha_loja/sucesso' => 'CheckoutController@redirecionaParaTelaDeSucesso',
     '/minha_loja/erro_404' => 'ErroController@redirecionarParaTelaDeErro404',
     '/minha_loja/erro_cadastro' => 'ErroController@redirecionarParaTelaDeErroCadastro',

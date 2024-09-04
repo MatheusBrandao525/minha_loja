@@ -1,8 +1,36 @@
 <?php
-
+require 'controllers/ProdutoController.php';
 require 'components/header.php';
 
+// Verifica se há um termo de pesquisa na sessão
+if (isset($_SESSION['pesquisa']) && !empty($_SESSION['pesquisa'])) {
+    $pesquisa = $_SESSION['pesquisa'];
+
+    // Instancia o model de produtos
+    $produtoController = new ProdutoController();
+
+    // Busca os produtos com base na pesquisa
+    $produtosPesquisados = $produtoController->exibeProdutosPorBusca($pesquisa);
+    var_dump($produtosPesquisados);
+    exit;
+    // Exibe os resultados
+    if (!empty($produtosPesquisados)) {
+        foreach ($produtosPesquisados as $produto) {
+            echo '<div class="produto">';
+            echo '<h2>' . htmlspecialchars($produto['nome_produto']) . '</h2>';
+            echo '<p>' . htmlspecialchars($produto['descricao']) . '</p>';
+            echo '</div>';
+        }
+    } else {
+        echo '<p>Não foram encontrados resultados para sua pesquisa.</p>';
+    }
+} else {
+    echo '<p>Nenhuma pesquisa realizada.</p>';
+}
+
+require 'components/footer.php';
 ?>
+
 <div class="categoria-container">
     <div class="container">
 

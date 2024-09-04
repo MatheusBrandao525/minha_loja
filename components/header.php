@@ -173,11 +173,11 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     <div class="block block-search">
                         <!-- <div class="block block-title"><strong>Pesquisa</strong></div> -->
                         <div class="block block-content">
-                            <form class="form minisearch" id="search_mini_form" action="" method="get">
+                            <form class="form minisearch" id="search_mini_form" action="pesquisa" method="post">
                                 <div class="field search">
                                     <!-- <label class="label" for="search" data-role="minisearch-label"><span>Pesquisa</span></label> -->
                                     <div class="control has-icon">
-                                        <input id="search" type="text" name="q" value="" placeholder="Digite o que está buscando..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
+                                        <input id="search" type="text" name="pesquisa" value="" placeholder="Digite o que está buscando..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
                                         <button type="submit" class="search-btn"><i class="fas fa-search search-icon"></i></button>
                                         <div id="search_autocomplete" class="search-autocomplete"></div>
                                     </div>

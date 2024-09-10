@@ -11,6 +11,8 @@ require_once 'controllers/PedidoController.php';
 $categforiaContoller = new CategoriaController();
 $categoriasPrincipais = $categforiaContoller->exibirCategoriasPrincipais();
 
+$totalCarrinho = 0;
+
 if (isset($_SESSION['ID'])) {
     $clienteController = new ClienteController();
     $dadosUsuario = $clienteController->exibirDadosClienteLogado($_SESSION['ID']);
@@ -18,16 +20,11 @@ if (isset($_SESSION['ID'])) {
     $carrinhoController = new CarrinhoController();
     $produtosCarrinho = $carrinhoController->exibirProdutosNoCarrinho($_SESSION['ID']);
 
-    $totalCarrinho = 0;
-    foreach ($produtosCarrinho as $produto) {
-        $totalCarrinho += $produto['preco_unitario'] * $produto['quantidade'];
-    }
+    $totalCarrinho = $carrinhoController->valorTotalCarrinhoClienteLogado($_SESSION['ID']);
 
     $pedidoController = new PedidoController();
     $pedidosCliente = $pedidoController->exibirPedidosDoCliente($_SESSION['ID']);
 }
-
-
 
 $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 ?>
@@ -116,11 +113,11 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <div class="overlay"></div>
 
     <header>
-        <div class="top-bar">
+        <!--         <div class="top-bar">
             <div class="container">
                 <img src="public/assets/img/site/exemplo-banner-top.jpeg" alt="">
             </div>
-        </div>
+        </div> -->
         <nav class="nav-top-bar">
 
             <a href="home" style="text-decoration: none;">

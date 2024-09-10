@@ -17,7 +17,6 @@ class CarrinhoController
         exit();
     }
 
-
     public function alterarQuantidadeCarrinho()
     {
         if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
@@ -96,5 +95,13 @@ class CarrinhoController
         $carrinhoModel = new CarrinhoModel();
         $produtosCarrinho = $carrinhoModel->buscarProdutosNoCarrinhoDoUsuario($usuarioId);
         return $produtosCarrinho;
+    }
+
+    public function valorTotalCarrinhoClienteLogado($clienteId)
+    {
+        $carrinhoModel = new CarrinhoModel();
+
+        $valorTotalCarrinhoClienteLogado = $carrinhoModel->somarValorTotalCarrinhoClienteLogado($clienteId);
+        return $valorTotalCarrinhoClienteLogado;
     }
 }

@@ -3,20 +3,30 @@ require 'components/header.php';
 require_once 'controllers/CarrinhoController.php';
 
 $carrinhoController = new CarrinhoController();
-$produtosCarrinho = $carrinhoController->exibirProdutosNoCarrinho(1);
+$produtosCarrinho = $carrinhoController->exibirProdutosNoCarrinho($_SESSION['ID']);
 
 $totalCarrinho = 0;
 $desconto = 0;
 $valorFrete = 0;
-foreach ($produtosCarrinho as $produto) {
-    $totalCarrinho += $produto['preco_unitario'] * $produto['quantidade'];
+
+if (isset($_SESSION['ID'])) {
+    $idUsuarioLogado = $_SESSION['ID'];
+} else {
+    header('Location: login');
 }
+
+// Verificando se o cupom de desconto foi aplicado
 if (isset($_POST['codigo_cupom']) && $_POST['codigo_cupom'] == 'DESCONTO10') {
-    $desconto = $totalCarrinho * 0.10;
+    $desconto = 0.10; // 10% de desconto
 }
 
-$totalFinal = $totalCarrinho - $desconto + $valorFrete;
+// Somando o valor total dos produtos no carrinho
+foreach ($produtosCarrinho as $produto) {
+    $totalCarrinho += $produto['vlr_unitario'] * $produto['quantidade'];
+}
 
+$descontoTotal = $totalCarrinho * $desconto;
+$totalFinal = $totalCarrinho - $descontoTotal + $valorFrete;
 ?>
 
 <style>
@@ -63,33 +73,35 @@ $totalFinal = $totalCarrinho - $desconto + $valorFrete;
                     <span class="produto_tamanho"><?php echo $produto['tamanho_modelo']; ?></span>
 
                     <div class="quantidade_controle">
-                        <form action="alterar_quantidade" method="post">
-                            <input type="hidden" value="1" name="quantidade">
+                        <form action="alterar_quantidade.php" method="post">
                             <input type="hidden" value="menos" name="alterar">
                             <input type="hidden" value="<?php echo $produto['produto_id']; ?>" name="produto_id">
+                            <input type="hidden" value="1" name="quantidade">
                             <button class="quantidade_menos">-</button>
                         </form>
                         <span class="quantidade"><?php echo $produto['quantidade']; ?></span>
-                        <form action="alterar_quantidade" method="post">
+                        <form action="alterar_quantidade.php" method="post">
                             <input type="hidden" value="mais" name="alterar">
-                            <input type="hidden" value="1" name="quantidade">
                             <input type="hidden" value="<?php echo $produto['produto_id']; ?>" name="produto_id">
+                            <input type="hidden" value="1" name="quantidade">
                             <button class="quantidade_mais">+</button>
                         </form>
                     </div>
 
-                    <span class="valor_unitario">R$ <?php echo number_format($produto['preco_unitario'], 2, ',', '.'); ?></span>
+                    <span class="valor_unitario">R$ <?php echo number_format($produto['vlr_unitario'], 2, ',', '.'); ?></span>
 
-                    <?php $valorTotalProduto = $produto['preco_unitario'] * $produto['quantidade']; ?>
+                    <?php $valorTotalProduto = $produto['vlr_unitario'] * $produto['quantidade']; ?>
                     <span class="valor_total">R$ <?php echo number_format($valorTotalProduto, 2, ',', '.'); ?></span>
 
                     <span>
-                        <button class="excluir_produto_carrinho">X</button>
+                        <form action="remover_produto.php" method="post">
+                            <input type="hidden" name="produto_id" value="<?php echo $produto['produto_id']; ?>">
+                            <button class="excluir_produto_carrinho">X</button>
+                        </form>
                     </span>
                 </div>
             <?php endforeach; ?>
         </div>
-
         <div class="info_carrinho">
             <div class="cupom_desconto">
                 <input type="text" placeholder="Código do cupom" id="codigo_cupom" name="codigo_cupom">

@@ -72,8 +72,9 @@ class ProdutoController
 
         if (isset($pesquisa) && !empty($pesquisa)) {
             $produtosPesquisados = $produtoModel->buscarProdutosPorPesquisa($pesquisa);
+            return $produtosPesquisados;
         }
 
-        return $produtosPesquisados;
+        return [];
     }
 }

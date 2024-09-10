@@ -40,12 +40,10 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="public/assets/css/style_header.css">
     <link rel="stylesheet" href="public/assets/css/style_banner.css">
-    <!-- <link rel="stylesheet" href="public/assets/css/style_banner-02.css"> -->
     <link rel="stylesheet" href="public/assets/css/style_banner-03.css">
     <link rel="stylesheet" href="public/assets/css/style_produtos.css">
     <link rel="stylesheet" href="public/assets/css/style_login.css">
     <link rel="stylesheet" href="public/assets/css/style_cadastro_usuario.css">
-    <!-- <link rel="stylesheet" href="public/assets/css/style_perfil_usuario.css"> -->
     <link rel="stylesheet" href="public/assets/css/style_carrinho.css">
     <?php if ($urlAtual === 'http://localhost/minha_loja/categoria') { ?>
         <link rel="stylesheet" href="public/assets/css/style_categoria.css"> <?php } ?>

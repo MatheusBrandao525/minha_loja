@@ -6,6 +6,10 @@ if (isset($_SESSION['detalhesProduto'])) {
     header("Location:produtos");
     exit;
 }
+
+echo '<pre>';
+var_dump($detalhesProduto);
+exit();
 ?>
 <style>
     .container {
@@ -56,26 +60,26 @@ if (isset($_SESSION['detalhesProduto'])) {
         width: 1px;
 
         &:checked+.radio-tile {
-            border-color: #f1b5b8;
+            border-color: #caad5f;
             box-shadow: 0 5px 10px rgba(#000, 0.1);
-            color: #f1b5b8;
+            color: #333;
 
             &:before {
                 transform: scale(1);
                 opacity: 1;
-                background-color: #f1b5b8;
-                border-color: #f1b5b8;
+                background-color: #caad5f;
+                border-color: #caad5f;
             }
 
             .radio-icon,
             .radio-label {
-                color: #f1b5b8;
+                color: #333;
             }
         }
 
         &:focus+.radio-tile {
-            border-color: #f1b5b8;
-            box-shadow: 0 5px 10px rgba(#000, 0.1), 0 0 0 4px #f1b5b8;
+            border-color: #caad5f;
+            box-shadow: 0 5px 10px rgba(#000, 0.1), 0 0 0 4px #caad5f;
 
             &:before {
                 transform: scale(1);
@@ -106,7 +110,7 @@ if (isset($_SESSION['detalhesProduto'])) {
             display: block;
             width: 0.6rem;
             height: 0.6rem;
-            border: 2px solid #f1b5b8;
+            border: 2px solid #caad5f;
             background-color: #fff;
             border-radius: 50%;
             top: 0.25rem;
@@ -121,7 +125,7 @@ if (isset($_SESSION['detalhesProduto'])) {
         }
 
         &:hover {
-            border-color: #f1b5b8;
+            border-color: #caad5f;
 
             &:before {
                 transform: scale(1);
@@ -132,7 +136,7 @@ if (isset($_SESSION['detalhesProduto'])) {
 
     .radio-icon {
         transition: .375s ease;
-        color: #f1b5b8;
+        color: #caad5f;
 
         svg {
             width: 1rem;
@@ -149,7 +153,7 @@ if (isset($_SESSION['detalhesProduto'])) {
 <div class="conteiner-titulo-detalhes">
     <!-- Título do Produto -->
     <div class="titulo-produto-detalhes">
-        <h2><i class="fas fa-home"></i> Início / Smartphone Modelo XYZ</h2>
+        <h2><i class="fas fa-home"></i> Início / detalhes / <?php echo $detalhesProduto['nome']; ?></h2>
     </div>
 </div>
 
@@ -164,12 +168,16 @@ if (isset($_SESSION['detalhesProduto'])) {
             <input type="hidden" value="<?php echo $detalhesProduto['nome']; ?>" name="nomeproduto">
             <input type="hidden" value="<?php echo $detalhesProduto['preco_unitario']; ?>" name="vlrunitario">
             <input type="hidden" value="<?php echo $detalhesProduto['preco_custo']; ?>" name="vlrcusto">
-            <input type="hidden" value="1" name="usuarioid">
+            <input type="hidden" value="<?php if (isset($_SESSION['ID'])) {
+                                            echo $_SESSION['ID'];
+                                        } else {
+                                            echo 0;
+                                        } ?>" name="usuarioid">
             <input type="hidden" value="<?php echo $detalhesProduto['produto_id']; ?>" name="produtoid">
-            <h2 class="nome-produto-detalhes">Smartphone Modelo XYZ</h2>
+            <h2 class="nome-produto-detalhes"><?php echo $detalhesProduto['nome']; ?></h2>
             <div class="flex-alinhado">
                 <div class="coluna-pequena">
-                    <h4>Cod: 235345</h4>
+                    <h4>Cod: <?php echo $detalhesProduto['codigo']; ?></h4>
                 </div>
 
                 <div class="coluna-pequena">
@@ -190,7 +198,7 @@ if (isset($_SESSION['detalhesProduto'])) {
 
             </div>
             <div>
-                <p class="info-valor-antigo">R$999,00 <strong class="info-novo-valor"> R$990,00 À vista</strong></p>
+                <p class="info-valor-antigo">R$ <?php echo number_format($detalhesProduto['preco_unitario']); ?> <strong class="info-novo-valor"> R$ <?php echo number_format($detalhesProduto['preco_promocao']); ?> À vista</strong></p>
             </div>
             <p class="info-descricao-valor">No PIX ou até <span class="valor-com-destaque">12x</span> de <span class="valor-com-destaque">R$83,25</span> sem juros!</p>
             <div class="container-opcoes">

@@ -19,15 +19,17 @@ create table categorias
 (
 categoria_id int not null primary key auto_increment,
 nome_categoria varchar(255) not null,
-imagem_categria varchar(255) null
+imagem_categria varchar(255) null,
+principal bool default 0 not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO categorias (nome_categoria, imagem_categria)
+INSERT INTO categorias (nome_categoria, imagem_categria, principal)
 VALUES
-('Eletrônicos', 'eletronicos.jpg'),
-('Roupas', 'roupas.jpg'),
-('Alimentos', 'alimentos.jpg');
+('Eletrônicos', 'eletronicos.jpg', 1),
+('Roupas', 'roupas.jpg', 0),
+('Alimentos', 'alimentos.jpg', 1);
 
+DROP TABLE categorias;
 
 SELECT * FROM CATEGORIAS;
 
@@ -56,8 +58,12 @@ CREATE TABLE produtos
     preco_promocao DECIMAL(10,2) NULL,
     inicio_promocao DATETIME NULL,
     fim_promocao DATETIME NULL,
+    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP, -- Nova coluna para registrar a data de cadastro
     CONSTRAINT fk_categoria_id FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+drop table produtos;
 
 INSERT INTO produtos (nome, codigo, exibe_preco, preco_custo, preco_unitario, modelos, cor, destaque, tamanhos, descricao, imagem1, imagem2, imagem3, categoria_id, unidade, preco_venda_1, preco_venda_2, preco_promocao, inicio_promocao, fim_promocao)
 VALUES
@@ -81,31 +87,30 @@ link text
 select * from redes_sociais;
 
 CREATE TABLE clientes (
-    cliente_id INT PRIMARY KEY AUTO_INCREMENT,
-    cpf VARCHAR(11) NOT NULL,
+    cliente_id INT AUTO_INCREMENT PRIMARY KEY,
+    cpf VARCHAR(11) NOT NULL UNIQUE,
     nome VARCHAR(255) NOT NULL,
+    sobrenome VARCHAR(255) NOT NULL,
     telefone VARCHAR(15) NOT NULL,
-    cep VARCHAR(9) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
     endereco VARCHAR(255) NOT NULL,
-    numero VARCHAR(10) NULL,
-    bairro VARCHAR(255) NOT NULL,
+    numero VARCHAR(10),
+    sem_numero BOOLEAN DEFAULT FALSE,
+    bairro VARCHAR(100) NOT NULL,
     complemento VARCHAR(255),
-    cidade VARCHAR(255) NOT NULL,
-    estado VARCHAR(255) NOT NULL,
-    pais VARCHAR(255) NOT NULL,
-    email VARCHAR(75) NOT NULL,
-    senha VARCHAR(255) NOT NULL,
-    foto_perfil VARCHAR(255),
-    UNIQUE (cpf),
-    UNIQUE (email)
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    pais VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 
 drop table clientes;
 
-select * from clientes;	
-INSERT INTO clientes (nome, cpf, email, senha, endereco, numero, complemento, cep, telefone, bairro, cidade, estado, pais, foto_perfil) 
-VALUES ('Matheus Brandão', '03600717243', 'brandao.matheus.dev@gmail.com', '12345678', 'Rua Princesa Isabel', '4762', 'Cidade Alta', '76935000', '69993576137', 'Centro', 'Porto Velho', 'RO', 'Brasil', 'placeholder.jpg');
+select * from clientes;
+INSERT INTO clientes (nome, cpf, email, senha, endereco, numero, complemento, cep, telefone, foto_perfil) VALUES ('matheus', '03600717243', 'brandao.matheus.dev@gmail.com', '12345678', 'rua princesa isabel', '4762', 'cidade alta', '76935000', 69993576137, 'placeholder.jpg');
 
 
 CREATE TABLE `carrinho` (
@@ -124,3 +129,64 @@ CREATE TABLE `carrinho` (
   select * from carrinho;
   
   drop table carrinho;
+  
+  CREATE TABLE `pedidos` (
+  `pedido_id` int primary key auto_increment not NULL,
+  `ticket_pedido` varchar(255) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `logradouro` varchar(120) NOT NULL,
+  `num_casa` int(11) NOT NULL,
+  `nome_bairro` varchar(180) NOT NULL,
+  `num_cep` varchar(20) NOT NULL,
+  `cidade` varchar(180) NOT NULL,
+  `estado` varchar(180) NOT NULL,
+  `pais` varchar(180) NOT NULL,
+  `tipo_endereco` varchar(180) NOT NULL,
+  `valor_frete` decimal(10,2) not null,
+  `valor_total` decimal(10,2) NOT NULL,
+  `forma_pagamento` enum('NÃO FINALIZADO','CARTAO','BOLETO','TRANSFERENCIA','NO LOCAL','CHEQUE','EM ESPECIE') NOT NULL DEFAULT 'NÃO FINALIZADO',
+  `status_pagamento` enum('PENDENTE','CONCLUIDO','CANCELADO') NOT NULL DEFAULT 'PENDENTE',
+  `data_pedido` datetime NOT NULL DEFAULT current_timestamp(),
+  `codigo_rastreio` varchar(255) NOT NULL,
+  `status_pedido` enum('PENDENTE','DESPACHADO','A CAMINHO','ENTREGUE','CANCELADO') DEFAULT 'PENDENTE',
+  `observacao_pedido` tinytext DEFAULT NULL,
+  `dt_entrega` varchar(255) DEFAULT NULL,
+  `entregador` varchar(255) DEFAULT NULL,
+  `hora_entrega` varchar(255) DEFAULT NULL,
+  `assinatura` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+drop table pedidos;
+
+CREATE TABLE `produto_pedido` (
+  `item_id` int(11) NOT NULL,
+  `pedido_id` int not null,
+  `ticket_pedido` varchar(255) NOT NULL,
+  `nome_produto` varchar(255) not null,
+  `produto_id` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `preco_unitario` decimal(10,2) DEFAULT NULL,
+  `custo_produto` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+drop table produto_pedido;
+
+CREATE TABLE `cupom_desconto` (
+	`cupom_id` int primary key auto_increment,
+	`codigo` varchar(80) not null,
+    `porcentagem` varchar(10) not null,
+    `desconto` decimal(10,2) not null,
+    `validade` date default null,
+    `ativo` boolean default 1
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `cupons_cliente` (
+	`id` int primary key auto_increment,
+    `cliente_id` int not null,
+    `cupom_id` int not null,
+    `codigo_cupom` varchar(80) not null,
+    `validade` date default null,
+    `ativo` boolean default null,
+    `desconto` decimal(10,2) not null,
+    `status` varchar(80) not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

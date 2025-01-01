@@ -10,7 +10,7 @@ class Conexao {
     private function __construct() {
         try {
             // Atualize esta linha para usar PDO
-            $dsn = "mysql:host=$this->servidor;dbname=$this->dbname;charset=utf8";
+            $dsn = "mysql:host=$this->servidor;port=3306;dbname=$this->dbname;charset=utf8";
             $this->conn = new PDO($dsn, $this->usuario, $this->senha, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

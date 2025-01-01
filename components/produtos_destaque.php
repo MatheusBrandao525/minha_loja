@@ -17,7 +17,8 @@
             <form method="post" action="detalhes" class="product-image">
                 <input type="hidden" name="produtoId" value="<?php echo $produto['produto_id'];?>">
                 <button type="submit" href="/minha_loja/detalhes/1">
-                    <img src="<?php echo $produto['imagem1'];?>" alt="Nome do Produto">
+                    <!-- <img src="<?php /*echo $produto['imagem1']; */?>" alt="Nome do Produto"> -->
+                    <img src="public/assets/img/produto01.png" alt="Nome do Produto">
                 </button>
 
             </form>

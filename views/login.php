@@ -85,25 +85,28 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "validarLogin",
+            url: "validarLogin",  // Ajuste a URL para o seu endpoint
             data: $(this).serialize(),
             dataType: "json",
             success: function(response) {
                 if (response.status === "sucesso") {
-                    window.location.href = "home";
+                    // Se a autenticação for bem-sucedida, redireciona o usuário para a home
+                    window.location.href = "home";  // Ou outro endereço conforme sua aplicação
                 } else {
+                    // Se houver erro, mostra a mensagem na modal
                     modalContent.text(response.mensagem);
                     modal.show();
                 }
             },
             error: function(xhr, status, error) {
-
+                // Caso ocorra algum erro na requisição AJAX
                 modalContent.text(error);
                 modal.show();
             }
         });
     });
 });
+
 </script>
 
 

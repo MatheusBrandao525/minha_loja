@@ -18,7 +18,8 @@ $routes = [
     '/minha_loja/usuario_nao_encontrado' => 'ErroController@redirecionartelaUsuarioNaoEncontrado',
     '/minha_loja/salvarAvaliacao' => 'AvaliacaoController@avaliarProduto',
     '/minha_loja/obrigadoPorAvaliar' => 'AvaliacaoController@etlaObrigadoPorAvaliar',
-    '/minha_loja/erroNaAvaliacao' => 'AvaliacaoController@telaErroNaAvaliacao'
+    '/minha_loja/erroNaAvaliacao' => 'AvaliacaoController@telaErroNaAvaliacao',
+    '/minha_loja/adicionarCarrinho' => 'CarrinhoController@apresentarTelaDeCarrinho'
 ];
 
 if (isset($_GET['url'])) {

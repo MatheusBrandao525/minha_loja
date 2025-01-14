@@ -23,7 +23,7 @@
 
 #slide1 {
     background-image: url('../img/site/imagem_banner.png') !important;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     height: 100%;
     width: 100%;

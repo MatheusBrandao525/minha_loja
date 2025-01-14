@@ -8,11 +8,11 @@
 
 
 :root {
-    --bg-primaria: #707070;
+    --bg-primaria: #313131;
     --bg-segundaria: #545252;
-    --bg-terciaria: #db0000;
+    --bg-terciaria: #781b77;
     --bg-grey: #545252;
-    --cor-icones: #fd6666;
+    --cor-icones: #ae3ee6;
     --botao-primario: #62bb20;
     --botao-segundario: #3b7f07;
     --link-primario: #fff;
@@ -57,6 +57,9 @@ ul li {
     padding-right: 0;
     width: 100%;
 }
+
+
+
 
 ul,
 ol {
@@ -119,6 +122,7 @@ li a i {
 #headerStarter {
     display: -webkit-flex;
     display: -ms-flexbox;
+    background-color: var(--bg-primaria);
     display: -ms-flex;
     display: flex;
     -webkit-align-items: center;
@@ -138,15 +142,14 @@ li a i {
 }
 
 #headerStarter .logo {
-    /* width: 270px; */
+    width: 270px;   
     padding-top: 20px;
     padding-bottom: 20px;
     margin-right: 72px;
 }
 
 .logo img {
-    width: 400px;
-    height: 110px;
+    width: 250px !important;
 }
 
 .header.container-wrapper {
@@ -752,8 +755,8 @@ li a i {
 }
 
 .logo img {
-    width: 400px;
-    height: 110px;
+    width: 250px;
+    /* height: 110px; */
 }
 
 .header.container-wrapper {
@@ -863,7 +866,7 @@ li a i {
     }
 
     .logo img {
-        width: 400px !important;
+        width: 250px !important;
         height: auto;
     }
 
@@ -954,4 +957,25 @@ li a i {
 li.borda-direita {
     border-right: 1px solid var(--link-primario);
     padding-right: 5px !important;
+}
+
+#headerStarter .logo {
+    width: 270px;   
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-right: 72px;
+}
+
+.logo img {
+    width: 250px !important;
+}
+
+#headerStarter {
+    background-image: url('../img/site/fundo_banner.png') !important;
+    background-size: cover; /* Faz com que a imagem cubra toda a largura e altura */
+    background-repeat: no-repeat; /* Evita repetição */
+    background-position: center; /* Centraliza a imagem */
+    width: 100%; /* Garante que o elemento cobre toda a largura */
+    height: 100%; /* A altura será definida pelo conteúdo ou CSS adicional */
+    opacity: 0.8;
 }

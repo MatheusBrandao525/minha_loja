@@ -12,13 +12,38 @@ class ProdutoModel
 
     public function buscarProdutosEmDestaque()
     {
-        $sql = 'SELECT * FROM produtos WHERE destaque = 1';
+        $sql = '
+            SELECT 
+                p.produto_id AS produto_id, 
+                p.nome, 
+                p.codigo, 
+                p.exibe_preco, 
+                p.preco_custo, 
+                p.preco_unitario, 
+                p.modelos, 
+                p.cor, 
+                p.destaque, 
+                p.descricao, 
+                p.categoria_id, 
+                GROUP_CONCAT(pi.imagem_url SEPARATOR ",") AS imagens 
+            FROM 
+                produtos AS p
+            LEFT JOIN 
+                produtos_imagens AS pi 
+            ON 
+                p.produto_id = pi.produto_id
+            WHERE 
+                p.destaque = 1
+            GROUP BY 
+                p.produto_id
+        ';
+    
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
-
+    
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
     public function buscarProdutosPorCategoria($categoriaId)
     {
         $sql = 'SELECT * FROM produtos WHERE categoria_id = :idCategoria';

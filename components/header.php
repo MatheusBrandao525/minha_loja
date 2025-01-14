@@ -37,7 +37,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         <link rel="stylesheet" href="public/assets/css/style_categoria.css">
     <?php } ?>
     <link rel="stylesheet" href="public/assets/css/style_footer.css">
-    <title>NomeLoja</title>
+    <title>Brandao Makers</title>
 </head>
 
 <body>
@@ -52,7 +52,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                         <a href="tel:+551129432050" rel="nofollow">
                             <span>
                                 <i class="fas fa-phone-alt"></i>
-                                <small>11</small> 2943-2050
+                                <small>69</small> 99357-6137
                             </span>
                         </a>
                     </li>
@@ -61,7 +61,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                         <a href="" target="_blank" rel="nofollow">
                             <span>
                                 <i class="fab fa-whatsapp"></i>
-                                <small>11</small> 98146-6079
+                                <small>69</small> 99357-6137
                             </span>
                         </a>
                     </li>
@@ -70,7 +70,7 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                         <a href="" target="_blank" rel="nofollow">
                             <span>
                                 <i class="fas fa-envelope"></i>
-                                atendimento@mirao.com.br
+                                brandaomakers@gmail.com
                             </span>
                         </a>
                     </li>
@@ -96,9 +96,10 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
             </div>
         </section>
-        <div id="headerStarter" class="header container-wrapper">
+        <div id="headerStarter" class="header container-wrapper" style="max-width:100% !important; margin: 0 !important; justify-content:center;">
+        <div style="display: flex; justify-content:space-around;width:90%; max-width:95% !important; align-items:center;">
             <a class="logo" href="home" title="" aria-label="store logo">
-                <img src="public/assets/img/site/tm_plus.png" title="" alt="" width="170">
+                <img src="public/assets/img/site/logo_loja_brandao_makers.png" title="" alt="" width="170">
             </a>
 
             <div class="block block-search">
@@ -134,11 +135,14 @@ $urlAtual = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     <?php } ?>
                 </li>
             </ul>
+            
+
+            </div>
 
             <!-- Segundo logo substituindo a seção do carrinho -->
-            <a class="logo" href="home" title="" aria-label="second store logo">
+<!--             <a class="logo" href="home" title="" aria-label="second store logo">
                 <img src="public/assets/img/site/top_motos.png" title="" alt="" width="170">
-            </a>
+            </a> -->
         </div>
 
         <nav class="navigation">

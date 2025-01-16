@@ -2,7 +2,7 @@
 require_once 'controllers/RedesSociaisController.php';
 require_once 'controllers/ProdutoController.php';
 $produtoController = new ProdutoController();
-if(isset($_SESSION['ID'])){
+if (isset($_SESSION['ID'])) {
     $usuarioId = $_SESSION['ID'];
 }
 $produtosDestaques = $produtoController->exibirTodosProdutosDestaques();
@@ -43,10 +43,12 @@ $linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp();
                         <form method="post" action="adicionarCarrinho" style="width: 100%;">
                             <input type="hidden" name="produto_id" value="<?php echo $produto['produto_id']; ?>">
                             <input type="hidden" name="usuario_id" value="<?php echo $usuarioId; ?>">
+                            <input type="hidden" name="tamanho_modelo" value="PADRAO">
                             <button type="submit" class="product-button btn-carrinho">
                                 <i class="fa fa-shopping-cart"></i> Carrinho
                             </button>
                         </form>
+
                         <a href="<?php echo $linkWhatsapp; ?>" class="product-button" target="_blank">
                             <i class="fab fa-whatsapp"></i> WhatsApp
                         </a>

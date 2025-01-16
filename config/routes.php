@@ -19,7 +19,10 @@ $routes = [
     '/minha_loja/salvarAvaliacao' => 'AvaliacaoController@avaliarProduto',
     '/minha_loja/obrigadoPorAvaliar' => 'AvaliacaoController@etlaObrigadoPorAvaliar',
     '/minha_loja/erroNaAvaliacao' => 'AvaliacaoController@telaErroNaAvaliacao',
-    '/minha_loja/adicionarCarrinho' => 'CarrinhoController@apresentarTelaDeCarrinho'
+    '/minha_loja/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
+    '/minha_loja/adicionarCarrinho' => 'CarrinhoController@adicionarAoCarrinho',
+    '/minha_loja/totalCarrinho' => 'CarrinhoController@obterTotalCarrinho',
+    '/minha_loja/validarCupomDesconto' => 'CarrinhoController@processarCupom'
 ];
 
 if (isset($_GET['url'])) {

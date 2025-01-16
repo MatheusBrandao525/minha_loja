@@ -135,7 +135,7 @@
     font-weight: bold;
     height: 40px;
     color: #fff;
-    background-color: #e6ae00;
+    background-color: var(--bg-terciaria);
     cursor: pointer;
 }
 

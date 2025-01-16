@@ -184,6 +184,60 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+    $(document).ready(function() {
+        $('#validarcupom').click(function(e) {
+            e.preventDefault();
+
+            var cupomValor = $('#cupom').val();
+            var totalPedidoSemDesconto = $('#totalpedido').val();
+            var idDoUsuario = <?php echo $idUsuarioLogado; ?>; // Adiciona o ID do usuário aqui
+
+            $.ajax({
+                type: 'POST',
+                url: 'validar_cupom_desconto',
+                data: {
+                    cupom: cupomValor,
+                    totalpedido: totalPedidoSemDesconto,
+                    idDoUsuario: idDoUsuario // Passa o ID do usuário
+                },
+                success: function(response) {
+
+                    if (!isNaN(response)) {
+                        var novoTotal = parseFloat(response).toLocaleString('pt-BR', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        });
+                        $('#exibevalorcomdesconto').text(novoTotal);
+                        alert('Desconto aplicado com sucesso! Novo total: R$ ' + novoTotal);
+
+                        // Desabilita o input de cupom e o oculta
+                        $('#cupom').prop('disabled', true); // Desabilita o input
+                        $('#cupom').hide(); // Oculta o input
+                        $('#validarcupom').hide();
+                        $('#labelcupom').hide();
+
+                        // Atualiza o valor do input escondido com o novo total
+                        $('#valorcomdesconto').val(response);
+                        $('#cupomValor').val(cupomValor);
+
+                    } else if (response === 'cupom_invalido') {
+                        alert('Cupom inválido');
+                    } else if (response === 'cupom_utilizado') {
+                        alert('Cupom já utilizado pelo usuário');
+                    } else {
+                        alert('Erro ao aplicar desconto');
+                    }
+                },
+                error: function() {
+                    alert('Erro ao validar o cupom');
+                }
+            });
+        });
+    });
+</script>
+
+
+<script>
     function toggleCartVisibility() {
         var cartSidebar = document.getElementById('cart-sidebar');
         cartSidebar.classList.toggle('open');

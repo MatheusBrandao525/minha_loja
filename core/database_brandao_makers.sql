@@ -82,8 +82,11 @@ CREATE TABLE produtos_imagens (
     imagem_id INT PRIMARY KEY AUTO_INCREMENT,
     produto_id INT NOT NULL,
     imagem_url VARCHAR(255) NOT NULL,
+    principal boolean,
     CONSTRAINT fk_produto_imagens FOREIGN KEY (produto_id) REFERENCES produtos(produto_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+drop table produtos_imagens;
 
 select * from produtos_imagens;
 
@@ -165,3 +168,38 @@ drop table clientes;
 
 select * from clientes;
 INSERT INTO topmotos.clientes (nome, cpf, email, senha, endereco, numero, complemento, cep, telefone, foto_perfil) VALUES ('matheus', '03600717243', 'brandao.matheus.dev@gmail.com', '12345678', 'rua princesa isabel', '4762', 'cidade alta', '76935000', 69993576137, 'placeholder.jpg');
+
+CREATE TABLE `carrinho` (
+  `id_carrinho` int(11) PRIMARY KEY auto_increment,
+  `cupom_desconto` varchar (25) null,
+  `usuario_id` int(11) NOT NULL,
+  `produto_id` int(11) NOT NULL,
+  `frete` decimal(10,2) not null,
+  `nome_produto` varchar(255) NOT NULL,
+  `vlr_unitario` decimal(10,2) NOT NULL,
+  `vlr_custo` decimal(10,2) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `tamanho_modelo` varchar(50) null, -- Adicionando o campo para o tamanho do produto
+  `data_adicao` timestamp NOT NULL DEFAULT current_timestamp()
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  
+  drop table carrinho;
+  
+  delete from carrinho where id_ = 3;
+  
+  select * from carrinho;
+  
+  SELECT 
+                    c.produto_id, 
+                    c.quantidade, 
+                    c.nome_produto, 
+                    c.vlr_unitario, 
+                    pi.imagem_url 
+                FROM 
+                    carrinho AS c
+                INNER JOIN 
+                    produtos AS p ON c.produto_id = p.produto_id
+                INNER JOIN 
+                    produtos_imagens AS pi ON p.produto_id = pi.produto_id AND pi.principal = TRUE
+                WHERE 
+                    c.usuario_id = 1;

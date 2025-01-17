@@ -25,6 +25,7 @@ $quantidadeItens = $carrinhoController->exibeQuantidadeCarrinho();
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="public/assets/css/style_header.css">
     <link rel="stylesheet" href="public/assets/css/style_banner.css">
     <link rel="stylesheet" href="public/assets/css/style_banner-02.css">
@@ -142,7 +143,7 @@ $quantidadeItens = $carrinhoController->exibeQuantidadeCarrinho();
                     <a href="carrinho" style="color: #f3f3f3;">
                     <li style="margin-right: 3rem; position: relative;">
                             <i class="fa fa-shopping-cart" style="font-size: 2rem;"></i>
-                            <span class="cart-counter"><?php echo $quantidadeItens;?></span>
+                            <span class="cart-counter" id="qntcontador"><?php echo $quantidadeItens;?></span>
                         </li>
                     </a>
                     <li class="header_account_link_list">

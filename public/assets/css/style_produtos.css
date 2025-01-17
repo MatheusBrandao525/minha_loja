@@ -1,3 +1,7 @@
+.d-none{
+    display: none;
+}
+
 .container-block-title {
     width: 100%;
     display: flex;
@@ -136,6 +140,11 @@
     font-style: normal;
     font-weight: 400;
     color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Limita a 2 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Esconde o excesso */
+    text-overflow: ellipsis; /* Adiciona "..." no final */
 }
 
 .product-action {

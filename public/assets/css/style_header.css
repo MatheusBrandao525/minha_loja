@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-
 :root {
     --bg-primaria: #313131;
     --bg-segundaria: #545252;
@@ -58,8 +57,40 @@ ul li {
     width: 100%;
 }
 
+#mensagem{
+    font-family: sans-serif;
+}
 
+.pop-animation {
+    animation: pop-effect 0.3s ease-in-out;
+}
 
+@keyframes pop-effect {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.alert {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ffcc00;
+    background-color: #fff8e1;
+    color: #ff9800;
+    font-weight: bold;
+    border-radius: 5px;
+}
 
 ul,
 ol {

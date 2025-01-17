@@ -10,6 +10,7 @@ $produtosDestaques = $produtoController->exibirTodosProdutosDestaques();
 $redesSociaisController = new RedesSociaisController();
 $linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp();
 ?>
+
 <div class="container-block-title">
     <div class="block-title"><strong> Destaques </strong> <a href="produtos" class="vermais">Ver +</a> </div>
 </div>
@@ -40,7 +41,7 @@ $linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp();
                         $produtoNomeOuCodigo = $produto['codigo'];
                         $linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp($produtoNomeOuCodigo);
                         ?>
-                        <form method="post" action="adicionarCarrinho" style="width: 100%;">
+                        <form class="form-carrinho" method="post" action="adicionarCarrinho" style="width: 100%;">
                             <input type="hidden" name="produto_id" value="<?php echo $produto['produto_id']; ?>">
                             <input type="hidden" name="usuario_id" value="<?php echo $usuarioId; ?>">
                             <input type="hidden" name="tamanho_modelo" value="PADRAO">
@@ -59,7 +60,48 @@ $linkWhatsapp = $redesSociaisController->exibirLinkWhatsapp();
     </div>
 </section>
 
+<div id="mensagem" class="alert-success d-none text-center" role="alert" style="width:450px; height:45px; position:fixed; justify-content:center; text-align:center; padding-top:10px; align-items:center; top:0; right:0 !important; background-color:yellowgreen; color:azure; font-weight:bold; z-index:9999;">
+    Produto adicionado ao carrinho com sucesso!
+</div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.form-carrinho').on('submit', function(event) {
+            event.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: $(this).serialize(),
+                success: function(response) {
+                    const data = JSON.parse(response);
+
+                    if (data.quantidade) {
+                        // Atualiza a quantidade de produtos no carrinho
+                        $('#qntcontador').html(data.quantidade);
+
+                        // Exibe a mensagem de sucesso com o efeito de pop
+                        const mensagem = $('#mensagem');
+                        mensagem.removeClass('d-none pop-animation'); // Remove a classe antiga
+                        setTimeout(function() {
+                            mensagem.addClass('pop-animation'); // Adiciona novamente para reativar o efeito
+                        }, 10); // Pequeno delay para garantir que o efeito é aplicado
+
+                        // Oculta a mensagem após 5 segundos
+                        setTimeout(function() {
+                            mensagem.addClass('d-none').removeClass('pop-animation');
+                        }, 5000);
+                    }
+                },
+                error: function(error) {
+                    console.error('Erro ao adicionar ao carrinho:', error);
+                }
+            });
+        });
+    });
+</script>
 
 
 <script>

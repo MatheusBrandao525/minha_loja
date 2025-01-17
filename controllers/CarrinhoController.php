@@ -24,11 +24,10 @@ class CarrinhoController {
     public function adicionarAoCarrinho()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Validar os dados recebidos do formulário
             $usuarioId = $_POST['usuario_id'];
             $produtoId = $_POST['produto_id'];
     
-            // Buscar informações adicionais do produto (exemplo: nome, preço, custo)
+            // Buscar informações do produto
             $produtoModel = new ProdutoModel();
             $produto = $produtoModel->buscarDadosProdutoPorId($produtoId);
     
@@ -43,22 +42,22 @@ class CarrinhoController {
                 $carrinhoModel = new CarrinhoModel();
                 $carrinhoModel->adicionarProduto($usuarioId, $produtoId, $frete, $nomeProduto, $vlrUnitario, $vlrCusto, $tamanhoModelo);
     
-                // Redirecionar com mensagem de sucesso
-                // header('Location: carrinho.php?mensagem=Produto adicionado com sucesso');
-                echo 'Adicionado com sucesso!';
+                // Retornar quantidade total de itens no carrinho
+                $quantidadeTotal = $carrinhoModel->contadorItensCarrinho($usuarioId);
+                echo json_encode(['quantidade' => $quantidadeTotal]);
                 exit;
             } else {
-                // Produto não encontrado
-                // header('Location: produtos.php?erro=Produto não encontrado');
-                echo 'Erro ao adicionar produto ao carrinho!';
+                http_response_code(400);
+                echo json_encode(['erro' => 'Produto não encontrado']);
                 exit;
             }
         } else {
-            // Método não permitido
-            header('HTTP/1.1 405 Method Not Allowed');
+            http_response_code(405);
+            echo json_encode(['erro' => 'Método não permitido']);
             exit;
         }
     }
+    
 
     public function exibirProdutosCarrinhoUsuario($usuarioId)
     {
@@ -69,23 +68,23 @@ class CarrinhoController {
     }
     
 
-    public function processarCupom()
-    {
-
-    }
-
-
+    
+    
     public function exibeQuantidadeCarrinho()
     {
         $carrinhoModel = new CarrinhoModel();
         $quantidadeItensNoCarrinho = 0;
         if(isset($_SESSION['ID'])){
-        $quantidadeItensNoCarrinho = $carrinhoModel->contadorItensCarrinho($_SESSION['ID']);
+            $quantidadeItensNoCarrinho = $carrinhoModel->contadorItensCarrinho($_SESSION['ID']);
         }
         return $quantidadeItensNoCarrinho;
 
     }
-
     
+    
+    public function processarCupom()
+    {
+
+    }
     
 }

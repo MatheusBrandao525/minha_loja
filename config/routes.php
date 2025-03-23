@@ -22,7 +22,8 @@ $routes = [
     '/minha_loja/carrinho' => 'CarrinhoController@apresentarTelaDeCarrinho',
     '/minha_loja/adicionarCarrinho' => 'CarrinhoController@adicionarAoCarrinho',
     '/minha_loja/totalCarrinho' => 'CarrinhoController@obterTotalCarrinho',
-    '/minha_loja/validarCupomDesconto' => 'CarrinhoController@processarCupom'
+    '/minha_loja/validarCupomDesconto' => 'CarrinhoController@processarCupom',
+    '/minha_loja/checkout' => 'CheckoutController@exibeCheckout'
 ];
 
 if (isset($_GET['url'])) {

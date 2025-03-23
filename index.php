@@ -1,6 +1,8 @@
 <?php
 define('ROOT_PATH', dirname(__FILE__));
 
+require "vendor/autoload.php";
+
 require ROOT_PATH . '/config/routes.php';
 
 //Verificar esta alteração

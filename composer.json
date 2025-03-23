@@ -4,5 +4,8 @@
     },
     "scripts": {
         "test": "./vendor/bin/phpunit --colors=always --testdox test"
+    },
+    "require": {
+        "mercadopago/dx-php": "^3.1"
     }
 }

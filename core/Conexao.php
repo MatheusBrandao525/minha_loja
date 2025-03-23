@@ -1,13 +1,15 @@
 <?php
-class Conexao {
+class Conexao
+{
     private static $instance = null;
     private $conn;
-    private $servidor = "localhost";
+    private $servidor = "mysql";
     private $usuario = "root";
     private $senha = "1exagon1@";
     private $dbname = "brandao_makers";
 
-    private function __construct() {
+    private function __construct()
+    {
         try {
             // Atualize esta linha para usar PDO
             $dsn = "mysql:host=$this->servidor;port=3306;dbname=$this->dbname;charset=utf8";
@@ -20,14 +22,16 @@ class Conexao {
         }
     }
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (!self::$instance) {
             self::$instance = new Conexao();
         }
         return self::$instance;
     }
 
-    public function getConexao() {
+    public function getConexao()
+    {
         return $this->conn;
     }
 }

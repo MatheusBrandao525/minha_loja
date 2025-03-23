@@ -1,0 +1,38 @@
+networks:
+  brandao-net:
+
+services:
+  loja:
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    container_name: "loja"
+    ports:
+      - "9000:80/tcp"
+    networks:
+      - brandao-net
+    restart: on-failure
+    volumes:
+      - .:/var/www/html/
+
+  mysql:
+    build:
+      context: "."
+      dockerfile: Dockerfile-mysql
+    container_name: "pnhs_mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1exagon1@
+      MYSQL_DATABASE: brandao_makers
+    restart: on-failure
+    ports:
+      - "127.0.0.1:3306:3306"
+    networks:
+      - brandao-net
+    volumes:
+      - ./db/config/initdb:/docker-entrypoint-initdb.d
+      - ./db/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 10s
+      retries: 3

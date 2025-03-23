@@ -2,7 +2,7 @@
 
 class CheckoutController{
 
-    public function apresentarTelaCheckout()
+    public function exibeCheckout()
     {
         include ROOT_PATH . '/views/checkout.php';
     }

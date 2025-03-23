@@ -7,6 +7,9 @@ services:
       context: "."
       dockerfile: Dockerfile
     container_name: "loja"
+    environment:
+      MP_PUBLIC_KEY: "Altere para Public Key"
+      MP_SECRET_KEY: "Altere para Access Token"
     ports:
       - "9000:80/tcp"
     networks:

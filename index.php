@@ -3,7 +3,8 @@ define('ROOT_PATH', dirname(__FILE__));
 
 require ROOT_PATH . '/config/routes.php';
 
-$requestedUrl = $_SERVER['REQUEST_URI'];
+//Verificar esta alteração
+$requestedUrl = '/minha_loja' . $_SERVER['REQUEST_URI'];
 
 if (array_key_exists($requestedUrl, $routes)) {
     $parts = explode('@', $routes[$requestedUrl]);

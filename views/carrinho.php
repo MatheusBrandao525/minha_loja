@@ -2,10 +2,13 @@
 require 'components/header.php';
 $carrinhoController = new CarrinhoController();
 $dadosCarrinhoUsuario = $carrinhoController->exibirProdutosCarrinhoUsuario($_SESSION['ID']);
+$idCarrinho = !empty($dadosCarrinhoUsuario) ? $dadosCarrinhoUsuario[0]['id_carrinho'] : null;
+$idUsuarioLogado = $_SESSION['ID'];
 $subTotalCarrinho = 0;
 $valorTotalCarrinho = 0;
 $frete = 10;
 $desconto = 5;
+$totalPedido = 0;
 ?>
 <div class="row-carrinho">
     <div class="header_carrinho">
@@ -49,9 +52,7 @@ $desconto = 5;
                 </div>
                 <form action="checkout" method="post">
                     <input type="hidden" value="<?php echo $idUsuarioLogado; ?>" name="idusuario">
-                    <input type="hidden" name="totalpedidosemdesconto" value="<?php echo $totalPedido; ?>">
-                    <input type="hidden" value="<?php echo !empty($idCarrinho) ? $idCarrinho : 0; ?>" name="idcarrinho">
-                    <input type="hidden" id="valorcomdesconto" value="0" name="valorcomdesconto">
+                    <input type="hidden" name="idcarrinho" value="<?php echo !empty($idCarrinho) ? $idCarrinho : 0; ?>">
                     <input type="hidden" id="cupomValor" name="cupomValor">
                     <div class="detalhes_carrinho">
                         <div class="linha_carrinho"><span>Total Produtos:</span> <span>R$ <?php echo number_format($subTotalCarrinho, 2, ',', '.'); ?></span></div>
@@ -59,6 +60,8 @@ $desconto = 5;
                         <div class="linha_carrinho"><span>Frete:</span> <span>R$ <?php echo number_format($frete, 2, ',', '.'); ?></span></div>
                         <div class="linha_carrinho total"><span>Total:</span> <span>R$ <?php $valorTotalCarrinho = $subTotalCarrinho + $frete - $desconto; echo number_format($valorTotalCarrinho, 2, ',', '.'); ?></span></div>
                     </div>
+                    <input type="hidden" id="valorcomdesconto" value="<?php echo $valorTotalCarrinho;?>" name="valorcomdesconto">
+                    <input type="hidden" name="totalpedidosemdesconto" value="<?php $totalPedidoSemDesconto = $subTotalCarrinho + $frete; echo $totalPedidoSemDesconto; ?>">
                     <div class="acao_carrinho">
                         <button type="submit" class="btn btn-block btn-primary" style="display: flex; justify-content:center;">Finalizar Pedido</button>
                     </div>

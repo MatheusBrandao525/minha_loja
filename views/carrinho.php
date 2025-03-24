@@ -28,7 +28,7 @@ $totalPedido = 0;
                 foreach ($dadosCarrinhoUsuario as $carrinho) : 
                     $valorTotalProduto = $carrinho['quantidade'] * $carrinho['vlr_unitario'];    
                 ?>
-                <div class="carrinho_item">
+                <div class="carrinho_item" data-produto-id="<?php echo $carrinho['produto_id']; ?>" data-tamanho="<?php echo 'PADRAO' ?>">
                     <img src="<?php echo $carrinho['imagem_url']; ?>" alt="<?php echo htmlspecialchars($carrinho['nome_produto']); ?>" class="produto_imagem">
                     <span class="produto_nome"><?php echo htmlspecialchars($carrinho['nome_produto']); ?></span>
                     <div class="quantidade_controle">
@@ -72,6 +72,42 @@ $totalPedido = 0;
         <?php endif; ?>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".quantidade_mais").click(function () {
+      let produtoId = $(this).closest(".carrinho_item").data("produto-id");
+      let tamanhoModelo = $(this).closest(".carrinho_item").data("tamanho");
+      atualizarQuantidade(produtoId, tamanhoModelo, "aumentar");
+    });
+
+    $(".quantidade_menos").click(function () {
+      let produtoId = $(this).closest(".carrinho_item").data("produto-id");
+      let tamanhoModelo = $(this).closest(".carrinho_item").data("tamanho");
+      atualizarQuantidade(produtoId, tamanhoModelo, "diminuir");
+    });
+
+    function atualizarQuantidade(produtoId, tamanhoModelo, acao) {
+      $.ajax({
+        url: "atualizarQuantidadeCarrinho",
+        type: "POST",
+        data: { produto_id: produtoId, tamanho_modelo: tamanhoModelo, acao: acao },
+        dataType: "json",
+        success: function (resposta) {
+          if (resposta.sucesso) {
+            location.reload(); // Atualiza a página para refletir a nova quantidade
+          } else {
+            alert(resposta.erro);
+          }
+        },
+        error: function () {
+          alert("Erro ao atualizar o carrinho.");
+        }
+      });
+    }
+  });
+</script>
+
 <?php
 require 'components/footer.php';
 ?>

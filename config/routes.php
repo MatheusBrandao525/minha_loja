@@ -24,6 +24,7 @@ $routes = [
     '/minha_loja/totalCarrinho' => 'CarrinhoController@obterTotalCarrinho',
     '/minha_loja/validarCupomDesconto' => 'CarrinhoController@processarCupom',
     '/minha_loja/checkout' => 'CheckoutController@exibeCheckout',
+    '/minha_loja/atualizarQuantidadeCarrinho' => 'CarrinhoController@atualizarQuantidade',
 
     '/minha_loja/process_payment' => 'CheckoutController@processarPagamento'
 ];

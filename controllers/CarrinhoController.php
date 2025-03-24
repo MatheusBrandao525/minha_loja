@@ -58,6 +58,31 @@ class CarrinhoController {
         }
     }
     
+    public function atualizarQuantidade()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $produtoId = $_POST['produto_id'];
+        $tamanhoModelo = $_POST['tamanho_modelo'];
+        $acao = $_POST['acao'];
+        $usuarioId = $_SESSION['ID']; // Pegando o usuário logado
+
+        $carrinhoModel = new CarrinhoModel();
+
+        if ($acao === "aumentar") {
+            $carrinhoModel->incrementarQuantidade($usuarioId, $produtoId, $tamanhoModelo);
+        } elseif ($acao === "diminuir") {
+            $carrinhoModel->diminuirQuantidade($usuarioId, $produtoId, $tamanhoModelo);
+        }
+
+        echo json_encode(['sucesso' => true]);
+        exit;
+    } else {
+        http_response_code(405);
+        echo json_encode(['erro' => 'Método não permitido']);
+        exit;
+    }
+}
+
 
     public function exibirProdutosCarrinhoUsuario($usuarioId)
     {

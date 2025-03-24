@@ -80,6 +80,37 @@ class CarrinhoModel
         }
     }
 
+    public function incrementarQuantidade($usuarioId, $produtoId, $tamanhoModelo)
+{
+    $sql = "UPDATE produtos_carrinho SET quantidade = quantidade + 1 WHERE cliente_id = :cliente_id AND produto_id = :produto_id AND tamanho_modelo = :tamanho_modelo";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->execute([
+        ':cliente_id' => $usuarioId,
+        ':produto_id' => $produtoId,
+        ':tamanho_modelo' => $tamanhoModelo
+    ]);
+}
+
+public function diminuirQuantidade($usuarioId, $produtoId, $tamanhoModelo)
+{
+    $sql = "UPDATE produtos_carrinho SET quantidade = quantidade - 1 WHERE cliente_id = :cliente_id AND produto_id = :produto_id AND tamanho_modelo = :tamanho_modelo";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->execute([
+        ':cliente_id' => $usuarioId,
+        ':produto_id' => $produtoId,
+        ':tamanho_modelo' => $tamanhoModelo
+    ]);
+
+    // Remover produto do carrinho se a quantidade for 0
+    $sqlRemover = "DELETE FROM produtos_carrinho WHERE cliente_id = :cliente_id AND produto_id = :produto_id AND tamanho_modelo = :tamanho_modelo AND quantidade <= 0";
+    $stmtRemover = $this->conexao->prepare($sqlRemover);
+    $stmtRemover->execute([
+        ':cliente_id' => $usuarioId,
+        ':produto_id' => $produtoId,
+        ':tamanho_modelo' => $tamanhoModelo
+    ]);
+}
+
 
 
 

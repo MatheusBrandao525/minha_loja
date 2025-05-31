@@ -238,3 +238,19 @@ select * from produtos_carrinho;
                     produtos_imagens AS pi ON p.produto_id = pi.produto_id AND pi.principal = TRUE
                 WHERE 
                     c.usuario_id = 1;
+                    
+                    
+create table pedidos
+(
+	id_pedido int auto_increment primary key,
+    ticket_pedido varchar(80) not null,
+    data_pedido varchar(24) not null,
+    cliente_id int not null,
+    valor_pedido decimal(10,2),
+    status_pedido enum('APROVADO','CANCELADO','AGUARDANDO','REJEITADO') DEFAULT ('AGUARDANDO')
+    
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+drop table pedidos;
+
+SELECT * FROM pedidos;

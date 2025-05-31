@@ -8,11 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $cupomValor = isset($_POST['cupomValor']) ? (float) str_replace(',', '.', $_POST['cupomValor']) : 0.00;
 }
 ?>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <!-- Incluindo o FontAwesome da pasta local -->
-  <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!-- Incluindo o FontAwesome da pasta local -->
+<link rel="stylesheet" href="/fontawesome/css/all.min.css">
 
 <style>
   /* Estilos Gerais */
@@ -802,6 +802,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </div>
   <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
+    const idUsuario = <?= json_encode($idUsuario); ?>;
+
     const mp = new MercadoPago("<?= getenv("MP_PUBLIC_KEY"); ?>");
     const cardForm = mp.cardForm({
       amount: "100.5",
@@ -883,6 +885,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                   number: identificationNumber,
                 },
               },
+              external_reference: idUsuario // <-- Aqui passamos o idUsuario
             }),
           });
         },
@@ -915,7 +918,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     function voltarParaCarrinho() {
-    window.location.href = "carrinho";
-  }
+      window.location.href = "carrinho";
+    }
   </script>
 </body>

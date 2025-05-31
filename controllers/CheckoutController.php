@@ -39,7 +39,8 @@ class CheckoutController
                     "type" => $inputArray['payer']['identification']['type'],
                     "number" => $inputArray['payer']['identification']['number']
                 ]
-            ]
+                ],
+            "external_reference" => $inputArray['external_reference']
         ], $request_options);
         echo json_encode($payment, JSON_PRETTY_PRINT);
     }

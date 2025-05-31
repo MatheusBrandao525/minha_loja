@@ -3,7 +3,7 @@ class Conexao
 {
     private static $instance = null;
     private $conn;
-    private $servidor = "mysql";
+    private $servidor = "localhost";
     private $usuario = "root";
     private $senha = "1exagon1@";
     private $dbname = "brandao_makers";

@@ -6,7 +6,10 @@ require "vendor/autoload.php";
 require ROOT_PATH . '/config/routes.php';
 
 //Verificar esta alteração
-$requestedUrl = '/minha_loja' . $_SERVER['REQUEST_URI'];
+$requestedUrl = $_SERVER['REQUEST_URI'];
+
+/* echo $requestedUrl;
+exit; */
 
 if (array_key_exists($requestedUrl, $routes)) {
     $parts = explode('@', $routes[$requestedUrl]);

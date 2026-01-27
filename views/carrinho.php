@@ -44,7 +44,7 @@ $totalPedido = 0;
                 endforeach; 
                 ?>
             </div>
-
+ 
             <div class="info_carrinho">
                 <div class="cupom_desconto">
                     <input type="text" placeholder="Código do cupom" id="codigo_cupom">

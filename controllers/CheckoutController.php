@@ -16,7 +16,7 @@ class CheckoutController
     {
         $input = file_get_contents('php://input');
         $inputArray = json_decode($input, true);
-
+ 
         MercadoPagoConfig::setAccessToken(getenv("MP_SECRET_KEY"));
 
         $client = new PaymentClient();

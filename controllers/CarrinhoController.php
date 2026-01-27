@@ -92,7 +92,7 @@ class CarrinhoController {
         return $produtosCarrinhoUsuario;
     }
     
-
+ 
     
     
     public function exibeQuantidadeCarrinho()

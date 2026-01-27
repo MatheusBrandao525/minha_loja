@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     width: 100%;
     height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background-color: #ffffff;
+    background-color: #ffffff; 
   }
 
   /* Container principal que limita a largura máxima da página */

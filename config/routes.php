@@ -27,7 +27,7 @@ $routes = [
     '/minha_loja/atualizarQuantidadeCarrinho' => 'CarrinhoController@atualizarQuantidade',
 
     '/minha_loja/process_payment' => 'CheckoutController@processarPagamento'
-];
+]; 
 
 if (isset($_GET['url'])) {
     $urlSolicitada = '/minha_loja/' . $_GET['url'];
